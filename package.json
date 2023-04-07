@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./backend/index.js",
+    "dev": "nodemon ./backend/index.js",
+    "lint": "eslint --fix --ext .js .",
+    "make:migration": "knex migrate:make",
+    "migrate": "knex migrate:latest",
+    "make:seed": "knex seed:make",
+    "seed": "knex seed:run"
+
   },
   "keywords": [],
   "author": "",

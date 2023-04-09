@@ -12,7 +12,6 @@
     "migrate": "knex migrate:latest",
     "make:seed": "knex seed:make",
     "seed": "knex seed:run"
-
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "knex": "^2.4.2",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

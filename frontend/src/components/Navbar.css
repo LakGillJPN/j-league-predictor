@@ -1,0 +1,31 @@
+@import url("../fonts/j-league/stylesheet.css");
+
+* {
+  font-family: 'JLEAGUE KICK Bold Condensed';
+}
+
+.navbar {
+  display: flex;
+  justify-content: center; /* centers the navbar horizontally */
+  background-color: #333;
+  height: 50px;
+}
+
+.topnav {
+  display: flex;
+  justify-content: space-between; /* evenly distributes the links */
+  align-items: center; /* centers the links vertically */
+  width: 80%; /* adjust the width as needed */
+}
+
+.topnav a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}

@@ -1,0 +1,17 @@
+.carousel {
+  padding-top: 40px;
+}
+
+.carousel-root{
+  margin: 10px;
+  margin-bottom: 30px;
+  height: 0px;
+  border-radius: 25px;
+  font-size: 25px;
+}
+
+.carousel .slider-wrapper {
+  background-color: red;
+  height: 150px;
+  border-radius: 25px;
+}

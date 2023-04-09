@@ -1,0 +1,10 @@
+@import url("../fonts/j-league/stylesheet.css");
+
+.header {
+  font-size: 70px;
+  text-align: center;
+  font-family: 'JLEAGUE KICK Bold Condensed';
+  padding-bottom: 10px;
+  color: white;
+ 
+}

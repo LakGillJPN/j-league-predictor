@@ -1,11 +1,7 @@
-const axios = require('axios') //league 98
+const axios = require('axios')
 
 const options = {
   method: 'GET',
-  //TO GET THE EVENTS OF FINISHED GAMES
- // url: 'https://api-football-v1.p.rapidapi.com/v3/fixtures/events',
-  //params: {fixture: '994647'},
-  //  params: {league: '98', season: '2023', from: '2023-04-08', to: '2023-04-10'},
 
   url: 'https://api-football-v1.p.rapidapi.com/v3/fixtures',
   params: {league: '98', season: '2023'},
@@ -40,7 +36,5 @@ async function getFixturesData() {
   }
   return fixturesData;
 }
-
-
 
 module.exports = { getFixturesData }

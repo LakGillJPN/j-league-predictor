@@ -1,7 +1,7 @@
-import React from 'react'
-import Navbar from './Navbar'
+import React from 'react';
+import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
-import './Header.css'
+import './Header.css';
 
 
 export default function Header() {
@@ -17,6 +17,7 @@ export default function Header() {
       <Navbar 
        onClickHome={() => navigate("/")}
        onClickLogin={() => navigate("/login")}
+       onClickPlay={() => navigate("/play")}
       /> 
   
     </>

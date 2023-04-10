@@ -1,3 +1,4 @@
+
 .carousel {
   padding-top: 40px;
 }
@@ -10,8 +11,28 @@
   font-size: 25px;
 }
 
+
 .carousel .slider-wrapper {
-  background-color: red;
-  height: 150px;
+  background: linear-gradient(red, lightcoral);
+  /* height: 200px; */
+  height: 500px;
   border-radius: 25px;
+} 
+
+.images {
+ border: 3px solid white;
+ 
+ width: 10%;
+ height: 10%;
+ align-items: center;
+ margin: auto,0;
+}
+
+.home-logo {
+ border: 3px solid green;
+}
+
+.away-logo {
+ border: 3px solid blue;
+ position:relative;
 }

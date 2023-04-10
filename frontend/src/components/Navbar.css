@@ -6,16 +6,16 @@
 
 .navbar {
   display: flex;
-  justify-content: center; /* centers the navbar horizontally */
+  justify-content: center; 
   background-color: #333;
   height: 50px;
 }
 
 .topnav {
   display: flex;
-  justify-content: space-between; /* evenly distributes the links */
-  align-items: center; /* centers the links vertically */
-  width: 80%; /* adjust the width as needed */
+  justify-content: space-between; 
+  align-items: center; 
+  width: 80%;
 }
 
 .topnav a {

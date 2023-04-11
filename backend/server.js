@@ -19,6 +19,13 @@ function setupServer() {
      .timeout(1500)
      res.send(fixtures);
   })
+
+  app.get('/users', async (req, res) => {
+    const users = await db('users')
+    .select('*')
+    .timeout(1500)
+    res.send(users);
+  })
   
 
   return app;

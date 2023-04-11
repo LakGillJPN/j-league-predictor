@@ -14,7 +14,6 @@ export default function FixturesCarousel() {
   async function getFixtures() {
     const fetchedFixs = await axios.get('/fixtures');
     setFixtures(fetchedFixs.data.filter(x => x.gameweek === 'Regular Season - 8'))
-    // const regularSeason8Fixtures = fixtures.filter(fixture => fixture.gameweek === 'Regular Season - 8');
   }
 
   return (

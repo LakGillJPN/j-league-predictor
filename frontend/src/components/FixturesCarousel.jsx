@@ -11,16 +11,19 @@ export default function FixturesCarousel() {
     getFixtures()
   },[])
 
+
   getFixtures(setFixtures); // set the fixtures list
 
   return (
     <>
     <Carousel  
       autoPlay={true}
+      interval={5500}
       showArrows={false} 
       infiniteLoop={true} 
       showIndicators={true} 
       showStatus={false}
+      
     >
   
    {fixtures.map((fixture) => (

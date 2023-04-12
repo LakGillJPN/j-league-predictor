@@ -6,6 +6,7 @@ import getFixtures from '../utils/get-fixtures';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
+  const [predication, setPredication] = useState([]);
   
   useEffect(() => {
     getFixtures()
@@ -17,7 +18,6 @@ export default function Play() {
     <>
     <Header/>
     <h1>Make your Predications</h1>
-
     {fixtures.map((fixture) => (
     
     <div key={fixture.id}>
@@ -25,14 +25,12 @@ export default function Play() {
     <div className='predict-game'>  
       <div className='game-box'>
         <div> <img className='logo' src={fixture.home_team_logo} />  </div>
-        {fixture.home_team} 
-        <div><input type="number" className="scorebox"  pattern="[0-9.]" min="0" max="10" required></input></div>
+        <div> {fixture.home_team} <input type="number" className="scorebox"  pattern="[0-9.]" min="0" max="10" required></input></div>
       </div>
 
       <div className='game-box'>
         <div> <img className='logo' src={fixture.away_team_logo} /> </div>
-        {fixture.away_team}
-        <div><input type="number" className="scorebox" required></input></div>
+        <div> <input type="number" className="scorebox" required></input> {fixture.away_team} </div>
       </div>
 
     </div>

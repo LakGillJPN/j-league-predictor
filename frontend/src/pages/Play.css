@@ -1,0 +1,29 @@
+.predict-game {
+ font-size: 50px;
+ text-align: center;
+ background-color: white;
+ display: flex;
+ align-items: center;
+ width: 800px;
+ border-radius: 25px;
+ margin: auto;
+ padding-top: 20px;
+ padding-bottom: 20px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.game-box {
+ width: 650px;
+ font-size: 50px;
+}
+
+.scorebox {
+ width: 50px;
+}
+
+.space {
+ padding-bottom: 20px;
+}

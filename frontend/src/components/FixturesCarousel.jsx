@@ -15,18 +15,33 @@ export default function FixturesCarousel() {
 
   return (
     <>
-    <Carousel 
+    <Carousel  
+      autoPlay={true}
       showArrows={false} 
       infiniteLoop={true} 
-      autoPlay={true} 
       showIndicators={true} 
       showStatus={false}
     >
   
    {fixtures.map((fixture) => (
     <div key={fixture.id}>
+      <div className='first-row'>
+        <div className='game'>
+          <div> <img className='images' src={fixture.home_team_logo} /> </div>
+          <div className="team">{fixture.home_team} </div>
+        </div>
+      
+        <div className="team">vs</div>
+
+        <div className='game'>
+          <div> <img className='images' src={fixture.away_team_logo} /> </div>
+          <div className="team">{fixture.away_team} </div>
+        </div>
+      </div>
 
 
+      <div className='date'>{` ${new Date(fixture.date).toDateString()}`} </div>
+      <div className='time'> {` ${new Date(fixture.date).toTimeString()}`}  </div> 
 
     {/* <div className='images'>
       <div className='home-logo'><img src={fixture.home_team_logo} alt=""/></div>
@@ -37,6 +52,7 @@ export default function FixturesCarousel() {
     <p className='time'> {` ${new Date(fixture.date).toTimeString()}`}  </p>  */}
    
   </div>
+  
 ))}
     </Carousel>
 
@@ -47,5 +63,5 @@ export default function FixturesCarousel() {
   )
 }
 
-/*
+
    

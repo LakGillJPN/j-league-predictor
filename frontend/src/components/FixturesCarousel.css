@@ -11,27 +11,27 @@
   font-size: 25px;
 }
 
-
 .carousel .slider-wrapper {
-  background: linear-gradient(red, lightcoral);
-  height: 200px;
+  background: linear-gradient(white, red);
+  height: 300px;
   border-radius: 25px;
 } 
 
+.first-row {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+.game {
+  align-content: center;
+
+}
+
 .images {
- border: 3px solid white;
- 
- width: 10%;
- height: 10%;
- align-items: center;
- margin: auto,0;
+  height: 20%;
 }
 
-.home-logo {
- border: 3px solid green;
-}
 
-.away-logo {
- border: 3px solid blue;
- position:relative;
-}

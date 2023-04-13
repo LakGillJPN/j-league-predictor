@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import Login from './pages/Login';
 import Play from './pages/Play';
 import Results from './pages/Results';
-import {Router, Routes, Route} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 function App() {
   return (

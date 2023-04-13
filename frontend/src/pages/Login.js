@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import Header from '../components/Header';
 import './Login.css';
-import axios from 'axios';
+
 
 
 export default function Login() {
@@ -9,23 +9,11 @@ export default function Login() {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
 
-  
-  useEffect(() => {
-    getData()
-    console.log('DATATA', data.findIndex(x => x.email === 'DiesalPower@hotmail.com'))
-  },[data])
 
   useEffect(() => {
     //console.log('email', email)
   },[email])
 
-  async function getData() {
-    const fetchedData = await axios.get('/users');
-    setData(fetchedData.data)
-  }
-
-  
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
   

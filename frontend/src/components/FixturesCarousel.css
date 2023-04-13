@@ -12,7 +12,8 @@
 }
 
 .carousel .slider-wrapper {
-  background: linear-gradient(white, red);
+  background: whitesmoke;
+  border: 3px solid coral;
   height: 300px;
   border-radius: 25px;
 } 

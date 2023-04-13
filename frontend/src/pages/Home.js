@@ -1,6 +1,6 @@
 import './Home.css';
-import Header from './components/Header';
-import FixturesCarousel from './components/FixturesCarousel';
+import Header from '../components/Header';
+import FixturesCarousel from '../components/FixturesCarousel'
 
 export default function Home() {
   return (

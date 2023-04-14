@@ -15,7 +15,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       await createUser(email,password);
-      navigate('/home')
+      navigate('/')
     } catch (err) {
       console.error(err);
     }

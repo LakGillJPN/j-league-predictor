@@ -7,7 +7,7 @@ import { UserAuth } from '../context/AuthContext';
 export default function Header() {
 
   const navigate = useNavigate();
-  const {logOut} = UserAuth();
+  const {logOut, user} = UserAuth();
 
   const handleLogOut = async() => {
     try {

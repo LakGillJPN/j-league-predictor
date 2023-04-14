@@ -1,10 +1,7 @@
 // Import the functions you need from the SDKs you need
 
-<<<<<<< HEAD
 //require('dotenv').config();
 
-=======
->>>>>>> 6d88305da6939b852232b597c7f4c3d59a008395
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 

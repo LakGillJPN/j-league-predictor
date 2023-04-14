@@ -1,7 +1,8 @@
 const express = require('express');
-//const cors = require('cors')
 const db = require('./knex')
 const path = require('path');
+//const { auth } = require('../frontend/src/firebase/firebase')
+
 
 function setupServer() {
   const app = express();
@@ -26,6 +27,22 @@ function setupServer() {
     .timeout(1500)
     res.send(users);
   })
+
+  app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      res.status(200).json({ user: userCred.user });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+
+  
+
+  
+
   
 
   return app;

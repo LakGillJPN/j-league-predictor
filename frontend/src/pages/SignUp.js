@@ -1,15 +1,32 @@
 import {React, useState} from 'react';
 import Header from '../components/Header';
 import './SignUp.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext'
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const {createUser} = UserAuth();
+  const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      await createUser(email,password);
+      navigate('/home')
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
+
   return (
     <>
     <Header/>
-    <form className="sign-up-form">
+    <form className="sign-up-form" onSubmit={handleSignUp}>
       <h1 className="header">Sign Up!</h1>
      
       <label>Email:</label>

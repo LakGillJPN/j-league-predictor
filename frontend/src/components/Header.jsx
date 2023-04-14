@@ -2,10 +2,21 @@ import React from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
+import { UserAuth } from '../context/AuthContext';
 
 export default function Header() {
 
   const navigate = useNavigate();
+  const {logOut} = UserAuth();
+
+  const handleLogOut = async() => {
+    try {
+      await logOut();
+      navigate('/')
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -15,6 +26,7 @@ export default function Header() {
        onClickLogin={() => navigate("/login")}
        onClickPlay={() => navigate("/play")}
        onClickResults={() => navigate("/results")}
+       onClickLogout={handleLogOut}
       /> 
   
     </>

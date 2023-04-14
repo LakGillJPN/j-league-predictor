@@ -3,7 +3,7 @@ import './Navbar.css';
 
 
 export default function Navbar(props) {
-  const {onClickHome, onClickLogin, onClickResults, onClickPlay} = props;
+  const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
   
  
   return (
@@ -13,6 +13,7 @@ export default function Navbar(props) {
       <a href="" onClick={onClickResults}>Results</a>
       <a href="" onClick={onClickPlay}>Play</a>
       <a href="" onClick={onClickLogin}>Login</a>
+      <a href="" onClick={onClickLogout}>Logout</a>
       </div> 
     </div>
   );

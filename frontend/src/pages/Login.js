@@ -1,37 +1,33 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import Header from '../components/Header';
+import axios from 'axios';
 import './Login.css';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext'
 
 
 export default function Login() {
-  const [data, setData] = useState([]);
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
 
+  const { loginUser } = UserAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    //console.log('email', email)
-  },[email])
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  
-    if (data.contains(email) && data.contains(password)) {
-      alert("The form was submitted");
-    } else {
-      alert("The form was NOT submitted");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await loginUser(email, password)
+      navigate('/play')
+    } catch(err) {
+      console.error(err);
     }
-  };
-
-
-
-
+    
+  }
 
   return (
     <>
     <Header/>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLogin}>
      
       <label>Email:</label>
       <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
@@ -41,6 +37,8 @@ export default function Login() {
      
       <button type="submit">Login</button>
     </form>
+
+     <p>Don't have an account? <Link to='/signup'>Sign up here!</Link></p>
     </>
   )
 }

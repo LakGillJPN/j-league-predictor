@@ -7,7 +7,7 @@ const path = require('path');
 function setupServer() {
   const app = express();
 
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
+  app.use(express.static(path.resolve(__dirname, '../frontend/build')));
   app.use(express.json());
   
   app.get('/hello', (req, res) => {
@@ -32,9 +32,9 @@ function setupServer() {
     const { email, password } = req.body;
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
-      res.status(200).json({ user: userCred.user });
+      res.send(userCred).status(200)
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      res.status(400)
     }
   });
 

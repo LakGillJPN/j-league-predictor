@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures';
 import { UserAuth } from '../context/AuthContext';
+import axios from 'axios';
 
 
 export default function Play() {
@@ -39,6 +40,23 @@ export default function Play() {
     }));
   }
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    axios.post('/api/predications', {
+      user,
+      homePredications,
+      awayPredications
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+
+
   getFixtures(setFixtures) 
 
   return (
@@ -47,7 +65,7 @@ export default function Play() {
     
     <h1>Make your Predications {user.email} </h1>
 
-    <form> 
+    <form onSubmit={handleFormSubmit}> 
 
     {fixtures.map((fixture) => (
     
@@ -57,14 +75,14 @@ export default function Play() {
           <div className='game-box'>
             <div> <img className='logo' src={fixture.home_team_logo} />  </div>
             <div> {fixture.home_team} <input type="text" className="scorebox" name={`${fixture.id}`} 
-                   maxlength="1" pattern="[0-9.]" min="0" max="10" 
+                   maxLength="1" pattern="[0-9.]" min="0" max="10" 
                   onChange={handleHomeChange} required></input></div>
             </div>
 
         <div className='game-box'>
           <div> <img className='logo' src={fixture.away_team_logo} /> </div>
           <div> <input type="text" className="scorebox" name={`${fixture.id}`} 
-                maxlength="1" pattern="[0-9.]" min="0" max="10" 
+                maxLength="1" pattern="[0-9.]" min="0" max="10" 
                 onChange={handleAwayChange} required></input> {fixture.away_team} </div>
         </div>
       </div>

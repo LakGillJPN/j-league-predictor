@@ -28,7 +28,20 @@ function setupServer() {
     res.send(users);
   })
 
-  app.post('/api/login', async (req, res) => {
+  app.post('/api/predications', async (req, res) => {
+    console.log(req.body.homePredications)
+  })
+
+  return app;
+};
+
+
+
+module.exports = setupServer;
+
+
+/*
+ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
@@ -37,17 +50,4 @@ function setupServer() {
       res.status(400)
     }
   });
-
-
-  
-
-  
-
-  
-
-  return app;
-};
-
-
-
-module.exports = setupServer;
+  */

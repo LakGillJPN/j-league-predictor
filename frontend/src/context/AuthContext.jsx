@@ -11,6 +11,7 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState({});
+  const [userEmail, setUserEmail] = useState('')
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -32,6 +33,7 @@ export const AuthContextProvider = ({children}) => {
       (currentUser) => {
         console.log(currentUser)
         setUser(currentUser);
+        setUserEmail(currentUser.email)
     })
     return authenticatedUser;
   },[]);
@@ -40,6 +42,7 @@ export const AuthContextProvider = ({children}) => {
     {createUser, 
     loginUser, 
     user, 
+    userEmail,
     logOut
     }}>
     {children}

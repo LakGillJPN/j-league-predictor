@@ -28,7 +28,33 @@ function setupServer() {
     res.send(users);
   })
 
-  app.post('/api/login', async (req, res) => {
+  app.post('/api/predications', async (req, res) => {
+    try {
+      await Promise.all(req.body.predications.map(async predict => {
+        await db('predications').insert({
+          username: req.body.userEmail,
+          game_id: predict[0],
+          home_predication: predict[1],
+          away_predication: predict[2],
+        });
+      }));
+      res.send('Data entered!').status(200);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error occurred while entering data!');
+    }
+  });
+
+  return app;
+};
+
+
+
+module.exports = setupServer;
+
+
+/*
+ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
@@ -37,17 +63,4 @@ function setupServer() {
       res.status(400)
     }
   });
-
-
-  
-
-  
-
-  
-
-  return app;
-};
-
-
-
-module.exports = setupServer;
+  */

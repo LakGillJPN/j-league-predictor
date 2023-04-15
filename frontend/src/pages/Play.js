@@ -2,10 +2,12 @@ import {useState, useEffect,React} from 'react';
 import Header from '../components/Header';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures';
+import { UserAuth } from '../context/AuthContext';
 
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
+  const {user} = UserAuth();
   const [predication, setPredication] = useState([]);
   
   useEffect(() => {
@@ -17,7 +19,9 @@ export default function Play() {
   return (
     <>
     <Header/>
-    <h1>Make your Predications</h1>
+    
+    <h1>Make your Predications {user === null ? 'user' : user.email} </h1>
+
     {fixtures.map((fixture) => (
     
     <div key={fixture.id}>

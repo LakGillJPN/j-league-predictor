@@ -21,6 +21,7 @@ export default function FixturesCarousel() {
       infiniteLoop={true} 
       showIndicators={true} 
       showStatus={false}
+      showThumbs={false}
     >
   
    {fixtures.map((fixture) => (

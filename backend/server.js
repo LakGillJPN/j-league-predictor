@@ -29,8 +29,21 @@ function setupServer() {
   })
 
   app.post('/api/predications', async (req, res) => {
-    console.log(req.body.homePredications)
-  })
+    try {
+      await Promise.all(req.body.predications.map(async predict => {
+        await db('predications').insert({
+          username: req.body.userEmail,
+          game_id: predict[0],
+          home_predication: predict[1],
+          away_predication: predict[2],
+        });
+      }));
+      res.send('Data entered!').status(200);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error occurred while entering data!');
+    }
+  });
 
   return app;
 };

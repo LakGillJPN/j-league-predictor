@@ -42,6 +42,7 @@ export const AuthContextProvider = ({children}) => {
     {createUser, 
     loginUser, 
     user, 
+    userEmail,
     logOut
     }}>
     {children}

@@ -10,7 +10,7 @@ export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const {user} = UserAuth();
+  const {user, userEmail} = UserAuth();
   
   useEffect(() => {
     getFixtures()
@@ -40,12 +40,25 @@ export default function Play() {
     }));
   }
 
+  const resultArr = (home, away) => {
+    const id = Object.keys(home);
+    const homeScore = Object.values(home);
+    const awayScore = Object.values(away);
+
+    let newArr = []
+
+    for (let i = 0; i < id.length; i++) {
+      newArr.push([id[i],homeScore[i],awayScore[i]])
+    }
+    return newArr
+  }
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    const result = resultArr(homePredications, awayPredications);
     axios.post('/api/predications', {
-      user,
-      homePredications,
-      awayPredications
+      userEmail,
+      predications: result,
     })
     .then(response => {
       console.log(response);

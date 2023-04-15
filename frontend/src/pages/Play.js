@@ -7,12 +7,37 @@ import { UserAuth } from '../context/AuthContext';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
+  const [homePredications, setHomePredications] = useState([]);
+  const [awayPredications, setAwayPredications] = useState([]);
   const {user} = UserAuth();
-  const [predication, setPredication] = useState([]);
   
   useEffect(() => {
     getFixtures()
   },[])
+
+  useEffect(() => {
+    console.log('HOME', homePredications)
+  },[homePredications])
+
+  useEffect(() => {
+    console.log('AWAY', awayPredications)
+  },[awayPredications])
+
+  const handleHomeChange = (event) => {
+    const { name, value } = event.target;
+    setHomePredications(prevState => ({
+      ...prevState,
+      [name]: parseInt(value)
+    }));
+  }
+
+  const handleAwayChange = (event) => {
+    const { name, value } = event.target;
+    setAwayPredications(prevState => ({
+      ...prevState,
+      [name]: parseInt(value)
+    }));
+  }
 
   getFixtures(setFixtures) 
 
@@ -20,32 +45,35 @@ export default function Play() {
     <>
     <Header/>
     
-    <h1>Make your Predications {user === null ? 'user' : user.email} </h1>
+    <h1>Make your Predications {user.email} </h1>
+
+    <form> 
 
     {fixtures.map((fixture) => (
     
-    <div key={fixture.id}>
+      <div key={fixture.id}>
    
-    <div className='predict-game'>  
-      <div className='game-box'>
-        <div> <img className='logo' src={fixture.home_team_logo} />  </div>
-        <div> {fixture.home_team} <input type="number" className="scorebox"  pattern="[0-9.]" min="0" max="10" required></input></div>
-      </div>
+        <div className='predict-game'>  
+          <div className='game-box'>
+            <div> <img className='logo' src={fixture.home_team_logo} />  </div>
+            <div> {fixture.home_team} <input type="text" className="scorebox" name={`${fixture.id}`} 
+                   maxlength="1" pattern="[0-9.]" min="0" max="10" 
+                  onChange={handleHomeChange} required></input></div>
+            </div>
 
-      <div className='game-box'>
-        <div> <img className='logo' src={fixture.away_team_logo} /> </div>
-        <div> <input type="number" className="scorebox" required></input> {fixture.away_team} </div>
+        <div className='game-box'>
+          <div> <img className='logo' src={fixture.away_team_logo} /> </div>
+          <div> <input type="text" className="scorebox" name={`${fixture.id}`} 
+                maxlength="1" pattern="[0-9.]" min="0" max="10" 
+                onChange={handleAwayChange} required></input> {fixture.away_team} </div>
+        </div>
       </div>
-
+      <div className="space"></div>  
     </div>
-      <div className="space"></div>
-    
-    
-  </div>
-))}
+  ))}
 
-  
-
-    </>
-  )
+    <button type='submit'>SUBMIT</button>
+  </form>
+</>
+ )
 }

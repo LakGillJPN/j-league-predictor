@@ -12,9 +12,10 @@
 }
 
 .carousel .slider-wrapper {
-  background: whitesmoke;
-  border: 3px solid coral;
-  height: 300px;
+  display: relative;
+  background: whitesmoke; 
+  border: 5px solid rgba(7, 7, 7, 0.236);
+  height: 420px;
   border-radius: 25px;
 } 
 

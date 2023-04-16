@@ -2,15 +2,16 @@ import {useState, useEffect,React} from 'react';
 import Header from '../components/Header';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures';
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth,} from '../context/AuthContext';
 import axios from 'axios';
+import Warning from '../components/Warning';
 
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const {user, userEmail} = UserAuth();
+  const {user, userEmail, userPredications} = UserAuth();
   
   useEffect(() => {
     getFixtures()
@@ -76,6 +77,8 @@ export default function Play() {
     
     <h1>Make your Predications {user.email} </h1>
 
+    {userPredications.length > 1 ? <Warning/> : <> </>}
+
     <form onSubmit={handleFormSubmit}> 
 
     {fixtures.map((fixture) => (
@@ -85,18 +88,27 @@ export default function Play() {
         <div className='predict-game'>  
           <div className='game-box'>
             <div> <img className='logo' src={fixture.home_team_logo} />  </div>
-            <div> {fixture.home_team} <input type="text" className="scorebox" name={`${fixture.id}`} 
-                   maxLength="1" pattern="[0-9.]" min="0" max="10" 
-                  onChange={handleHomeChange} required></input></div>
+            <div> {fixture.home_team} </div>
             </div>
+
+        <div className='scorebox-container'>
+          <input type="text" className="scorebox" name={`${fixture.id}`} 
+            maxLength="1" pattern="[0-9.]" min="0" max="10" 
+            onChange={handleHomeChange} required></input>
+            
+        <div className="colon"></div>
+  
+          <input type="text" className="scorebox" name={`${fixture.id}`} 
+            maxLength="1" pattern="[0-9.]" min="0" max="10" 
+            onChange={handleAwayChange} required></input> 
+        </div>
 
         <div className='game-box'>
           <div> <img className='logo' src={fixture.away_team_logo} /> </div>
-          <div> <input type="text" className="scorebox" name={`${fixture.id}`} 
-                maxLength="1" pattern="[0-9.]" min="0" max="10" 
-                onChange={handleAwayChange} required></input> {fixture.away_team} </div>
+          <div> {fixture.away_team} </div>
         </div>
       </div>
+
       <div className="space"></div>  
     </div>
   ))}

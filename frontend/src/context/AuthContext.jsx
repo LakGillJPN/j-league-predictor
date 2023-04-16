@@ -6,12 +6,17 @@ import { createUserWithEmailAndPassword,
 from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { createContext, useContext, useState, useEffect} from "react";
+import getPredications from '../utils/get-predications';
 
 const UserContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState({});
-  const [userEmail, setUserEmail] = useState('')
+  const [userEmail, setUserEmail] = useState('');
+
+  //to check if the user has predicated a score
+  const [userPredications, setUserPredications] = useState([]);
+  getPredications(setUserPredications, userEmail);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
@@ -27,11 +32,11 @@ export const AuthContextProvider = ({children}) => {
   const logOut = () => {
     return signOut(auth);
   }
-
+  
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(auth, 
       (currentUser) => {
-        console.log(currentUser)
+        console.log('CURRENT', currentUser)
         setUser(currentUser);
         setUserEmail(currentUser.email)
     })
@@ -43,6 +48,7 @@ export const AuthContextProvider = ({children}) => {
     loginUser, 
     user, 
     userEmail,
+    userPredications,
     logOut
     }}>
     {children}

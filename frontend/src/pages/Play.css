@@ -1,3 +1,7 @@
+form {
+  display: grid;
+}
+
 .predict-game {
  font-size: 50px;
  text-align: center;
@@ -16,14 +20,26 @@
 }
 
 .game-box {
- width: 650px;
+ /* border: 3px solid green; */
+ width: 750px;
  font-size: 50px;
+}
+
+.scorebox-container {
+  display: flex;
+  /* border: 3px solid yellow; */
 }
 
 .scorebox {
  width: 50px;
+ text-align: center;
 }
 
 .space {
  padding-bottom: 20px;
+}
+
+.colon {
+  padding-left: 10px;
+  padding-right: 10xpx
 }

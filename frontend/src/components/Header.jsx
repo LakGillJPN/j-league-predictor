@@ -1,11 +1,22 @@
-import React from 'react';
+import {React, useState} from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
+import { UserAuth } from '../context/AuthContext';
+
 
 export default function Header() {
-
   const navigate = useNavigate();
+  const {logOut, user, userEmail, userPredications} = UserAuth();
+
+  const handleLogOut = async() => {
+    try {
+      await logOut();
+      navigate('/')
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -13,8 +24,10 @@ export default function Header() {
       <Navbar 
        onClickHome={() => navigate("/")}
        onClickLogin={() => navigate("/login")}
-       onClickPlay={() => navigate("/play")}
+       onClickPlay={() =>  navigate("/play")}
+       onClickWarning={() => navigate("/warning")}
        onClickResults={() => navigate("/results")}
+       onClickLogout={handleLogOut}
       /> 
   
     </>

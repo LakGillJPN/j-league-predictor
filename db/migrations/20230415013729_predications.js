@@ -4,7 +4,8 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTable('predications', (table) => {
-    table.string('username').primary();
+    table.increments("entries").primary();
+    table.string('username');
     table.integer('game_id').references('id').inTable('fixtures');
     table.integer('home_predication').notNullable();
     table.integer('away_predication').notNullable();

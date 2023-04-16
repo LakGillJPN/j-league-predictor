@@ -68,8 +68,6 @@ export default function Play() {
     });
   }
 
-
-
   getFixtures(setFixtures) 
 
   return (

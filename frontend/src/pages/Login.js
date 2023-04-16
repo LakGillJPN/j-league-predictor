@@ -17,7 +17,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await loginUser(email, password)
-      navigate('/play')
+      navigate('/')
     } catch(err) {
       console.error(err);
     }

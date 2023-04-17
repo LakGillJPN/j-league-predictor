@@ -25,7 +25,7 @@ export default function SignUp() {
 
   return (
     <>
-    <Header/>
+    <Header/> 
     <form className="sign-up-form" onSubmit={handleSignUp}>
       <h1 className="header">Sign Up!</h1>
      

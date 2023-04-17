@@ -5,9 +5,11 @@ import Login from './pages/Login';
 import Play from './pages/Play';
 import SignUp from './pages/SignUp';
 import Results from './pages/Results';
+import Footer from './components/Footer'
 import {Routes, Route} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import './App.css'
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/results" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
         </Routes>
         </AuthContextProvider>
+        <Footer/>
     </div>
   );
 }

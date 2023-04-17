@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <>
-    <Header/>
+    <Header/> 
     <form onSubmit={handleLogin}>
      
       <label>Email:</label>

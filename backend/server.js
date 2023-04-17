@@ -82,6 +82,19 @@ function setupServer() {
     res.send(predications); 
   });
 
+  app.get('/api/results', async (req,res) => {
+    const results = await db('fixtures')
+    .join('predications','id','game_id')
+    .select('username','gameweek','home_team','away_team', 
+    'isFinished','home_winner','away_winner','home_score','away_score',
+    'home_predication','away_predication','home_winner_predication',
+    'away_winner_predication')
+    .where('isFinished','FT')
+    res.send(results)
+  })
+
+
+
 
 
   return app;

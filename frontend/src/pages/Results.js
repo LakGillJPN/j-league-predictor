@@ -1,13 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
 
-// Correct Home Score - 20pts - fixtures.home === predications.home
-// Correct Away Score - 20pts - fixtures.away === predications.away
-// Correct Outcome - 50PTs - 
-// Correct Outcome + Correct Home Score - 70pts
-// Correct Outcome + Correct Away Score - 70pts
-// Correct Outcome + Correct Home Score + Correct Away Score = 100 points
-
 export default function Results() {
   return (
     <>

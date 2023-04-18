@@ -26,7 +26,7 @@ const scoreGen = (
     }
   
   string.push(score)
-  return string
+  return score
 }
 
 export default scoreGen;

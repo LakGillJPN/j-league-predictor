@@ -4,8 +4,10 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTable('points', (table) => {
-    table.string('username').primary();
+    table.increments("entries").primary();
+    table.string('username');
     table.integer('game_id').references('id').inTable('fixtures');
+    table.string('gameweek');
     table.integer('game_points').notNullable();
   });
 };

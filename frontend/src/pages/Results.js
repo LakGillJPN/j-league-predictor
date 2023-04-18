@@ -33,12 +33,22 @@ export default function Results() {
   }, [results]);
 
   useEffect(() => {
-    axios.post('api/points', {
-     userEmail,
-
-     points
-    })
-  },[points])
+    const postPoints = async () => {
+      try {
+        await axios.post('api/points', {
+          userEmail,
+          points,
+        });
+        console.log('Points inserted');
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    if (points.length > 0) {
+      postPoints();
+    }
+  }, [points, userEmail]);
 
 
   return (

@@ -21,6 +21,7 @@ export default function Results() {
     <p>Correct Home or Away Score - 20PTs</p>
     <p>Correct Winner + Correct Home or Away Score - 70pts</p>
     <p>Correct Winner + Correct Score - 100pts</p>
+    
 
 
     </>

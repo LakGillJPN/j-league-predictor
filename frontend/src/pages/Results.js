@@ -14,47 +14,56 @@ export default function Results() {
   let [points, setPoints] = useState([])
   let [total, setTotal] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      await getResults(setResults, userEmail);
-      const scores = results.map((result) =>
-        [scoreGen(
-          result.home_predication,        
-          result.away_predication,        
-          result.home_winner_predication,        
-          result.away_winner_predication,        
-          result.home_score,    
-          result.away_score,     
-          result.home_winner,      
-          result.away_winner), 
-          result.id, result.gameweek]
-      );
-      setPoints(scores);
-  
-      if (points.length > 0) {
+
+// use the getResults function to get the previous week's actual results
+  useEffect(() => {
+    getResults(setResults, userEmail);
+  }, [userEmail]);
+
+
+// use the scoreGen function to calucate the user's score between their predications and actual results
+  useEffect(() => {
+    const scores = results.map((result) =>
+       [scoreGen(
+        result.home_predication,
+        result.away_predication,
+        result.home_winner_predication,
+        result.away_winner_predication,
+        result.home_score,
+        result.away_score,
+        result.home_winner,
+        result.away_winner
+      ), result.id, result.gameweek]
+    );
+    setPoints(scores); // set the user's scores to the points array
+  }, [results]);
+
+
+// Insert the user's points into the database
+  useEffect(() => {
+    const postPoints = async () => {
+      try {
         await axios.post('api/points', {
           userEmail,
           points,
         });
-        console.log('Points inserted');
+        await axios.post('api/overall', {
+         userEmail,
+        })
+      } catch (error) {
+        console.error(error);
       }
+    };
   
-      await getTotal(setTotal, userEmail);
-     
-      
-      await axios.post('/api/overall', {
-          points,
-          total,
-          userEmail,
-        });
-    } catch (error) {
-      console.error(error);
+    if (points.length > 0) { //make the array has been populated
+      postPoints();
     }
-  }
-  
+  }, [points, userEmail]);
+
+  // get the user's total score for the week
   useEffect(() => {
-    fetchData();
-  }, [userEmail]);
+    getTotal(setTotal, userEmail) 
+  }, [points, userEmail])
 
 
   return (

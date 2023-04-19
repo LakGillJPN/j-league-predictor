@@ -143,22 +143,29 @@ function setupServer() {
   });
 
   app.post('/api/overall', async (req,res) => {
-    console.log('TYPEOF', typeof req.body.total, req.body.total)
+    const { userEmail,} = req.body;
+    const points = await db('points').where('username', userEmail).select('game_points');
+    const gameweek = await db('points').where('username', userEmail).select('gameweek');
+    const overall = points.reduce((prev, curr) => prev + curr.game_points, 0);
+    
     try {
+
       await db('overall')
-      .where('username', req.body.userEmail)
-      //.where('gameweek', )
+      .where('username', userEmail)
+      //.where('gameweek', Object.values(gameweek[0]).toString())
       .delete();
+
       await db('overall').insert({
-        username: req.body.userEmail,
-        gameweek: req.body.points[2],
-        overall_points: req.body.total
-      })
-      res.send('Overall entered').status(200)
+        username: userEmail,
+        gameweek: Object.values(gameweek[0]).toString(),
+        overall_points: overall
+      });
+      res.send('Overall inserted');
     } catch(error) {
-      console.error(error)
+      console.error(error);
+      res.status(500).send('Internal server error');
     }
-  })
+  });
 
   return app;
 };

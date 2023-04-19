@@ -11,20 +11,3 @@ root.render(
     <App />
   </BrowserRouter>
 );
-
-
-
-/*
-
-/*const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App/>} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/play" element ={<Play/>} />
-      <Route path="/results" element={<Results/>} />
-    </Routes>
-  </Router>,
-  document.getElementById('root')
-); */

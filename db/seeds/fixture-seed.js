@@ -8,6 +8,7 @@ const { getFixturesData } = require('../../fixtures');
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
 
+
   const fixturesData = await getFixturesData();
   await knex('fixtures').del()
 
@@ -28,3 +29,4 @@ exports.seed = async function(knex) {
     });
   }
 };
+

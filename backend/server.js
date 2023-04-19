@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./knex')
 const path = require('path');
 
+
 function setupServer() {
   const app = express();
 
@@ -11,6 +12,18 @@ function setupServer() {
   app.get('/hello', (req, res) => {
     res.send('world');
   });
+
+  // app.get('/*', function(req, res) {
+  //   res.sendFile(path.join(__dirname, '../frontend/public/index.html'), function(err) {
+  //     if (err) {
+  //       res.status(500).send(err)
+  //     }
+  //   })
+  // })
+
+ 
+
+
 
   // Retrive the fixtures data from the database
   app.get('/api/fixtures', async (req, res) => {

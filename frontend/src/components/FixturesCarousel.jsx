@@ -12,7 +12,6 @@ export default function FixturesCarousel() {
     getFixtures()
   },[])
 
-
   getFixtures(setFixtures); // set the fixtures list
 
   return (
@@ -44,25 +43,13 @@ export default function FixturesCarousel() {
         </div>
       </div>
 
-
       <div className='date'>{` ${new Date(fixture.date).toDateString()}`} </div>
       <div className='time'> {` ${new Date(fixture.date).toTimeString()}`}  </div> 
-
-    {/* <div className='images'>
-      <div className='home-logo'><img src={fixture.home_team_logo} alt=""/></div>
-      <div className='away-logo'><img src={fixture.away_team_logo} alt=""/> </div>
-    </div>
-    <p className='game'>{`${fixture.home_team} vs ${fixture.away_team}`} </p>
-    <p className='date'>{` ${new Date(fixture.date).toDateString()}`} </p>
-    <p className='time'> {` ${new Date(fixture.date).toTimeString()}`}  </p>  */}
    
   </div>
   
-))}
+  ))}
     </Carousel>
-
- 
-
 
   </>
   )

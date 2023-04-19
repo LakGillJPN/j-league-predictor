@@ -3,12 +3,11 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  return knex.schema.createTable('points', (table) => {
+  return knex.schema.createTable('overall', (table) => {
     table.increments("entries").primary();
     table.string('username');
-    table.integer('game_id').references('id').inTable('fixtures');
     table.string('gameweek');
-    table.integer('game_points').notNullable();
+    table.integer('overall_points').notNullable();
   });
 };
 
@@ -17,5 +16,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  knex.schema.dropTable("points");
+  knex.schema.dropTable("overall");
 };

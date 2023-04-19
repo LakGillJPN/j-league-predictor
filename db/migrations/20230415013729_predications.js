@@ -1,4 +1,4 @@
-/**
+ /** 
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
@@ -12,6 +12,7 @@ exports.up = function(knex) {
     table.boolean('home_winner_predication').nullable();
     table.boolean('away_winner_predication').nullable();
   });
+  
 };
 
 /**

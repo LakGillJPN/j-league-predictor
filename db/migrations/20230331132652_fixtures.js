@@ -15,7 +15,7 @@ exports.up = function(knex) {
     table.string('away_team_logo',256).notNullable();
     table.boolean('home_winner').nullable();
     table.boolean('away_winner').nullable();
-    table.integer('home_score').nullable();
+    table.integer('home_score').nullable()
     table.integer('away_score').nullable();
   });
 };

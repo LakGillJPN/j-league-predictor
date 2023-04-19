@@ -1,6 +1,7 @@
 import {React, useState, useEffect, useRef} from 'react';
 import Header from '../components/Header';
 import getResults from '../utils/get-results';
+import getTotal from '../utils/get-total';
 import { UserAuth } from '../context/AuthContext';
 import scoreGen from '../utils/scoreGen';
 import './Results.css'
@@ -11,6 +12,7 @@ export default function Results() {
   let {userEmail} = UserAuth();
   let [results, setResults] = useState([]);
   let [points, setPoints] = useState([])
+  let [total, setTotal] = useState([]);
 
   useEffect(() => {
     getResults(setResults, userEmail);
@@ -50,6 +52,11 @@ export default function Results() {
     }
   }, [points, userEmail]);
 
+  useEffect(() => {
+    getTotal(setTotal, userEmail)
+    console.log(total)
+  }, [points, userEmail])
+
 
   return (
     <>
@@ -82,10 +89,11 @@ export default function Results() {
               <div>
                 Your Points: {score}
               </div>
-            </div>
+            </div>  
           </div>
         );
       })}
+      <div><h1>Gameweek Total = {total}</h1></div>
     </>
   );
 }

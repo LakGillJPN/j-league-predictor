@@ -54,7 +54,6 @@ export default function Results() {
 
   useEffect(() => {
     getTotal(setTotal, userEmail)
-    console.log(total)
   }, [points, userEmail])
 
 

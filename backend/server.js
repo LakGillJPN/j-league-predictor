@@ -57,7 +57,14 @@ function setupServer() {
 
 
     try {
-      await db('predications').where('username', req.body.userEmail).delete();
+      await Promise.all(req.body.predications.map(async check => {
+        await db('predications')
+        .join('fixtures', 'predications.game_id', '=', 'fixtures.id')
+        .where('username', req.body.userEmail)
+        .where('game_id', check[0])
+        .delete();
+      }))
+      //await db('predications').where('username', req.body.userEmail && 'game_id', req.body.predications[0]).delete();
       await Promise.all(req.body.predications.map(async predict => {
         await db('predications').insert({
           username: req.body.userEmail,
@@ -108,7 +115,7 @@ function setupServer() {
           db('points').insert({
             username: userEmail,
             game_id: gameId,
-            gameweek,
+            gameweek: gameweek,
             game_points: gamePoints,
           })
         )
@@ -130,6 +137,10 @@ function setupServer() {
       console.error(error);
     }
   });
+
+  app.post('/api/overall', async (req,res) => {
+
+  })
 
   return app;
 };

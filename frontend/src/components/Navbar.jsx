@@ -11,9 +11,9 @@ export default function Navbar(props) {
     <div className="navbar">
       <div class="topnav">
       <a href="" onClick={onClickHome}>Home </a>
-      <a href="" onClick={onClickResults}>Results</a>
       <a href="" onClick={onClickPlay}>Play</a>
-
+      <a href="" onClick={onClickResults}>Results</a>
+     
       {user ? (
           <a href="" onClick={onClickLogout}>Logout</a>
         ) : (

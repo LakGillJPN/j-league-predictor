@@ -14,47 +14,47 @@ export default function Results() {
   let [points, setPoints] = useState([])
   let [total, setTotal] = useState([]);
 
-  useEffect(() => {
-    getResults(setResults, userEmail);
-  }, [userEmail]);
-
-  useEffect(() => {
-    const scores = results.map((result) =>
-       [scoreGen(
-        result.home_predication,
-        result.away_predication,
-        result.home_winner_predication,
-        result.away_winner_predication,
-        result.home_score,
-        result.away_score,
-        result.home_winner,
-        result.away_winner
-      ), result.id, result.gameweek]
-    );
-    setPoints(scores);
-  }, [results]);
-
-  useEffect(() => {
-    const postPoints = async () => {
-      try {
+  const fetchData = async () => {
+    try {
+      await getResults(setResults, userEmail);
+      const scores = results.map((result) =>
+        [scoreGen(
+          result.home_predication,        
+          result.away_predication,        
+          result.home_winner_predication,        
+          result.away_winner_predication,        
+          result.home_score,    
+          result.away_score,     
+          result.home_winner,      
+          result.away_winner), 
+          result.id, result.gameweek]
+      );
+      setPoints(scores);
+  
+      if (points.length > 0) {
         await axios.post('api/points', {
           userEmail,
           points,
         });
         console.log('Points inserted');
-      } catch (error) {
-        console.error(error);
       }
-    };
   
-    if (points.length > 0) {
-      postPoints();
+      await getTotal(setTotal, userEmail);
+     
+      
+      await axios.post('/api/overall', {
+          points,
+          total,
+          userEmail,
+        });
+    } catch (error) {
+      console.error(error);
     }
-  }, [points, userEmail]);
-
+  }
+  
   useEffect(() => {
-    getTotal(setTotal, userEmail)
-  }, [points, userEmail])
+    fetchData();
+  }, [userEmail]);
 
 
   return (

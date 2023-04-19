@@ -63,8 +63,7 @@ function setupServer() {
         .where('username', req.body.userEmail)
         .where('game_id', check[0])
         .delete();
-      }))
-      //await db('predications').where('username', req.body.userEmail && 'game_id', req.body.predications[0]).delete();
+      }));
       await Promise.all(req.body.predications.map(async predict => {
         await db('predications').insert({
           username: req.body.userEmail,
@@ -102,14 +101,19 @@ function setupServer() {
 
   app.post('/api/points', async (req, res) => {
     const { userEmail, points } = req.body;
-    console.log('POINTS', points)
-  
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
     }
-  
+    
     try {
-      await db('points').where('username', req.body.userEmail).delete();
+      await Promise.all(points.map(async check => {
+        await db('points')
+        .join('fixtures', 'points.game_id', '=', 'fixtures.id')
+        .where('username', userEmail)
+        .where('game_id', check[1])
+        .delete();
+      }));
+      //await db('points').where('username', req.body.userEmail).delete();
       await Promise.all(
         points.map(([gamePoints, gameId, gameweek]) =>
           db('points').insert({
@@ -139,7 +143,21 @@ function setupServer() {
   });
 
   app.post('/api/overall', async (req,res) => {
-
+    console.log('TYPEOF', typeof req.body.total, req.body.total)
+    try {
+      await db('overall')
+      .where('username', req.body.userEmail)
+      //.where('gameweek', )
+      .delete();
+      await db('overall').insert({
+        username: req.body.userEmail,
+        gameweek: req.body.points[2],
+        overall_points: req.body.total
+      })
+      res.send('Overall entered').status(200)
+    } catch(error) {
+      console.error(error)
+    }
   })
 
   return app;

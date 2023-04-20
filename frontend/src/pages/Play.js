@@ -5,25 +5,25 @@ import getFixtures from '../utils/get-fixtures';
 import { UserAuth,} from '../context/AuthContext';
 import axios from 'axios';
 import Warning from '../components/Warning';
-
+import getDeadline from '../utils/get-date';
+import CountdownTimer from '../components/CountdownTimer';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
+  const [deadline, setDeadline] = useState([]);
   const {user, userEmail, userPredications} = UserAuth();
-  
+ 
+
   useEffect(() => {
     getFixtures()
   },[])
 
   useEffect(() => {
-    console.log('HOME', homePredications)
-  },[homePredications])
+    getDeadline(setDeadline);
+  });
 
-  useEffect(() => {
-    console.log('AWAY', awayPredications)
-  },[awayPredications])
 
   const handleHomeChange = (event) => {
     const { name, value } = event.target;
@@ -46,7 +46,7 @@ export default function Play() {
     const homeScore = Object.values(home);
     const awayScore = Object.values(away);
 
-    let newArr = []
+    let newArr = [];
 
     for (let i = 0; i < id.length; i++) {
       newArr.push([id[i],homeScore[i],awayScore[i]])
@@ -74,8 +74,9 @@ export default function Play() {
   return (
     <>
     <Header/>
+    <h1>You've got until:</h1>
+      <CountdownTimer deadline={Date(deadline)} />
     
-    <h1>Make your Predications {user.email} </h1>
 
     {userPredications.length > 1 ? <Warning/> : <> </>}
 

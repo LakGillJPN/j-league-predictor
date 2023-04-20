@@ -1,4 +1,3 @@
-import axios from "axios";
 
 const getGameweekNum = (gameweek) => {
   if (isNaN(parseInt(gameweek[gameweek.length-2]))) {
@@ -10,5 +9,4 @@ const getGameweekNum = (gameweek) => {
 };
 
 
-
-export default getGameweekNum;
+export {getGameweekNum }

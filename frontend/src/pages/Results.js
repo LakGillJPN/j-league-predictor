@@ -69,9 +69,8 @@ export default function Results() {
   return (
     <>
     <Header/>
-    <h1>Results</h1>
+    <h1>Results </h1>
     
-    {results.length === 0 ? <h1>No Results to show</h1> : ""}
 
     {results.map((result) => {
         const score = scoreGen(

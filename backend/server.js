@@ -33,11 +33,19 @@ function setupServer() {
     res.send(fixtures);
   });
 
-  app.get('/users', async (req, res) => {
+  app.get('/api/users', async (req, res) => {
     const users = await db('users')
       .select('*')
       .timeout(1500)
     res.send(users);
+  });
+
+  app.get('/api/gameweek', async (req,res) => {
+    const gameweek = await db('fixtures')
+      .select('gameweek','isFinished','date')
+      .where("isFinished", "NS")
+      .timeout(1500)
+    res.send(gameweek);
   });
 
 

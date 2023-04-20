@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
-  const {user} = UserAuth();
+  const {user, userEmail} = UserAuth();
 
  
   return (
@@ -21,6 +21,11 @@ export default function Navbar(props) {
         <Link to="/login" onClick={onClickLogin}>Login</Link>
       )}
     </div> 
+    <div className="username">
+      { user ? (
+        <p>{userEmail}</p>
+      ) :  ""}
+    </div>
   </div>
 );
 }

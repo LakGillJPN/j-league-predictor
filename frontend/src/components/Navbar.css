@@ -29,3 +29,9 @@
   background-color: #ddd;
   color: black;
 }
+
+.username {
+  background: linear-gradient(red, lightcoral);
+  color: white;
+  align-items: right;
+}

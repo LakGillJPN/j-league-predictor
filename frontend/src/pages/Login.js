@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext'
+import { UserAuth } from '../context/AuthContext';
 
 
 export default function Login() {
@@ -19,6 +19,7 @@ export default function Login() {
       await loginUser(email, password)
       navigate('/')
     } catch(err) {
+      alert("Incorrect email or password. Please try again.")
       console.error(err);
     }
     

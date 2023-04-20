@@ -3,7 +3,7 @@ import { Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./FixturesCarousel.css";
 import getFixtures from '../utils/get-fixtures'; // import the fixture list
-import getGameweek from '../utils/get-gameweek';
+import getGameweekNum from '../utils/get-gameweek';
 
 export default function FixturesCarousel() {
   const [fixtures, setFixtures] = useState([]);
@@ -28,7 +28,7 @@ export default function FixturesCarousel() {
     
    {fixtures.map((fixture) => (
     <div key={fixture.id}>
-    <h1>Gameweek {getGameweek(fixture.gameweek)}</h1>
+    <h1>Gameweek {getGameweekNum(fixture.gameweek)}</h1>
       <div className='first-row'>
         <div className='game'>
           <div> <img className='images' src={fixture.home_team_logo} /> </div>

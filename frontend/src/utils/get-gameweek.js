@@ -1,4 +1,6 @@
-const getGameweek = (gameweek) => {
+import axios from "axios";
+
+const getGameweekNum = (gameweek) => {
   if (isNaN(parseInt(gameweek[gameweek.length-2]))) {
     return gameweek[gameweek.length-1]
   }
@@ -7,4 +9,6 @@ const getGameweek = (gameweek) => {
   }
 };
 
-export default getGameweek;
+
+
+export default getGameweekNum;

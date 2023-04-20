@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./backend/index.js",
     "build": "npm install && npm run migrate && npm run seed && cd frontend && npm install && npm run build",
+    "newbuild" : "cd frontend && npm run build",
     "dev": "nodemon ./backend/index.js",
     "lint": "eslint --fix --ext .js .",
     "make:migration": "knex migrate:make",

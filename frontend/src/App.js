@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <AuthContextProvider>
+        <HashRouter> 
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route exact path="/login/" element={<Login/>} />
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/play/" element ={<ProtectedRoute>  <Play/> </ProtectedRoute>} />
           <Route exact path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
         </Routes>
+        </HashRouter>
         </AuthContextProvider>
         <Footer/>
     </div>

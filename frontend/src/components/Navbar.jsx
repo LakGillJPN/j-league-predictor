@@ -1,6 +1,7 @@
 import {React} from 'react';
 import './Navbar.css';
 import { UserAuth,} from '../context/AuthContext';
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
@@ -9,18 +10,18 @@ export default function Navbar(props) {
  
   return (
     <div className="navbar">
-      <div class="topnav">
-      <a href="" onClick={onClickHome}>Home </a>
-      <a href="" onClick={onClickPlay}>Play</a>
-      <a href="" onClick={onClickResults}>Results</a>
-     
+    <div className="topnav">
+      <Link to="/" onClick={onClickHome}>Home</Link>
+      <Link to="/play" onClick={onClickPlay}>Play</Link>
+      <Link to="/results" onClick={onClickResults}>Results</Link>
+   
       {user ? (
-          <a href="" onClick={onClickLogout}>Logout</a>
-        ) : (
-          <a href="" onClick={onClickLogin}>Login</a>
-        )}
-      </div> 
-    </div>
-  );
+        <Link to="/" onClick={onClickLogout}>Logout</Link>
+      ) : (
+        <Link to="/login" onClick={onClickLogin}>Login</Link>
+      )}
+    </div> 
+  </div>
+);
 }
 

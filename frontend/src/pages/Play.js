@@ -77,11 +77,14 @@ export default function Play() {
   return (
     <>
     <Header/>
-    <h1>You've got until:</h1>
-      <CountdownTimer deadline={Date(deadline)} />
+    {/* <h1>You've got until:</h1>
+      <CountdownTimer deadline={deadline} /> */}
     
 
-    {userPredications.length > 1 ? <Warning/> : <> </>}
+    {userPredications.length > 1 ? <Warning/> : <> 
+    
+    
+    
 
     <form onSubmit={handleFormSubmit}> 
 
@@ -112,6 +115,7 @@ export default function Play() {
           <div> {fixture.away_team} </div>
         </div>
       </div>
+      
 
       <div className="space"></div>  
     </div>
@@ -119,6 +123,9 @@ export default function Play() {
 
     <button type='submit'>SUBMIT</button>
   </form>
+  </>}
 </>
+//insert here 
+
  )
 }

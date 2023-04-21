@@ -7,6 +7,7 @@ import axios from 'axios';
 import Warning from '../components/Warning';
 import getDeadline from '../utils/get-date';
 import CountdownTimer from '../components/CountdownTimer';
+import { useNavigate } from 'react-router-dom';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
@@ -14,6 +15,7 @@ export default function Play() {
   const [awayPredications, setAwayPredications] = useState([]);
   const [deadline, setDeadline] = useState([]);
   const {user, userEmail, userPredications} = UserAuth();
+  const navigate = useNavigate();
  
 
   useEffect(() => {
@@ -62,7 +64,8 @@ export default function Play() {
       predications: result,
     })
     .then(response => {
-      console.log(response);
+      navigate('/submitted')
+
     })
     .catch(error => {
       console.log(error);

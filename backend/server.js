@@ -110,13 +110,13 @@ function setupServer() {
   // Create a query to compare the actual results and the predicated results
   app.get('/api/results', async (req, res) => {
     const results = await db('fixtures')
-      .join('predications', 'id', 'game_id')
+      .join('predications', 'fixtures.id', '=', 'predications.game_id')
       .select(
         'username',
         'gameweek',
         'home_team',
         'away_team',
-        'id',
+        'fixtures.id',
         'isFinished',
         'home_winner',
         'away_winner',
@@ -126,7 +126,7 @@ function setupServer() {
         'away_predication',
         'home_winner_predication',
         'away_winner_predication')
-      .where('isFinished', 'FT')
+    .where('isFinished', 'FT');
     res.send(results)
   })
 

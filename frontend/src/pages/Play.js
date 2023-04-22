@@ -5,7 +5,7 @@ import getFixtures from '../utils/get-fixtures';
 import { UserAuth,} from '../context/AuthContext';
 import axios from 'axios';
 import Warning from '../components/Warning';
-import getDeadline from '../utils/get-date';
+import { playGameweek } from '../utils/get-gameweek';
 import CountdownTimer from '../components/CountdownTimer';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const [deadline, setDeadline] = useState([]);
+  const [gameweek, setGameweek] = useState([]);
   const {user, userEmail, userPredications} = UserAuth();
   const navigate = useNavigate();
  
@@ -22,11 +22,11 @@ export default function Play() {
     getFixtures()
   },[])
 
-  useEffect(() => {
-    getDeadline(setDeadline);
-  });
+  useEffect( () => {
+    playGameweek(setGameweek)
+  },[])
 
-
+  
   const handleHomeChange = (event) => {
     const { name, value } = event.target;
     setHomePredications(prevState => ({
@@ -62,6 +62,7 @@ export default function Play() {
     axios.post('/api/predications', {
       userEmail,
       predications: result,
+      current_gameweek: 'Regular Season - 8'
     })
     .then(response => {
       navigate('/submitted')
@@ -82,8 +83,6 @@ export default function Play() {
     
 
     {userPredications.length > 1 ? <Warning/> : <> 
-    
-    
     
 
     <form onSubmit={handleFormSubmit}> 
@@ -125,7 +124,5 @@ export default function Play() {
   </form>
   </>}
 </>
-//insert here 
-
  )
 }

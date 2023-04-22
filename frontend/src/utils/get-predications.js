@@ -1,14 +1,11 @@
 import axios from 'axios';
+import { getGameweek } from './get-gameweek';
 
 async function getPredications(setter, email) {
   try {
     const fetchedPredications = await axios.get('/api/predications');
-   // setter(fetchedPredications.data.filter(data => data.username === email))
-    setter(fetchedPredications.data.filter(x => x.username === email ))
-
-    // gameweek needs to be it's own function in auth
-    // add gameweek to predications table
-    // add gameweek to the predications server push
+    const gameweek = await getGameweek()
+    setter(fetchedPredications.data.filter(x => x.username === email && x.gameweek === gameweek))
   }
   catch(err) {
     console.log(err)

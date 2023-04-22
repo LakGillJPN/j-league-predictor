@@ -16,21 +16,24 @@ const getNextGameweek = (gameweek) => {
   return `Regular Season - ${nextNumber}`
 };
 
-async function getGameweek(setter){
-
+async function getGameweek(){
   function addHours(date, hours) {
     date.setHours(date.getHours() + hours)
     return date;
   }
-
   const fetchedFixs = await axios.get('/api/fixtures');
   const date = addHours(new Date(),2)
   const weekData = fetchedFixs.data.filter(x => new Date(x.date) > date)
   const gameString = weekData[0].gameweek
   const nextWeek = getNextGameweek(gameString)
-  const weeksGames = weekData.filter(x => x.gameweek === gameString);
+  const weeksGames = fetchedFixs.data.filter(x => x.gameweek === gameString);
   const areAllFinishedNS = weeksGames.every(x => x.isFinished === 'NS');
-  areAllFinishedNS === true ? setter(gameString) : setter(nextWeek)
+  return areAllFinishedNS === true ? gameString : nextWeek
 }
 
-export {getGameweekNum, getGameweek }
+async function playGameweek(setter) {
+  const result = await getGameweek()
+  setter(result)
+}
+
+export {getGameweekNum, getGameweek, playGameweek }

@@ -1,5 +1,10 @@
 import axios from "axios";
 
+function addHours(date, hours) {
+  date.setHours(date.getHours() + hours)
+  return date;
+}
+
 async function getDeadline(setter) {
   const fetchedFixs = await axios.get('api/fixtures');
   const resultsWeek = fetchedFixs.data.filter(x => x.isFinished === 'NS')

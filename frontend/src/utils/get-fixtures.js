@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { getGameweek } from './get-gameweek';
 
+
 async function getFixtures(setter) {
   const fetchedFixs = await axios.get('/api/fixtures');
+  const gameweek = await getGameweek()
   const weekData = fetchedFixs.data.filter(x => x.isFinished === 'NS')
-  setter(fetchedFixs.data.filter(x => x.gameweek === weekData[0].gameweek))
+  // setting it to Regular Season - 8 for testing
+  setter(fetchedFixs.data.filter(x => x.gameweek === 'Regular Season - 8'))
+ //setter(fetchedFixs.data.filter(x => x.gameweek === gameweek))
 }
 
 export default getFixtures

@@ -6,7 +6,7 @@ async function getPredications(setter, email) {
    // setter(fetchedPredications.data.filter(data => data.username === email))
     setter(fetchedPredications.data.filter(x => x.username === email ))
 
-    // gameweek needs to be it's own function
+    // gameweek needs to be it's own function in auth
     // add gameweek to predications table
     // add gameweek to the predications server push
   }

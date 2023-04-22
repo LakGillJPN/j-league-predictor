@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getGameweek } from './get-gameweek';
 
 async function getFixtures(setter) {
   const fetchedFixs = await axios.get('/api/fixtures');

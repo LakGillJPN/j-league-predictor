@@ -36,7 +36,6 @@ export const AuthContextProvider = ({children}) => {
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(auth, 
       (currentUser) => {
-        console.log('CURRENT', currentUser)
         setUser(currentUser);
         setUserEmail(currentUser.email)
     })

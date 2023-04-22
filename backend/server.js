@@ -21,9 +21,6 @@ function setupServer() {
   //   })
   // })
 
- 
-
-
 
   // Retrive the fixtures data from the database
   app.get('/api/fixtures', async (req, res) => {
@@ -85,11 +82,12 @@ function setupServer() {
       await Promise.all(req.body.predications.map(async predict => {
         await db('predications').insert({
           username: req.body.userEmail,
+          current_gameweek: req.body.current_gameweek,
           game_id: predict[0],
           home_predication: predict[1],
           away_predication: predict[2],
           home_winner_predication: homeCheck(predict[1], predict[2]),
-          away_winner_predication: awayCheck(predict[1], predict[2])
+          away_winner_predication: awayCheck(predict[1], predict[2]),
         });
       }));
       res.send('Data entered into the predications table!').status(200);
@@ -113,7 +111,7 @@ function setupServer() {
       .join('predications', 'fixtures.id', '=', 'predications.game_id')
       .select(
         'username',
-        'gameweek',
+        'fixtures.gameweek',
         'home_team',
         'away_team',
         'fixtures.id',

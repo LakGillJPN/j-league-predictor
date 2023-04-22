@@ -1,0 +1,16 @@
+.container {
+  text-align: center;;
+}
+.message {
+  font-size: 60px;
+}
+
+#return {
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}
+
+#space {
+  padding-bottom: 305px;
+}

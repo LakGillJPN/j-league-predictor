@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Play from './pages/Play';
 import SignUp from './pages/SignUp';
 import Results from './pages/Results';
+import Submitted from './pages/Submitted';
 import Footer from './components/Footer'
 import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext';
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/login/" element={<Login/>} />
           <Route exact path="/signup/" element={<SignUp/>} />
           <Route exact path="/play/" element ={<ProtectedRoute>  <Play/> </ProtectedRoute>} />
+          <Route exact path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
           <Route exact path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
         </Routes>
         </HashRouter>

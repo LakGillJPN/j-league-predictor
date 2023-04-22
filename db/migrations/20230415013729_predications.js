@@ -6,7 +6,8 @@ exports.up = function(knex) {
   return knex.schema.createTable('predications', (table) => {
     table.increments("entries").primary();
     table.string('username');
-    table.integer('game_id').references('id').inTable('fixtures');
+    table.string('current_gameweek').notNullable();
+    table.integer('game_id')
     table.integer('home_predication').notNullable();
     table.integer('away_predication').notNullable();
     table.boolean('home_winner_predication').nullable();

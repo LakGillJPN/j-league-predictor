@@ -16,6 +16,14 @@ const getNextGameweek = (gameweek) => {
   return `Regular Season - ${nextNumber}`
 };
 
+const getLastGameweek = (gameweek) => {
+  const currentNumber = parseInt(gameweek.split('-')[1].trim());
+  const nextNumber = currentNumber - 1;
+  return `Regular Season - ${nextNumber}`
+};
+
+
+
 async function getGameweek(){
   function addHours(date, hours) {
     date.setHours(date.getHours() + hours)
@@ -36,4 +44,4 @@ async function playGameweek(setter) {
   setter(result)
 }
 
-export {getGameweekNum, getGameweek, playGameweek }
+export {getGameweekNum, getGameweek, playGameweek, getLastGameweek }

@@ -5,28 +5,27 @@ import getFixtures from '../utils/get-fixtures';
 import { UserAuth,} from '../context/AuthContext';
 import axios from 'axios';
 import Warning from '../components/Warning';
-import { playGameweek } from '../utils/get-gameweek';
+import getDeadline from '../utils/get-date';
+import { getGameweekNum, getGameweek } from '../utils/get-gameweek';
 import CountdownTimer from '../components/CountdownTimer';
-import { useNavigate } from 'react-router-dom';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const [gameweek, setGameweek] = useState([]);
+  const [deadline, setDeadline] = useState([]);
   const {user, userEmail, userPredications} = UserAuth();
-  const navigate = useNavigate();
  
 
   useEffect(() => {
     getFixtures()
   },[])
 
-  useEffect( () => {
-    playGameweek(setGameweek)
-  },[])
+  useEffect(() => {
+    getDeadline(setDeadline);
+  });
 
-  
+
   const handleHomeChange = (event) => {
     const { name, value } = event.target;
     setHomePredications(prevState => ({
@@ -62,11 +61,9 @@ export default function Play() {
     axios.post('/api/predications', {
       userEmail,
       predications: result,
-      current_gameweek: 'Regular Season - 8'
     })
     .then(response => {
-      navigate('/submitted')
-
+      console.log(response);
     })
     .catch(error => {
       console.log(error);
@@ -79,17 +76,16 @@ export default function Play() {
     <>
     <Header/>
     {/* <h1>You've got until:</h1>
-      <CountdownTimer deadline={deadline} /> */}
-    
+      <CountdownTimer deadline={Date(deadline)} /> */}
+    <h1 className='play-header'>Make Your Predications!</h1>
 
-    {userPredications.length > 1 ? <Warning/> : <> 
-    
+    {userPredications.length > 1 ? <Warning/> : <> </>}
 
     <form onSubmit={handleFormSubmit}> 
 
     {fixtures.map((fixture) => (
     
-      <div key={fixture.id}>
+      <div className='fixtures-box' key={fixture.id}>
    
         <div className='predict-game'>  
           <div className='game-box'>
@@ -114,7 +110,6 @@ export default function Play() {
           <div> {fixture.away_team} </div>
         </div>
       </div>
-      
 
       <div className="space"></div>  
     </div>
@@ -122,7 +117,6 @@ export default function Play() {
 
     <button type='submit'>SUBMIT</button>
   </form>
-  </>}
 </>
  )
 }

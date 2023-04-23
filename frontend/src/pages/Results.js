@@ -14,12 +14,10 @@ export default function Results() {
   let [points, setPoints] = useState([])
   let [total, setTotal] = useState([]);
 
-
 // use the getResults function to get the previous week's actual results
   useEffect(() => {
     getResults(setResults, userEmail);
   }, [userEmail]);
-
 
 // use the scoreGen function to calucate the user's score between their predications and actual results
   useEffect(() => {
@@ -35,6 +33,7 @@ export default function Results() {
         result.away_winner
       ), result.id, result.gameweek]
     );
+
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -65,11 +64,11 @@ export default function Results() {
     getTotal(setTotal, userEmail) 
   }, [points, userEmail])
 
-
   return (
     <>
     <Header/>
-    <h1>Results </h1>
+    <div className = 'overall'> 
+    <h1 id='heading'>Results </h1>
     
 
     {results.map((result) => {
@@ -85,22 +84,40 @@ export default function Results() {
         );
 
         return (
-          <div key={result.id}>
-            <div className='results-container'>
+          <div className='container'> 
+
+            <div className='results' key={result.id}>
+
               <div className='actual'>
-                {result.home_team} {result.home_score} {result.away_score} {result.away_team}
+                <div className='result-box'> {result.home_team} </div>
+                <div className='scorebox-container'>
+                  <span className='actual-goals'>{result.home_score}</span>
+                  <span className='actual-goals'> {result.away_score}</span> 
+                </div>
+                <div className='result-box'> {result.away_team} </div>
               </div>
-              <div className='predicated'>
-                {result.home_team} {result.home_predication} {result.away_predication} {result.away_team}
+
+              Predication:
+              <div className='predications'>
+              <div className='result-box'> {result.home_team} </div> 
+              <div className='scorebox-container'>
+                <span className='predict-goals'>{result.home_predication} </span>
+                <span className='predict-goals'>{result.away_predication} </span>
               </div>
-              <div>
-                Your Points: {score}
+              <div className='result-box'>{result.away_team}</div>
               </div>
-            </div>  
+              Points:
+              <div className='red'>
+                {score}
+              </div> 
+            </div>   
+            <div className='space'></div>
           </div>
         );
       })}
-      <div><h1>Gameweek Total = {total}</h1></div>
+      <div className='total'> Gameweek Total 
+        <div className='total-points'> {total} </div></div>
+      </div>
     </>
   );
 }

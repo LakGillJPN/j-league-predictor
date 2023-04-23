@@ -13,10 +13,7 @@ export default function FixturesCarousel() {
     getFixtures()
   },[])
 
-
-
   getFixtures(setFixtures); // set the fixtures list
-
 
   return (
     <>

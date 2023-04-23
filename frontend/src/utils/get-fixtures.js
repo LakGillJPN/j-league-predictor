@@ -7,7 +7,7 @@ async function getFixtures(setter) {
   const gameweek = await getGameweek()
   const weekData = fetchedFixs.data.filter(x => x.isFinished === 'NS')
   // setting it to Regular Season - 8 for testing
-  setter(fetchedFixs.data.filter(x => x.gameweek === 'Regular Season - 8'))
+  setter(fetchedFixs.data.filter(x => x.gameweek === 'Regular Season - 9'))
  //setter(fetchedFixs.data.filter(x => x.gameweek === gameweek))
 }
 

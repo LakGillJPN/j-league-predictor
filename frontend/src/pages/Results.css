@@ -1,6 +1,107 @@
-.results-container {
-  border: 3px solid blue;
+.overall {
+  display: grid;
   text-align: center;
-  font-size: 30px;
+  justify-items: center;
+  align-items: center;
 }
 
+#heading {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.results {
+  padding-top: 10px;
+  display: grid;
+  align-items: center;
+  border: 3px solid gray;
+  text-align: center;
+  font-size: 30px;
+  background-color: white;
+  align-items: center;
+  width: 900px;
+  border-radius: 25px;
+  margin: auto;
+}
+
+.result-box {
+  width: 300px;
+}
+
+.actual {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  justify-content: center;
+  /* border: 3px solid green; */
+}
+
+.scorebox-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.actual-goals {
+  border: 3px solid black;
+  width: 50px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.predications {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  justify-content: center;
+  /* background-color: rgb(169, 165, 165); */
+  background: linear-gradient(red, lightcoral);
+  color: white;
+  /* border: 6px solid red; */
+}
+
+.predict-goals {
+  color: gray;
+  border: 3px solid black;
+  background-color: white;
+  width: 40px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.red {
+  background: linear-gradient(red, lightcoral);
+  color: white;
+  font-size: 45px;
+  margin: 10px auto;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.yellow {
+  background-color: yellow;
+  color: white;
+  font-size: 45px;
+  margin: 10px auto;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.green {
+  background-color: green;
+  color: white;
+  font-size: 45px;
+  margin: 10px auto;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.total {
+ font-size: 60px;
+}
+
+.total-points {
+  border: 3px solid black;
+  margin-bottom: 50px;
+  color: white;
+  background: linear-gradient(red, lightcoral);
+}

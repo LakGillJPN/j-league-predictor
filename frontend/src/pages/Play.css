@@ -3,6 +3,17 @@ form {
   padding: 50px;
 }
 
+.play-header {
+  font-size: 60px;
+  margin: 30px, auto;
+  align-items: center;
+  text-align: center;
+}
+
+form {
+  margin: auto;
+}
+
 .predict-game {
  font-size: 50px;
  text-align: center;

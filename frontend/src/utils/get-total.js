@@ -9,7 +9,7 @@ async function getTotal(setter,email) {
       x.username === email 
     )
     .map(x => x.game_points)
-    .reduce((prev, curr) => prev + curr),0);
+    .reduce((prev, curr) => prev + curr, 0));
   }
   catch (err) {
     console.log(err);

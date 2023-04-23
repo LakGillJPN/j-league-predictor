@@ -6,24 +6,27 @@ import { UserAuth,} from '../context/AuthContext';
 import axios from 'axios';
 import Warning from '../components/Warning';
 import getDeadline from '../utils/get-date';
-import { getGameweekNum, getGameweek } from '../utils/get-gameweek';
+import { useNavigate, Link } from 'react-router-dom';
+import { getGameweekNum, getGameweek, playGameweek } from '../utils/get-gameweek';
 import CountdownTimer from '../components/CountdownTimer';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const [deadline, setDeadline] = useState([]);
+  const [gameweek, setGameweek] = useState([]);
   const {user, userEmail, userPredications} = UserAuth();
- 
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     getFixtures()
   },[])
 
-  useEffect(() => {
-    getDeadline(setDeadline);
-  });
+  useEffect( () => {
+    playGameweek(setGameweek)
+  },[])
 
 
   const handleHomeChange = (event) => {
@@ -57,13 +60,15 @@ export default function Play() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log('submitted')
     const result = resultArr(homePredications, awayPredications);
     axios.post('/api/predications', {
       userEmail,
       predications: result,
+      current_gameweek: 'Regular Season - 9'
     })
     .then(response => {
-      console.log(response);
+      navigate('/submitted')
     })
     .catch(error => {
       console.log(error);
@@ -79,7 +84,7 @@ export default function Play() {
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Make Your Predications!</h1>
 
-    {userPredications.length > 1 ? <Warning/> : <> </>}
+    {userPredications.length > 1 ? <Warning/> : <> 
 
     <form onSubmit={handleFormSubmit}> 
 
@@ -117,6 +122,7 @@ export default function Play() {
 
     <button type='submit'>SUBMIT</button>
   </form>
+  </>}
 </>
  )
 }

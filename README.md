@@ -10,7 +10,7 @@ In this page, users can make their predication of what they think the score of t
 # Results
 The results of the previous gameweek are compared to the user's predication and awarded points. 
 
-Correct Home or Away Score - 30pts
-Correct Outcome - 50pts
-Correct Home or Away Score + Correct Outcome - 70pts
-Correct Home and Away Score + Correct Outcome - 100pts
+- [ ] Correct Home or Away Score - 30pts
+- [ ] Correct Outcome - 50pts
+- [ ] Correct Home or Away Score + Correct Outcome - 70pts
+- [ ] Correct Home and Away Score + Correct Outcome - 100pts

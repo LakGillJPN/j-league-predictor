@@ -10,10 +10,8 @@ export default function FixturesCarousel() {
   
 
   useEffect(() => {
-    getFixtures()
+    getFixtures(setFixtures);  // set the fixtures list
   },[])
-
-  getFixtures(setFixtures); // set the fixtures list
 
   return (
     <>

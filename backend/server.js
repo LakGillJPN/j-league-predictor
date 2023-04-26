@@ -37,6 +37,7 @@ function setupServer() {
     res.send(users);
   });
 
+  // Retrieve all the of the fixtures that have not started ("NS") yet
   app.get('/api/gameweek', async (req,res) => {
     const gameweek = await db('fixtures')
       .select('gameweek','isFinished','date')
@@ -69,7 +70,6 @@ function setupServer() {
         return null;
       }
     };
-
 
     try {
       await Promise.all(req.body.predications.map(async check => {
@@ -131,6 +131,7 @@ function setupServer() {
   // Insert the user's points into the database
   app.post('/api/points', async (req, res) => {
     const { userEmail, points } = req.body;
+    console.log(points)
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
     }
@@ -140,7 +141,7 @@ function setupServer() {
         await db('points')
           .join('fixtures', 'points.game_id', '=', 'fixtures.id')
           .where('username', userEmail)
-          .where('game_id', check[1])
+          .where('gameweek', check[1])
           .delete();
       }));
       await Promise.all(

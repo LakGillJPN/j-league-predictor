@@ -131,7 +131,6 @@ function setupServer() {
   // Insert the user's points into the database
   app.post('/api/points', async (req, res) => {
     const { userEmail, points } = req.body;
-    console.log(points)
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
     }
@@ -141,7 +140,7 @@ function setupServer() {
         await db('points')
           .join('fixtures', 'points.game_id', '=', 'fixtures.id')
           .where('username', userEmail)
-          .where('gameweek', check[1])
+          .where('fixtures.gameweek', check[2])
           .delete();
       }));
       await Promise.all(

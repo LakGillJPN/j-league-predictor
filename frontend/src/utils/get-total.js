@@ -6,7 +6,6 @@ async function getTotal(setter,email) {
     const fetchedData = await axios.get('api/total');
     const gameweek = await getGameweek()
     const lastweek = await getLastGameweek(gameweek)
-    console.log(lastweek)
     setter(fetchedData.data.filter(
       x => 
       x.gameweek === lastweek && 

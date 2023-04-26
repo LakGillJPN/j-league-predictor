@@ -22,3 +22,9 @@ The results of the previous gameweek are compared to the user's predication and 
 - [ ] Correct Outcome - 50pts
 - [ ] Correct Home or Away Score + Correct Outcome - 70pts
 - [ ] Correct Home and Away Score + Correct Outcome - 100pts
+
+#Future Features
+- [ ] Leaderboard
+- [ ] Mobile View
+- [ ] Display Names
+- [ ] Results of Previous Gameweeks

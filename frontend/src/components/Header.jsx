@@ -1,13 +1,13 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
-import './Header.css';
 import { UserAuth } from '../context/AuthContext';
+import './Header.css';
 
 
 export default function Header() {
   const navigate = useNavigate();
-  const {logOut, user, userEmail, userPredications} = UserAuth();
+  const {logOut} = UserAuth();
 
   const handleLogOut = async() => {
     try {
@@ -16,23 +16,19 @@ export default function Header() {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   return (
     <>
       <div className="header" >J-League Predictor</div>
       <Navbar 
-       onClickHome={() => navigate("/")}
-       onClickLogin={() => navigate("/login")}
-       onClickPlay={() =>  navigate("/play")}
-       onClickWarning={() => navigate("/warning")}
-       onClickResults={() => navigate("/results")}
-       onClickLogout={handleLogOut}
+        onClickHome={() => navigate("/")}
+        onClickLogin={() => navigate("/login")}
+        onClickPlay={() =>  navigate("/play")}
+        onClickWarning={() => navigate("/warning")}
+        onClickResults={() => navigate("/results")}
+        onClickLogout={handleLogOut}
       /> 
-  
     </>
-  )
-
-
-    
+  ); 
 }

@@ -1,14 +1,13 @@
 import {React, useEffect, useState} from 'react';
-import { Carousel} from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./FixturesCarousel.css";
-import getFixtures from '../utils/get-fixtures'; // import the fixture list
+import { Carousel} from 'react-responsive-carousel';
 import { getGameweekNum } from '../utils/get-gameweek';
+import getFixtures from '../utils/get-fixtures'; // import the fixture list
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import './FixturesCarousel.css';
 
 export default function FixturesCarousel() {
   const [fixtures, setFixtures] = useState([]);
   
-
   useEffect(() => {
     getFixtures(setFixtures);  // set the fixtures list
   },[])
@@ -31,27 +30,24 @@ export default function FixturesCarousel() {
       <div className='first-row'>
         <div className='game'>
           <div> <img className='images' src={fixture.home_team_logo} /> </div>
-          <div className="team">{fixture.home_team} </div>
+          <div className='team'>{fixture.home_team} </div>
         </div>
       
-        <div className="team">vs</div>
+        <div className='team'>vs</div>
 
         <div className='game'>
           <div> <img className='images' src={fixture.away_team_logo} /> </div>
-          <div className="team">{fixture.away_team} </div>
+          <div className='team'>{fixture.away_team} </div>
         </div>
       </div>
 
-      <div className='date'>{` ${new Date(fixture.date).toDateString()}`} </div>
-      <div className='time'> {` ${new Date(fixture.date).toTimeString()}`}  </div> 
-   
+      <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
+      <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
   </div>
-  
-  ))}
+  ))};
     </Carousel>
-
   </>
-  )
+  );
 }
 
 

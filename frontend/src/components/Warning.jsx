@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Warning() {
   return (
@@ -6,5 +6,5 @@ export default function Warning() {
       <h1>WARNING! if you re-submit, you'll overwrite your last predications!</h1>
       <button>Edit</button>
     </>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import {React} from 'react';
-import './Navbar.css';
 import { UserAuth,} from '../context/AuthContext';
 import { Link } from "react-router-dom";
+import './Navbar.css';
 
 export default function Navbar(props) {
   const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
@@ -21,6 +21,7 @@ export default function Navbar(props) {
         <Link to="/login" onClick={onClickLogin}>Login</Link>
       )}
     </div> 
+    
     <div className="username">
       { user ? (
         <p>{userEmail}</p>

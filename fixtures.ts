@@ -1,3 +1,5 @@
+import { Game } from "./globals";
+
 const axios = require('axios')
 
 const options = {
@@ -12,12 +14,12 @@ const options = {
 };
 
 async function getFixturesData() {
-  let fixturesData = [];
+  let fixturesData: Object[] = [];
  
   try {
     const response = await axios.request(options);
     const data = response.data.response;
-    data.map(game => fixturesData.push([
+    data.map((game: Game) => fixturesData.push([
       game.fixture.id, 
       game.league.round, 
       game.teams.home.name,

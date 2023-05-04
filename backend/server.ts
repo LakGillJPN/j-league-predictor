@@ -1,26 +1,21 @@
-const express = require('express');
-const db = require('./knex')
-const path = require('path');
+//const express = require('express');
+//const db = require('./knex')
+//const path = require('path');
+import express, { Express, Request, Response } from 'express';
+import db from './knex';
+import path from 'path';
+import { Points } from '../globals';
 
 
-function setupServer() {
+export function setupServer() {
   const app = express();
 
   app.use(express.static(path.resolve(__dirname, '../frontend/build')));
   app.use(express.json());
 
-  app.get('/hello', (req, res) => {
+  app.get('/hello', (req : Request, res: Response) => {
     res.send('world');
   });
-
-  // app.get('/*', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../frontend/public/index.html'), function(err) {
-  //     if (err) {
-  //       res.status(500).send(err)
-  //     }
-  //   })
-  // })
-
 
   // Retrive the fixtures data from the database
   app.get('/api/fixtures', async (req, res) => {
@@ -38,7 +33,7 @@ function setupServer() {
   });
 
   // Retrieve all the of the fixtures that have not started ("NS") yet
-  app.get('/api/gameweek', async (req,res) => {
+  app.get('/api/gameweek', async (req , res) => {
     const gameweek = await db('fixtures')
       .select('gameweek','isFinished','date')
       .where("isFinished", "NS")
@@ -49,7 +44,7 @@ function setupServer() {
 
   // Send the user's predication into the database
   app.post('/api/predications', async (req, res) => {
-    const homeCheck = (home, away) => {
+    const homeCheck = (home : Boolean, away : Boolean) => {
       if (home > away) {
         return true;
       }
@@ -60,7 +55,7 @@ function setupServer() {
       }
     };
 
-    const awayCheck = (home, away) => {
+    const awayCheck = (home: Boolean, away: Boolean) => {
       if (home < away) {
         return true;
       }
@@ -72,14 +67,14 @@ function setupServer() {
     };
 
     try {
-      await Promise.all(req.body.predications.map(async check => {
+      await Promise.all(req.body.predications.map(async (check: any[]) => {
         await db('predications')
           .join('fixtures', 'predications.game_id', '=', 'fixtures.id')
           .where('username', req.body.userEmail)
           .where('game_id', check[0])
           .delete();
       }));
-      await Promise.all(req.body.predications.map(async predict => {
+      await Promise.all(req.body.predications.map(async (predict: Boolean[]) => {
         await db('predications').insert({
           username: req.body.userEmail,
           current_gameweek: req.body.current_gameweek,
@@ -136,7 +131,7 @@ function setupServer() {
     }
 
     try {
-      await Promise.all(points.map(async check => {
+      await Promise.all(points.map(async (check: any[]) => {
         await db('points')
           .join('fixtures', 'points.game_id', '=', 'fixtures.id')
           .where('username', userEmail)
@@ -144,7 +139,8 @@ function setupServer() {
           .delete();
       }));
       await Promise.all(
-        points.map(([gamePoints, gameId, gameweek]) =>
+      
+        points.map(([gamePoints, gameId, gameweek]: [Number, Number, String]) =>
           db('points').insert({
             username: userEmail,
             game_id: gameId,
@@ -177,7 +173,8 @@ function setupServer() {
     const { userEmail } = req.body;
     const points = await db('points').where('username', userEmail).select('game_points');
     const gameweek = await db('points').where('username', userEmail).select('gameweek');
-    const overall = points.reduce((prev, curr) => prev + curr.game_points, 0);
+    const overall = points.reduce((prev: number, curr: number) => prev + curr, 0);
+    //const overall = points.reduce((prev: Number, curr: Number) => prev + curr.game_points, 0);
 
     try {
       await db('overall')
@@ -201,4 +198,4 @@ function setupServer() {
 
 
 
-module.exports = setupServer;
+//module.exports = setupServer;

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./backend/index.js",
+    "start": "ts-node ./backend/index.ts",
     "build": "npm install && npm run migrate && npm run seed && cd frontend && npm install && npm run build",
     "newbuild": "npm install && cd frontend && npm install && npm run build",
-    "dev": "nodemon ./backend/index.js",
+    "dev": "nodemon ./backend/index.ts",
     "lint": "eslint --fix --ext .js .",
     "make:migration": "knex migrate:make",
     "migrate": "knex migrate:latest",
@@ -28,7 +28,11 @@
     "pg": "^8.10.0"
   },
   "devDependencies": {
+    "@types/config": "^3.3.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.16.3",
     "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   }
 }

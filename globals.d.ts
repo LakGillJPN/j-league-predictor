@@ -6,6 +6,12 @@ export interface Fixture {
   };
 }
 
+export interface Process {
+  env: {
+    NODE_ENV: string
+  }
+}
+
 export interface Team {
   name: string;
   logo: string;
@@ -29,3 +35,9 @@ export interface Game {
   };
 }
 
+export interface Points { 
+  gamePoints: Number;
+  gameId: Number;
+  gameweek: String;
+ }
+ 

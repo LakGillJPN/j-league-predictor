@@ -1,9 +1,9 @@
 import {React, useState, useEffect, useRef} from 'react';
 import Header from '../components/Header';
-import getResults from '../utils/get-results';
-import getTotal from '../utils/get-total';
+import getResults from '../utils/get-results.ts';
+import getTotal from '../utils/get-total.ts';
 import { UserAuth } from '../context/AuthContext';
-import scoreGen from '../utils/scoreGen';
+import scoreGen from '../utils/scoreGen.ts';
 import './Results.css'
 import axios from 'axios';
 

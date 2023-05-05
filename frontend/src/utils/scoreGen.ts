@@ -1,6 +1,6 @@
-const scoreGen = (
-  home, away, homeWin, awayWin, 
-  resultHome, resultAway, resultHomeWin, resultAwayWin
+const scoreGen  = (
+  home: number, away: number, homeWin: Boolean, awayWin: Boolean, 
+  resultHome: number, resultAway: number, resultHomeWin: Boolean, resultAwayWin: Boolean
   ) => {
 
   let score = 0;

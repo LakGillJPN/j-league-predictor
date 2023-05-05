@@ -15,6 +15,7 @@ export interface Fixture {
 export interface Predication {
   username: string;
   gameweek: string;
+  game_points: number;
 }
 
 export interface Process {

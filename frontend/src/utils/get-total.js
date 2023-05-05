@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getGameweek, getLastGameweek } from "./get-gameweek";
+import { getGameweek, getLastGameweek } from "./get-gameweek.ts";
 
 async function getTotal(setter,email) {
   try {

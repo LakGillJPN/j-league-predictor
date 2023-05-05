@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword,
 from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { createContext, useContext, useState, useEffect} from "react";
-import getPredications from '../utils/get-predications';
+import getPredications from '../utils/get-predications.ts';
 
 const UserContext = createContext();
 

@@ -1,15 +1,17 @@
-import {React, useEffect, useState} from 'react';
+import React from 'react';
+import {useEffect, useState} from 'react';
 import { Carousel} from 'react-responsive-carousel';
-import { getGameweekNum } from '../utils/get-gameweek';
-import getFixtures from '../utils/get-fixtures'; // import the fixture list
+import { getGameweekNum } from '../utils/get-gameweek.ts';
+import getFixtures from '../utils/get-fixtures.ts'; // import the fixture list
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './FixturesCarousel.css';
+import { Fixture } from '../../../globals'
 
 export default function FixturesCarousel() {
   const [fixtures, setFixtures] = useState([]);
   
   useEffect(() => {
-    getFixtures(setFixtures);  // set the fixtures list
+    getFixtures(setFixtures)  // set the fixtures list
   },[])
 
   return (
@@ -24,7 +26,7 @@ export default function FixturesCarousel() {
       showArrows={false}
     >
     
-   {fixtures.map((fixture) => (
+   {fixtures.map((fixture: Fixture) => (
     <div key={fixture.id}>
     <h1>Gameweek {getGameweekNum(fixture.gameweek)}</h1>
       <div className='first-row'>
@@ -44,7 +46,7 @@ export default function FixturesCarousel() {
       <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
       <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
   </div>
-  ))};
+  ))}
     </Carousel>
   </>
   );

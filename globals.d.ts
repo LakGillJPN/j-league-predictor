@@ -4,6 +4,17 @@ export interface Fixture {
   status: {
     short: string;
   };
+  gameweek: string;
+  home_team_logo: string;
+  away_team_logo: string;
+  home_team: string; 
+  away_team: string;
+  isFinished: string;
+}
+
+export interface Predication {
+  username: string;
+  gameweek: string;
 }
 
 export interface Process {

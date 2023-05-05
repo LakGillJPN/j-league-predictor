@@ -129,7 +129,7 @@ export function setupServer() {
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
     }
-
+  
     try {
       await Promise.all(points.map(async (check: any[]) => {
         await db('points')
@@ -140,7 +140,7 @@ export function setupServer() {
       }));
       await Promise.all(
       
-        points.map(([gamePoints, gameId, gameweek]: [Number, Number, String]) =>
+        points.map(([gamePoints, gameId, gameweek]: [number, number, string]) =>
           db('points').insert({
             username: userEmail,
             game_id: gameId,
@@ -173,8 +173,7 @@ export function setupServer() {
     const { userEmail } = req.body;
     const points = await db('points').where('username', userEmail).select('game_points');
     const gameweek = await db('points').where('username', userEmail).select('gameweek');
-    const overall = points.reduce((prev: number, curr: number) => prev + curr, 0);
-    //const overall = points.reduce((prev: Number, curr: Number) => prev + curr.game_points, 0);
+    const overall = points.reduce((prev: number, curr: { game_points: number}) => prev + curr.game_points, 0);
 
     try {
       await db('overall')

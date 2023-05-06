@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./backend/index.ts",
+    "start": "./backend/index.ts",
     "build": "npm install && npm run migrate && npm run seed && cd frontend && npm install && npm run build",
     "newbuild": "npm install && cd frontend && npm install && npm run build",
     "dev": "nodemon ./backend/index.ts",

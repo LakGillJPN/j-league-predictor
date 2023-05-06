@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Header'
+import Header from '../components/Header.tsx'
 import { Link, useNavigate } from 'react-router-dom'
 import './Submitted.css'
 

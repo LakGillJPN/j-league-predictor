@@ -1,5 +1,5 @@
 import {React, useState, useEffect, useRef} from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header.tsx';
 import getResults from '../utils/get-results.ts';
 import getTotal from '../utils/get-total.ts';
 import { UserAuth } from '../context/AuthContext';

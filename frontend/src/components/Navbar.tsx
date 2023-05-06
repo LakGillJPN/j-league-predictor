@@ -1,9 +1,15 @@
-import {React} from 'react';
+import React from 'react';
 import { UserAuth,} from '../context/AuthContext';
 import { Link } from "react-router-dom";
 import './Navbar.css';
 
-export default function Navbar(props) {
+export default function Navbar(props: {
+  onClickHome: React.MouseEventHandler<HTMLAnchorElement>,
+  onClickLogin: React.MouseEventHandler<HTMLAnchorElement>,
+  onClickLogout: React.MouseEventHandler<HTMLAnchorElement>,
+  onClickResults: React.MouseEventHandler<HTMLAnchorElement>,
+  onClickPlay: React.MouseEventHandler<HTMLAnchorElement> 
+}) {
   const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
   const {user, userEmail} = UserAuth();
 

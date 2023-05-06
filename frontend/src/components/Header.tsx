@@ -1,5 +1,5 @@
-import {React} from 'react';
-import Navbar from './Navbar';
+import React from 'react';
+import Navbar from './Navbar.tsx';
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from '../context/AuthContext';
 import './Header.css';
@@ -25,7 +25,6 @@ export default function Header() {
         onClickHome={() => navigate("/")}
         onClickLogin={() => navigate("/login")}
         onClickPlay={() =>  navigate("/play")}
-        onClickWarning={() => navigate("/warning")}
         onClickResults={() => navigate("/results")}
         onClickLogout={handleLogOut}
       /> 

@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header.tsx';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext'

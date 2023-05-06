@@ -6,7 +6,7 @@ import Play from './pages/Play';
 import SignUp from './pages/SignUp';
 import Results from './pages/Results';
 import Submitted from './pages/Submitted';
-import Footer from './components/Footer'
+import Footer from './components/Footer.tsx'
 import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';

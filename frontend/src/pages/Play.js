@@ -1,5 +1,5 @@
 import {useState, useEffect,React} from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header.tsx';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures.ts';
 import { UserAuth,} from '../context/AuthContext';

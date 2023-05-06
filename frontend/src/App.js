@@ -9,7 +9,7 @@ import Submitted from './pages/Submitted';
 import Footer from './components/Footer.tsx'
 import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './context/ProtectedRoute';
 import './App.css'
 
 function App() {

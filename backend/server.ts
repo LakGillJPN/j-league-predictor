@@ -1,7 +1,7 @@
 //const express = require('express');
 //const db = require('./knex')
 //const path = require('path');
-import express, { Express, Request, Response } from 'express';
+import express, {  Request, Response } from 'express';
 import db from './knex';
 import path from 'path';
 import { Points } from '../globals';

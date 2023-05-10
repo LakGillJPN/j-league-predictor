@@ -26,6 +26,8 @@ exports.seed = async function(knex) {
       away_winner: data[9],
       home_score: data[10],
       away_score: data[11],
+      venue_name: data[12],
+      //venue_city: data[13]
     });
   }
 };

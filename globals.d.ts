@@ -10,6 +10,9 @@ export interface Fixture {
   home_team: string; 
   away_team: string;
   isFinished: string;
+  venue_name: string;
+  venue_city: string; 
+  
   venue: {
     name: string;
     city: string;

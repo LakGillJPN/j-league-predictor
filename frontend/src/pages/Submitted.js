@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Submitted.css";
 
 export default function Submitted() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   return (
     <div className="container">
       <Header />

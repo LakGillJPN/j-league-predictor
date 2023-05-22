@@ -45,6 +45,7 @@ export default function FixturesCarousel() {
 
       <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
       <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
+      <div>{fixture.venue_name}</div>
   </div>
   ))}
     </Carousel>

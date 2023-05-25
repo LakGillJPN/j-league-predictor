@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar.tsx';
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from '../context/AuthContext.jsx';
 import './Header.css';
 
 

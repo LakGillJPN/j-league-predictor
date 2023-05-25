@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home'
+import Home from './pages/Home.tsx'
 import Login from './pages/Login';
 import Play from './pages/Play';
 import SignUp from './pages/SignUp';

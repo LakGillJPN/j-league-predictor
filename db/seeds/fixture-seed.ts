@@ -3,9 +3,12 @@
  * @returns { Promise<void> } 
  */
 
+import {Knex} from "knex"
+import { Fixture } from "../../globals";
+
 const { getFixturesData } = require('../../fixtures');
 
-exports.seed = async function(knex) {
+exports.seed = async function(knex: Knex) {
   // Deletes ALL existing entries
 
 

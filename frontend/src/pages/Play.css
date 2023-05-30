@@ -53,3 +53,13 @@ form {
   padding-left: 10px;
   padding-right: 10xpx
 }
+
+/* Need to fix this */
+.date-and-time {
+  display: grid;
+  grid-template-rows: 2fr;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  border: 3px solid red;
+}

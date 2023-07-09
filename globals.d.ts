@@ -59,4 +59,19 @@ export interface Points {
   gameId: Number;
   gameweek: String;
  }
+
+ export interface Result {
+    id: number;
+    gameweek: string;
+    home_team: string;
+    away_team: string
+    home_predication: number;
+    away_predication: number;
+    home_winner_predication: boolean;
+    away_winner_predication: boolean;
+    home_score: number;
+    away_score: number;
+    home_winner: boolean;
+    away_winner: boolean;
+ }
  

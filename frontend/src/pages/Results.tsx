@@ -1,11 +1,13 @@
-import {React, useState, useEffect, useRef} from 'react';
+import React = require("react")
+import {useState, useEffect, useRef} from 'react';
 import Header from '../components/Header.tsx';
 import getResults from '../utils/get-results.ts';
 import getTotal from '../utils/get-total.ts';
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from '../context/AuthContext.jsx';
 import scoreGen from '../utils/scoreGen.ts';
 import './Results.css'
 import axios from 'axios';
+import { Result } from '../../../globals';
 
 export default function Results() {
 
@@ -21,7 +23,7 @@ export default function Results() {
 
 // use the scoreGen function to calucate the user's score between their predications and actual results
   useEffect(() => {
-    const scores = results.map((result) =>
+    const scores = results.map((result: Result) =>
        [scoreGen(
         result.home_predication,
         result.away_predication,
@@ -71,7 +73,7 @@ export default function Results() {
     <h1 id='heading'>Results </h1>
     
 
-    {results.map((result) => {
+    {results.map((result: Result) => {
         const score = scoreGen(
           result.home_predication, 
           result.away_predication, 

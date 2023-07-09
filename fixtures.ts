@@ -17,6 +17,7 @@ async function getFixturesData() {
   let fixturesData: Object[] = [];
 
   try {
+    
     const response = await axios.request(options);
     const data = response.data.response;
     data.map((game: Game) => fixturesData.push([

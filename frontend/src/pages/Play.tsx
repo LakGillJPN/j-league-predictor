@@ -1,13 +1,15 @@
-import {useState, useEffect,React} from 'react';
+import React = require("react")
+import {useState, useEffect} from 'react';
 import Header from '../components/Header.tsx';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures.ts';
-import { UserAuth,} from '../context/AuthContext';
+import { UserAuth,} from '../context/AuthContext.jsx';
 import axios from 'axios';
-import Warning from '../components/Warning';
+import Warning from '../components/Warning.jsx';
 import { useNavigate, Link } from 'react-router-dom';
 import { getGameweekNum, getGameweek, playGameweek } from '../utils/get-gameweek.ts';
-import CountdownTimer from '../components/CountdownTimer';
+import CountdownTimer from '../components/CountdownTimer.jsx';
+import { Fixture } from "../../../globals";
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
@@ -28,7 +30,7 @@ export default function Play() {
   },[])
 
 
-  const handleHomeChange = (event) => {
+  const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {
     const { name, value } = event.target;
     setHomePredications(prevState => ({
       ...prevState,
@@ -36,7 +38,7 @@ export default function Play() {
     }));
   }
 
-  const handleAwayChange = (event) => {
+  const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
     const { name, value } = event.target;
     setAwayPredications(prevState => ({
       ...prevState,
@@ -44,7 +46,7 @@ export default function Play() {
     }));
   }
 
-  const resultArr = (home, away) => {
+  const resultArr = (home: object, away: object) => {
     const id = Object.keys(home);
     const homeScore = Object.values(home);
     const awayScore = Object.values(away);
@@ -57,7 +59,7 @@ export default function Play() {
     return newArr
   }
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const result = resultArr(homePredications, awayPredications);
     axios.post('/api/predications', {
@@ -86,7 +88,7 @@ export default function Play() {
 
     <form onSubmit={handleFormSubmit}> 
 
-    {fixtures.map((fixture) => (
+    {fixtures.map((fixture: Fixture) => (
     
       <div className='fixtures-box' key={fixture.id}>
    

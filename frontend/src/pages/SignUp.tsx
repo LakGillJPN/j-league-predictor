@@ -1,8 +1,9 @@
-import {React, useState} from 'react';
+import React = require("react")
+import {useState} from 'react';
 import Header from '../components/Header.tsx';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext'
+import { UserAuth } from '../context/AuthContext.tsx'
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -11,8 +12,8 @@ export default function SignUp() {
   const {createUser} = UserAuth();
   const navigate = useNavigate();
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  const handleSignUp = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
     try {
       await createUser(email,password);
       navigate('/')

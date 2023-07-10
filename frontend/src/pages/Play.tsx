@@ -3,12 +3,12 @@ import {useState, useEffect} from 'react';
 import Header from '../components/Header.tsx';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures.ts';
-import { UserAuth,} from '../context/AuthContext.jsx';
+import { UserAuth,} from '../context/AuthContext.tsx';
 import axios from 'axios';
 import Warning from '../components/Warning.jsx';
 import { useNavigate, Link } from 'react-router-dom';
 import { getGameweekNum, getGameweek, playGameweek } from '../utils/get-gameweek.ts';
-import CountdownTimer from '../components/CountdownTimer.jsx';
+//import CountdownTimer from '../components/CountdownTimer.jsx';
 import { Fixture } from "../../../globals";
 
 export default function Play() {

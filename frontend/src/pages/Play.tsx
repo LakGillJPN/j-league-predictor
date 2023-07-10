@@ -1,13 +1,13 @@
-import React = require("react")
+import React from 'react';
 import {useState, useEffect} from 'react';
 import Header from '../components/Header.tsx';
 import './Play.css'
 import getFixtures from '../utils/get-fixtures.ts';
 import { UserAuth,} from '../context/AuthContext.tsx';
 import axios from 'axios';
-import Warning from '../components/Warning.jsx';
-import { useNavigate, Link } from 'react-router-dom';
-import { getGameweekNum, getGameweek, playGameweek } from '../utils/get-gameweek.ts';
+import Warning from '../components/Warning.tsx';
+import { useNavigate } from 'react-router-dom';
+import { playGameweek } from '../utils/get-gameweek.ts';
 //import CountdownTimer from '../components/CountdownTimer.jsx';
 import { Fixture } from "../../../globals";
 

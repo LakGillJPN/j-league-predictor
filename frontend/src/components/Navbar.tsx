@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserAuth,} from '../context/AuthContext';
+import { UserAuth,} from '../context/AuthContext.tsx';
 import { Link } from "react-router-dom";
 import './Navbar.css';
 

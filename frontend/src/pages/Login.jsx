@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 import {useState} from 'react';
 import Header from '../components/Header.tsx';
-import axios from 'axios';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from '../context/AuthContext.jsx';
+import { UserAuth } from '../context/AuthContext.tsx';
 
 
 export default function Login() {

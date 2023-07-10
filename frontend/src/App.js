@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import Home from './pages/Home.tsx'
 import Login from './pages/Login';
-import Play from './pages/Play';
-import SignUp from './pages/SignUp';
-import Results from './pages/Results';
-import Submitted from './pages/Submitted';
+import Play from './pages/Play.tsx';
+import SignUp from './pages/SignUp.tsx';
+import Results from './pages/Results.tsx';
+import Submitted from './pages/Submitted.tsx';
 import Footer from './components/Footer.tsx'
 import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext.tsx';

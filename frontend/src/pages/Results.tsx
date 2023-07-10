@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header.tsx';
 import getResults from '../utils/get-results.ts';
 import getTotal from '../utils/get-total.ts';

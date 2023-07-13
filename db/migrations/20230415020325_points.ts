@@ -1,12 +1,14 @@
+import { Knex } from "knex";
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
+exports.up = function(knex: Knex) {
   return knex.schema.createTable('points', (table) => {
     table.increments("entries").primary();
     table.string('username');
-    table.integer('game_id').references('id').inTable('fixtures');
+    table.integer('game_id')
     table.string('gameweek');
     table.integer('game_points').notNullable();
   });
@@ -16,6 +18,6 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
+exports.down = function(knex: Knex) {
   knex.schema.dropTable("points");
 };

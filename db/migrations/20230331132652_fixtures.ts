@@ -3,7 +3,9 @@
  * @returns { Promise<void> }
  */
 
-exports.up = function(knex) {
+import { Knex } from "knex";
+
+exports.up = function(knex: Knex) {
   return knex.schema.createTable('fixtures', (table) => {
     table.integer('id').primary()
     table.string('gameweek').notNullable();
@@ -17,6 +19,8 @@ exports.up = function(knex) {
     table.boolean('away_winner').nullable();
     table.integer('home_score').nullable()
     table.integer('away_score').nullable();
+    table.string('venue_name');
+    table.string('venue_city');
   });
 };
 
@@ -24,6 +28,6 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
+exports.down = function(knex: Knex) {
   knex.schema.dropTable("fixtures");
 };

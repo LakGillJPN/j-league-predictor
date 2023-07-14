@@ -1,7 +1,61 @@
 # J-League Predictor
 <img src="/images\header.jpg" alt="Header" title="Header">
 
-The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games an to earn points for their accuracy.
+The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games and to earn points for their accuracy.
+
+Deployment: https://j-league-predictor.onrender.com/
+
+# Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/LakGillJPN/j-league-predictor.git
+
+   ```
+
+2. Install dependencies:
+    
+    ```bash
+    
+    npm install 
+    
+    ```
+
+3. This application uses Firebase for authentication. Please create a `.env` file and use the `.env.example` file to see what variables are required.
+
+# Usage
+
+The J-League Predictor app utilizes Express for its backend and React for its frontend. To run the app, it is necessary to start the backend server before launching the frontend:
+
+1. Start the Express server:
+
+    ```bash
+    
+    npm run start
+    
+    ```
+    
+2. The Express server will run on  **`http://localhost:4000/`**
+
+3. Move to the Frontend folder:
+
+    ```bash
+    
+    cd frontend/
+    
+    ```
+4. Start the Frontend server:
+
+    ```bash
+    
+    npm run start
+    
+    ```
+    
+5. The Frontend server will run on  **`http://localhost:3000/`**
+
+
 
 # Home
 <img src="/images\homepage.jpg" alt="Homepage" title="Homepage">
@@ -28,3 +82,7 @@ The results of the previous gameweek are compared to the user's predication and 
 - [ ] Mobile View
 - [ ] Display Names
 - [ ] Results of Previous Gameweeks
+
+# Goals
+- To have the application fully functional for the start of the next J-League season
+- To have the app deployed on either AWS or Heroku

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './pages/Home.tsx'
-import Login from './pages/Login';
+import Login from './pages/Login.tsx';
 import Play from './pages/Play.tsx';
 import SignUp from './pages/SignUp.tsx';
 import Results from './pages/Results.tsx';

@@ -18,12 +18,12 @@ function App() {
       <AuthContextProvider>
         <HashRouter> 
         <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route exact path="/login/" element={<Login/>} />
-          <Route exact path="/signup/" element={<SignUp/>} />
-          <Route exact path="/play/" element ={<ProtectedRoute>  <Play/> </ProtectedRoute>} />
-          <Route exact path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
-          <Route exact path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/login/" element={<Login/>} />
+          <Route path="/signup/" element={<SignUp/>} />
+          <Route path="/play/" element ={<ProtectedRoute> <Play/> </ProtectedRoute>} />
+          <Route path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
+          <Route path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
         </Routes>
         </HashRouter>
         </AuthContextProvider>

@@ -1,11 +1,31 @@
 # J-League Predictor
 <img src="/images\header.jpg" alt="Header" title="Header">
 
-The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games and to earn points for their accuracy.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/LakGillJPN/j-league-predictor) ![GitHub issues](https://img.shields.io/github/issues/LakGillJPN/j-league-predictor) 
+
+
+
+The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games and earn points for accuracy.
 
 Deployment: https://j-league-predictor.onrender.com/
 
-# Installation
+## Tech Stack - Frontend
+
+| Task       | Tech        |
+| ---------- | ----------- |
+| Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
+| Framework  | ![React](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=next.js&logoColor=white)    |
+|  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
+
+## Tech Stack - Backend
+
+| Task       | Tech        |
+| ---------- | ----------- |
+| Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
+| Framework  | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)   |
+|  Database | ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)|
+
+## Installation
 
 1. Clone the repository:
 

@@ -9,7 +9,15 @@ The J-League Predictor is an application that allows soccer fans to predicate th
 
 Deployment: https://j-league-predictor.onrender.com/
 
-# Installation
+## Tech Stack
+
+| Task       | Tech        |
+| ---------- | ----------- |
+| Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
+| Framework  | ![React](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=next.js&logoColor=white)    |
+|  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
+
+## Installation
 
 1. Clone the repository:
 

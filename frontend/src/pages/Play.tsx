@@ -114,10 +114,10 @@ export default function Play() {
           <div> <img className='logo' src={fixture.away_team_logo} /> </div>
           <div> {fixture.away_team} </div>
         </div>
-        <div className='date-and-time'>
+        {/* <div className='date-and-time'>
         <div className='date-and-time'>{`${new Date(fixture.date).toDateString()}`} </div>
         <div className='date-and-time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
-        </div>
+        </div> */}
       </div>
       
 

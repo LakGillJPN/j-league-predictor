@@ -1,4 +1,3 @@
-# J-League Predictor
 <img src="/images\header.jpg" alt="Header" title="Header">
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/LakGillJPN/j-league-predictor) ![GitHub issues](https://img.shields.io/github/issues/LakGillJPN/j-league-predictor) 

@@ -13,6 +13,11 @@ Deployment: https://j-league-predictor.onrender.com/
 - [Tech-Stack - Backend](#tech-stack---backend)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Home](#home)
+- [Play](#play)
+- [Results](#results)
+- [Future Features](#future-features)
+- [Goals](#goals)
 
 ## Tech Stack - Frontend
 

@@ -1,4 +1,3 @@
-# J-League Predictor
 <img src="/images\header.jpg" alt="Header" title="Header">
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/LakGillJPN/j-league-predictor) ![GitHub issues](https://img.shields.io/github/issues/LakGillJPN/j-league-predictor) 
@@ -9,6 +8,17 @@ The J-League Predictor is an application that allows soccer fans to predicate th
 
 Deployment: https://j-league-predictor.onrender.com/
 
+## Contents
+- [Tech-Stack - Frontend](#tech-stack---frontend)
+- [Tech-Stack - Backend](#tech-stack---backend)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Home](#home)
+- [Play](#play)
+- [Results](#results)
+- [Future Features](#future-features)
+- [Goals](#goals)
+
 ## Tech Stack - Frontend
 
 | Task       | Tech        |
@@ -16,6 +26,7 @@ Deployment: https://j-league-predictor.onrender.com/
 | Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
 | Framework  | ![React](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=next.js&logoColor=white)    |
 |  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
+|        |
 
 ## Tech Stack - Backend
 

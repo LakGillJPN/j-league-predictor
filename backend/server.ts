@@ -1,9 +1,9 @@
-//const express = require('express');
-//const db = require('./knex')
-//const path = require('path');
-import express, {  Request, Response } from 'express';
-import db from './knex';
-import path from 'path';
+const express = require('express');
+const db = require('./knex')
+const path = require('path');
+import {  Request, Response } from 'express';
+//import db from './knex';
+//import path from 'path';
 import { Points } from '../globals';
 
 
@@ -18,14 +18,14 @@ export function setupServer() {
   });
 
   // Retrive the fixtures data from the database
-  app.get('/api/fixtures', async (req, res) => {
+  app.get('/api/fixtures', async (req: Request, res: Response) => {
     const fixtures = await db('fixtures')
       .select('*')
       .timeout(1500)
     res.send(fixtures);
   });
 
-  app.get('/api/users', async (req, res) => {
+  app.get('/api/users', async (req: Request, res: Response) => {
     const users = await db('users')
       .select('*')
       .timeout(1500)
@@ -33,7 +33,7 @@ export function setupServer() {
   });
 
   // Retrieve all the of the fixtures that have not started ("NS") yet
-  app.get('/api/gameweek', async (req , res) => {
+  app.get('/api/gameweek', async (req: Request , res: Response) => {
     const gameweek = await db('fixtures')
       .select('gameweek','isFinished','date')
       .where("isFinished", "NS")
@@ -43,7 +43,7 @@ export function setupServer() {
 
 
   // Send the user's predication into the database
-  app.post('/api/predications', async (req, res) => {
+  app.post('/api/predications', async (req: Request, res: Response) => {
     const homeCheck = (home : Boolean, away : Boolean) => {
       if (home > away) {
         return true;
@@ -93,7 +93,7 @@ export function setupServer() {
   });
 
   // Retrieve the predications data
-  app.get('/api/predications', async (req, res) => {
+  app.get('/api/predications', async (req: Request, res: Response) => {
     const predications = await db('predications')
       .select('*')
       .timeout(1500)
@@ -101,7 +101,7 @@ export function setupServer() {
   });
 
   // Create a query to compare the actual results and the predicated results
-  app.get('/api/results', async (req, res) => {
+  app.get('/api/results', async (req: Request, res: Response) => {
     const results = await db('fixtures')
       .join('predications', 'fixtures.id', '=', 'predications.game_id')
       .select(
@@ -124,7 +124,7 @@ export function setupServer() {
   })
 
   // Insert the user's points into the database
-  app.post('/api/points', async (req, res) => {
+  app.post('/api/points', async (req: Request, res: Response) => {
     const { userEmail, points } = req.body;
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
@@ -157,7 +157,7 @@ export function setupServer() {
   });
 
   // Get the user's gameweek points
-  app.get('/api/total', async (req, res) => {
+  app.get('/api/total', async (req: Request, res: Response) => {
     try {
       const total = await db('points')
         .select('*')
@@ -169,7 +169,7 @@ export function setupServer() {
   });
 
   // Send the user's weekly total to the overall table 
-  app.post('/api/overall', async (req, res) => {
+  app.post('/api/overall', async (req: Request, res: Response) => {
     const { userEmail } = req.body;
     const points = await db('points').where('username', userEmail).select('game_points');
     const gameweek = await db('points').where('username', userEmail).select('gameweek');

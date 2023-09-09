@@ -9,5 +9,6 @@ export const config = require('../knexfile')[process.env.NODE_ENV]
 //module.exports = knex(config);
 const db = knex(config);
 
-export default db;
+//export default db;
+module.exports = db
 

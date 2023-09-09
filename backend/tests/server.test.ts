@@ -1,9 +1,9 @@
-const server = require('../server')
 const request = require('supertest');
 import { setupServer } from '../server'
 
 // Initialize the Express server
 const app = setupServer();
+
 
 describe('GET /api/data', () => {
   it('should respond with a 200 status code', async () => {

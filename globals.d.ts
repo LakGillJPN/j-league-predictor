@@ -27,6 +27,7 @@ export interface Predication {
 
 export interface Process {
   env: {
+    development: any;
     NODE_ENV: string
   }
 }

@@ -1,9 +1,7 @@
-const express = require('express');
-const db = require('./knex')
-const path = require('path');
+import express from 'express';
+import db from './knex';
+import path from 'path';
 import {  Request, Response } from 'express';
-//import db from './knex';
-//import path from 'path';
 import { Points } from '../globals';
 
 

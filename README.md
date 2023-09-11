@@ -9,8 +9,7 @@ The J-League Predictor is an application that allows soccer fans to predicate th
 Deployment: https://j-league-predictor.onrender.com/
 
 ## Contents
-- [Tech-Stack - Frontend](#tech-stack---frontend)
-- [Tech-Stack - Backend](#tech-stack---backend)
+- [Tech-Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Home](#home)

@@ -9,8 +9,7 @@ The J-League Predictor is an application that allows soccer fans to predicate th
 Deployment: https://j-league-predictor.onrender.com/
 
 ## Contents
-- [Tech-Stack - Frontend](#tech-stack---frontend)
-- [Tech-Stack - Backend](#tech-stack---backend)
+- [Tech-Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Home](#home)
@@ -19,22 +18,16 @@ Deployment: https://j-league-predictor.onrender.com/
 - [Future Features](#future-features)
 - [Goals](#goals)
 
-## Tech Stack - Frontend
+## Tech Stack 
 
 | Task       | Tech        |
 | ---------- | ----------- |
 | Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
-| Framework  | ![React](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=next.js&logoColor=white)    |
+| Frontend Framework  | ![React](https://img.shields.io/badge/React-blue?style=for-the-badge&logo=next.js&logoColor=white)    |
+| Backend Framework  | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)   |
 |  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
-|        |
-
-## Tech Stack - Backend
-
-| Task       | Tech        |
-| ---------- | ----------- |
-| Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
-| Framework  | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)   |
 |  Database | ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)|
+|  Testing  | ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)  |
 
 ## Installation
 
@@ -117,6 +110,103 @@ The results of the previous gameweek are compared to the user's predication and 
 # Goals
 - To have the application fully functional for the start of the next J-League season
 - To have the app deployed on either AWS or Heroku
+
+
+<!---
+```
+j-league-predictor
+├─ .git
+├─ .gitignore
+├─ backend
+│  ├─ index.ts
+│  ├─ knex.ts
+│  ├─ server.ts
+│  └─ tests
+│     └─ server.test.ts
+├─ db
+│  ├─ migrations
+│  │  ├─ 20230331132652_fixtures.ts
+│  │  ├─ 20230410060443_users.ts
+│  │  ├─ 20230415013729_predications.ts
+│  │  ├─ 20230415020325_points.ts
+│  │  └─ 20230419022140_overall.ts
+│  └─ seeds
+│     └─ fixture-seed.ts
+├─ environment.d.ts
+├─ fixtures.ts
+├─ frontend
+│  ├─ .gitignore
+│  ├─ package.json
+│  ├─ public
+│  │  ├─ images
+│  │  │  └─ favicon.ico
+│  │  ├─ index.html
+│  │  └─ manifest.json
+│  ├─ README.md
+│  └─ src
+│     ├─ App.css
+│     ├─ App.tsx
+│     ├─ components
+│     │  ├─ CountdownTimer.jsx
+│     │  ├─ FixturesCarousel.css
+│     │  ├─ FixturesCarousel.tsx
+│     │  ├─ Footer.css
+│     │  ├─ Footer.tsx
+│     │  ├─ Header.css
+│     │  ├─ Header.tsx
+│     │  ├─ Navbar.css
+│     │  ├─ Navbar.tsx
+│     │  └─ Warning.tsx
+│     ├─ context
+│     │  ├─ AuthContext.tsx
+│     │  └─ ProtectedRoute.tsx
+│     ├─ firebase
+│     │  └─ firebase.ts
+│     ├─ fonts
+│     │  └─ j-league
+│     │     ├─ JLEAGUEKICK-BoldCondensed.eot
+│     │     ├─ JLEAGUEKICK-BoldCondensed.ttf
+│     │     ├─ JLEAGUEKICK-BoldCondensed.woff
+│     │     ├─ JLEAGUEKICK-BoldCondensed.woff2
+│     │     └─ stylesheet.css
+│     ├─ index.css
+│     ├─ index.tsx
+│     ├─ pages
+│     │  ├─ Home.css
+│     │  ├─ Home.tsx
+│     │  ├─ Login.css
+│     │  ├─ Login.tsx
+│     │  ├─ Play.css
+│     │  ├─ Play.tsx
+│     │  ├─ Results.css
+│     │  ├─ Results.tsx
+│     │  ├─ SignUp.css
+│     │  ├─ SignUp.tsx
+│     │  ├─ Submitted.css
+│     │  └─ Submitted.tsx
+│     └─ utils
+│        ├─ get-date.ts
+│        ├─ get-fixtures.ts
+│        ├─ get-gameweek.ts
+│        ├─ get-predications.ts
+│        ├─ get-results.ts
+│        ├─ get-total.ts
+│        └─ scoreGen.ts
+├─ globals.d.ts
+├─ images
+│  ├─ header.jpg
+│  ├─ homepage.jpg
+│  ├─ jleague favicon.png
+│  ├─ play_page.jpg
+│  └─ results.jpg
+├─ jest.config.js
+├─ knexfile.ts
+├─ package.json
+├─ README.md
+└─ tsconfig.json
+
+```
+--->
 
 
 <!---

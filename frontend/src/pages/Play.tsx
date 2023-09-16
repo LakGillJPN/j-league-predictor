@@ -15,7 +15,7 @@ export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const [gameweek, setGameweek] = useState([]);
+  const [gameweek, setGameweek] = useState<string[]>([]);
   const {userEmail, userPredications} = UserAuth();
 
   const navigate = useNavigate();
@@ -47,9 +47,9 @@ export default function Play() {
   }
 
   const resultArr = (home: object, away: object) => {
-    const id = Object.keys(home);
-    const homeScore = Object.values(home);
-    const awayScore = Object.values(away);
+    const id : string[] = Object.keys(home);
+    const homeScore : number[]= Object.values(home);
+    const awayScore : number[] = Object.values(away);
 
     let newArr = [];
 

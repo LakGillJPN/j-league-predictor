@@ -1,5 +1,5 @@
-describe('template spec', () => {
+describe('Can access the mainpage', () => {
   it('passes', () => {
-    cy.visit('https://example.cypress.io')
+    cy.visit('localhost:3000/')
   })
 })

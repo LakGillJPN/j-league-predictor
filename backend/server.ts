@@ -39,6 +39,18 @@ export function setupServer() {
     res.send(gameweek);
   });
 
+  /* 
+   {
+      userEmail,
+      predications: result,
+      current_gameweek: gameweek
+
+      'joe@nufc.com',
+      predications: [ [300001, 0, 1] [400001, 1, 3] ],
+      current_gameweek: 'Gameweek 12'
+   }
+  */
+
 
   // Send the user's predication into the database
   app.post('/api/predications', async (req: Request, res: Response) => {
@@ -65,6 +77,9 @@ export function setupServer() {
     };
 
     try {
+      if (typeof req.body.userEmail !== 'string') {
+        throw new Error('userEmail must be a string')
+      }
       await Promise.all(req.body.predications.map(async (check: any[]) => {
         await db('predications')
           .join('fixtures', 'predications.game_id', '=', 'fixtures.id')

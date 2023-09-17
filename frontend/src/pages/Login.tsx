@@ -31,7 +31,7 @@ export default function Login() {
     <form onSubmit={handleLogin}>
      
       <label data-testid="email">Email:</label>
-      <input data-testid="email-input"type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+      <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
 
       <label htmlFor="password">Password:</label>
       <input data-testid="password-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} />

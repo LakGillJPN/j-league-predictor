@@ -1,14 +1,22 @@
-describe('template spec', () => {
-
+describe('Login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/#/login')
+    cy.visit('/#/login')
   })
-
 
   it('allows a user to login', () => {
-    cy.get('[data-testid="email"]').should('contain', 'Email:');
-    cy.get('[data-testid="email-input"]').type('joelinton@nufc.com');
-    cy.get('[data-testid="password-input"]').type('username');
+    //cy.get('[data-testid="email"]').should('contain', 'Email:');
+    cy.get('#email').type(Cypress.env("username"));
+    cy.get('[data-testid="password-input"]').type(Cypress.env("password"));
     cy.get('[data-testid="login-button"]').click();
+    cy.get('[data-testid="homepage-test"]');
   })
+
+  it('not allow a user to login with incorrect cred', () => {
+    //cy.get('[data-testid="email"]').should('contain', 'Email:');
+    cy.get('#email').type(Cypress.env("username"));
+    cy.get('[data-testid="password-input"]').type('fakepass');
+    cy.get('[data-testid="login-button"]').click();
+    // Need to get alert
+  })
+  
 })

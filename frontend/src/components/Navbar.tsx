@@ -22,7 +22,7 @@ export default function Navbar(props: {
       <Link to="/results" onClick={onClickResults}>Results</Link>
    
       {user ? (
-        <Link to="/" onClick={onClickLogout}>Logout</Link>
+        <Link to="/" onClick={onClickLogout} id="logout">Logout</Link>
       ) : (
         <Link to="/login" onClick={onClickLogin}>Login</Link>
       )}

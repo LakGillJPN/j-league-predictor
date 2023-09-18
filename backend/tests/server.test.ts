@@ -45,3 +45,40 @@ describe('GET /api/gameweek', () => {
     expect(response.body).toBeDefined(); // Check that the response contains data
   })
 });
+
+const payload = 
+{ userEmail: "joe@nufc.com",
+  predications: [ [300001, 0, 1], [400001, 1, 3] ],
+  current_gameweek: 'Gameweek 12'
+}
+
+const fakeload = {
+  userEmail: [880],
+  predications: [ [300001, 'num', 1], [400001, 1, 3] ],
+  current_gameweek: []
+}
+
+describe('POST /api/predications', () => {
+  it('should enter the data into the table ', async () => {
+    const response = await request(app).post('/api/predications')
+    .send(payload);
+    expect(response.status).toBe(200);
+    expect(response.text).toBe('Data entered into the predications table!')
+    expect(response.body).toBeDefined(); // Check that the response contains data
+  })
+
+  it('should not enter the data into the table with the payload is incorrect ', async () => {
+    const response = await request(app).post('/api/predications')
+    .send(fakeload);
+    expect(response.text).toBe('Error occurred while entering data!')
+   // expect(response.status).toBe(500);
+  })
+});
+
+describe('GET /api/predications', () => {
+  it('should retrieve predications data when GET /api/predications', async () => {
+    const response = await request(app).get('/api/predications');
+    expect(response.status).toBe(200);
+    expect(response.body).toBeDefined(); // Check that the response contains data
+  })
+});

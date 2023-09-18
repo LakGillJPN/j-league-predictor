@@ -5,7 +5,7 @@ import FixturesCarousel from '../components/FixturesCarousel.tsx';
 
 export default function Home(): JSX.Element {
   return (
-    <div className="Home">
+    <div data-testid="homepage-test" className="Home">
       <Header/>  
       <div className="carousel-container">
         <FixturesCarousel/> 

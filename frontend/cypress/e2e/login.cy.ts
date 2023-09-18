@@ -12,11 +12,12 @@ describe('Login', () => {
   })
 
   it('not allow a user to login with incorrect cred', () => {
-    //cy.get('[data-testid="email"]').should('contain', 'Email:');
     cy.get('#email').type(Cypress.env("username"));
     cy.get('[data-testid="password-input"]').type('fakepass');
     cy.get('[data-testid="login-button"]').click();
-    // Need to get alert
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal(`Incorrect email or password. Please try again.`)
+    })
   })
   
 })

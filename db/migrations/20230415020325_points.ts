@@ -7,7 +7,7 @@ import { Knex } from "knex";
 exports.up = function(knex: Knex) {
   return knex.schema.createTable('points', (table) => {
     table.increments("entries").primary();
-    table.string('username');
+    table.string('uid');
     table.integer('game_id')
     table.string('gameweek');
     table.integer('game_points').notNullable();

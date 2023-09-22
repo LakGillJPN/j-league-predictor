@@ -1,18 +1,21 @@
 export interface Fixture {
-  id: number;
+  fixture_id: number;
+  gameweek: string;
+  home_team_name: string; 
+  away_team_name: string;
   date: string;
   status: {
     short: string;
   };
-  gameweek: string;
-  home_team_logo: string;
-  away_team_logo: string;
-  home_team: string; 
-  away_team: string;
   isFinished: string;
+  home_team_logo_url: string;
+  away_team_logo_url: string;
+  did_home_team_win: boolean;
+  did_away_team_win: boolean;
+  home_team_score: number;
+  away_team_score: number;
   venue_name: string;
   venue_city: string; 
-  
   venue: {
     name: string;
     city: string;
@@ -20,8 +23,9 @@ export interface Fixture {
 }
 
 export interface Predication {
-  username: string;
+  uid: string;
   gameweek: string;
+  current_gameweek: string;
   game_points: number;
 }
 

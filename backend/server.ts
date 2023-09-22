@@ -82,7 +82,7 @@ export function setupServer() {
       }
       await Promise.all(req.body.predications.map(async (check: any[]) => {
         await db('predications')
-          .join('fixtures', 'predications.game_id', '=', 'fixtures.id')
+          .join('fixtures', 'predications.game_id', '=', 'fixtures.fixture_id')
           .where('uid', req.body.uid)
           .where('game_id', check[0])
           .delete();
@@ -116,25 +116,27 @@ export function setupServer() {
   // Create a query to compare the actual results and the predicated results
   app.get('/api/results', async (req: Request, res: Response) => {
     const results = await db('fixtures')
-      .join('predications', 'fixtures.id', '=', 'predications.game_id')
+      .join('predications', 'fixtures.fixture_id', '=', 'predications.game_id')
       .select(
-        'uid',
+        'predications.uid',
         'fixtures.gameweek',
-        'home_team_name',
-        'away_team_name',
-        'fixtures.id',
-        'isFinished',
-        'did_home_team_win',
-        'did_away_team_win',
-        'home_team_score',
-        'away_team_score',
-        'home_predication',
-        'away_predication',
-        'home_win',
-        'away_win')
-    .where('isFinished', 'FT');
-    res.send(results)
-  })
+        'fixtures.home_team_name',
+        'fixtures.away_team_name',
+        'fixtures.fixture_id',
+        'fixtures.isFinished',
+        'fixtures.did_home_team_win',
+        'fixtures.did_away_team_win',
+        'fixtures.home_team_score',
+        'fixtures.away_team_score',
+        'predications.home_predication',
+        'predications.away_predication',
+        'predications.home_win',
+        'predications.away_win'
+      )
+      .where('fixtures.isFinished', 'FT');
+    res.send(results);
+  });
+  
 
   // Insert the user's points into the database
   app.post('/api/points', async (req: Request, res: Response) => {
@@ -146,7 +148,7 @@ export function setupServer() {
     try {
       await Promise.all(points.map(async (check: any[]) => {
         await db('points')
-          .join('fixtures', 'points.game_id', '=', 'fixtures.id')
+          .join('fixtures', 'points.game_id', '=', 'fixtures.fixture_id')
           .where('uid', uid)
           .where('fixtures.gameweek', check[2])
           .delete();

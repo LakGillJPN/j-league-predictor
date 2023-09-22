@@ -9,17 +9,17 @@ import axios from 'axios';
 import { Result } from '../../../globals';
 
 export default function Results() {
-  let { userEmail } = UserAuth();
+  let { uid } = UserAuth();
   let [results, setResults] = useState<any>([]);
   let [points, setPoints] = useState<any>([]);
   let [total, setTotal] = useState<any>([]);
 
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
-    if (userEmail !== null) {
-      getResults(setResults, userEmail);
+    if (uid !== null) {
+      getResults(setResults, uid);
     }
-  }, [userEmail]);
+  }, [uid]);
 
   // use the scoreGen function to calculate the user's score between their predications and actual results
   useEffect(() => {
@@ -46,11 +46,11 @@ export default function Results() {
     const postPoints = async () => {
       try {
         await axios.post('api/points', {
-          userEmail: userEmail || '', // Provide a default value when userEmail is null
+          uid: uid || '', // Provide a default value when userEmail is null
           points
         });
         await axios.post('api/overall', {
-          userEmail: userEmail || '' // Provide a default value when userEmail is null
+          uid: uid || '' // Provide a default value when userEmail is null
         });
       } catch (error) {
         console.error(error);
@@ -61,14 +61,14 @@ export default function Results() {
       // make sure the array has been populated
       postPoints();
     }
-  }, [points, userEmail]);
+  }, [points, uid]);
 
   // get the user's total score for the week
   useEffect(() => {
-    if (userEmail !== null) {
-      getTotal(setTotal, userEmail);
+    if (uid !== null) {
+      getTotal(setTotal, uid);
     }
-  }, [points, userEmail]);
+  }, [points, uid]);
 
   return (
     <>

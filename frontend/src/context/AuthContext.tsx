@@ -44,22 +44,18 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   }
 
   useEffect(() => {
-    console.log('THIS IS THE UID', uid)
-  },[uid])
-
-  useEffect(() => {
     const authenticatedUser = onAuthStateChanged(auth, (currentUser: firebaseAuthUser | null) => {
       setUser(currentUser);
       setUserEmail(currentUser?.email || null);
       setUid(currentUser?.uid || null )
     });
 
-    if (userEmail !== null) {
-      getPredications(setUserPredications, userEmail);
+    if (uid !== null) {
+      getPredications(setUserPredications, uid);
     }
 
     return authenticatedUser;
-  }, [userEmail]);
+  }, [uid]);
 
   return (
     <UserContext.Provider

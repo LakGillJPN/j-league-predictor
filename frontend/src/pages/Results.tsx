@@ -25,14 +25,16 @@ export default function Results() {
   useEffect(() => {
     const scores = results.map((result: Result) => [
       scoreGen(
+        // User's Predication
         result.home_predication,
         result.away_predication,
-        result.home_winner_predication,
-        result.away_winner_predication,
-        result.home_score,
-        result.away_score,
-        result.home_winner,
-        result.away_winner
+        result.home_win,
+        result.away_win,
+        // Actual Result
+        result.home_team_score,
+        result.away_team_score,
+        result.did_home_team_win,
+        result.did_away_team_win
       ),
       result.id,
       result.gameweek
@@ -78,14 +80,16 @@ export default function Results() {
 
         {results.map((result: Result) => {
           const score = scoreGen(
+             // User's Predication
             result.home_predication,
             result.away_predication,
-            result.home_winner_predication,
-            result.away_winner_predication,
-            result.home_score,
-            result.away_score,
-            result.home_winner,
-            result.away_winner
+            result.home_win,
+            result.away_win,
+             // Actual Score
+            result.home_team_score,
+            result.away_team_score,
+            result.did_home_team_win,
+            result.did_away_team_win
           );
 
           return (
@@ -94,8 +98,8 @@ export default function Results() {
                 <div className="actual">
                   <div className="result-box"> {result.home_team} </div>
                   <div className="scorebox-container">
-                    <span className="actual-goals">{result.home_score}</span>
-                    <span className="actual-goals"> {result.away_score}</span>
+                    <span className="actual-goals">{result.home_team_score}</span>
+                    <span className="actual-goals"> {result.away_team_score}</span>
                   </div>
                   <div className="result-box"> {result.away_team} </div>
                 </div>

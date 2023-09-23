@@ -72,11 +72,11 @@ export interface Points {
     away_team: string
     home_predication: number;
     away_predication: number;
-    home_winner_predication: boolean;
-    away_winner_predication: boolean;
-    home_score: number;
-    away_score: number;
-    home_winner: boolean;
-    away_winner: boolean;
+    home_win: boolean;
+    away_win: boolean;
+    home_team_score: number;
+    away_team_score: number;
+    did_home_team_win: boolean;
+    did_away_team_win: boolean;
  }
  

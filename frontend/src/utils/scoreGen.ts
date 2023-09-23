@@ -9,8 +9,8 @@ const scoreGen  = (
     if (home === resultHome) {
       score+=20
       string.push('Home Score Correct')
-
     }
+    
     if (away === resultAway) {
       score+=20
       string.push('Away Score Correct')

@@ -79,4 +79,15 @@ export interface Points {
     did_home_team_win: boolean;
     did_away_team_win: boolean;
  }
+
+ export type scoreGen  = (
+  predicatedHomeScore: number,
+  predicatedAwayScore: number,
+  predicatedHomeWin: boolean,
+  predicatedAwayWin: boolean,
+  actualHomeScore: number,
+  actualAwayScore: number,
+  actualHomeWin: boolean,
+  actualAwayWin: boolean,
+ ) => number;
  

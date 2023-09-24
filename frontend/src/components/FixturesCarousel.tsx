@@ -27,19 +27,19 @@ export default function FixturesCarousel() {
     >
     
    {fixtures.map((fixture: Fixture) => (
-    <div key={fixture.id}>
+    <div key={fixture.fixture_id}>
     <h1>Gameweek {getGameweekNum(fixture.gameweek)}</h1>
       <div className='first-row'>
         <div className='game'>
           <div> <img className='images' src={fixture.home_team_logo_url} /> </div>
-          <div className='team'>{fixture.home_team} </div>
+          <div className='team'>{fixture.home_team_name} </div>
         </div>
       
         <div className='team'>vs</div>
 
         <div className='game'>
           <div> <img className='images' src={fixture.away_team_logo_url} /> </div>
-          <div className='team'>{fixture.away_team} </div>
+          <div className='team'>{fixture.away_team_name} </div>
         </div>
       </div>
 

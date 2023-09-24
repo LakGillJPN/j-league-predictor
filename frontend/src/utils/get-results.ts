@@ -6,9 +6,11 @@ async function getResults (setter: (arg0: any) => void, uid: string) {
     const fetchedResults = await axios.get('api/results');
     const fetchedFixs = await axios.get('api/fixtures')
     const resultsWeek = fetchedFixs.data.filter((data: Fixture) => data.isFinished === 'FT')
+    console.log('RESULTS', fetchedResults)
     setter(fetchedResults.data.filter((data: Predication) => 
-      data.gameweek === resultsWeek[resultsWeek.length-1].gameweek && 
-      data.uid === uid
+      data.gameweek === 'Regular Season - 18'
+      //data.gameweek === resultsWeek[resultsWeek.length-1].gameweek 
+      && data.uid === uid
     ));
   }
  catch(err) {

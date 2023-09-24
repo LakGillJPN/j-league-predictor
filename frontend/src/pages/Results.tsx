@@ -17,6 +17,7 @@ export default function Results() {
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
     if (uid !== null) {
+      //console.log('RES', results)
       getResults(setResults, uid);
     }
   }, [uid]);

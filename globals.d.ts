@@ -42,8 +42,20 @@ export interface Team {
   winner: boolean;
 }
 
-export interface Game {
-  fixture: Fixture;
+// The interface for Fixtures.TS which makes the call to the API
+export interface API_Data {
+  //fixture: Fixture;
+  fixture: {
+    id: number;
+    date: string;
+    status : {
+      short: string;
+    }
+    venue: {
+      name: string;
+      city: string;
+    }
+  }
   league: {
     round: number;
   };

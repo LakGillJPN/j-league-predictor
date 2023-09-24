@@ -9,32 +9,36 @@ import axios from 'axios';
 import { Result } from '../../../globals';
 
 export default function Results() {
-  let { userEmail } = UserAuth();
+  let { uid } = UserAuth();
   let [results, setResults] = useState<any>([]);
   let [points, setPoints] = useState<any>([]);
   let [total, setTotal] = useState<any>([]);
+  let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
 
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
-    if (userEmail !== null) {
-      getResults(setResults, userEmail);
+    if (uid !== null) {
+      //console.log('RES', results)
+      getResults(setResults, uid);
     }
-  }, [userEmail]);
+  }, [uid]);
 
   // use the scoreGen function to calculate the user's score between their predications and actual results
   useEffect(() => {
     const scores = results.map((result: Result) => [
       scoreGen(
+        // User's Predication
         result.home_predication,
         result.away_predication,
-        result.home_winner_predication,
-        result.away_winner_predication,
-        result.home_score,
-        result.away_score,
-        result.home_winner,
-        result.away_winner
+        result.home_win,
+        result.away_win,
+        // Actual Result
+        result.home_team_score,
+        result.away_team_score,
+        result.did_home_team_win,
+        result.did_away_team_win
       ),
-      result.id,
+      result.fixture_id,
       result.gameweek
     ]);
 
@@ -46,11 +50,11 @@ export default function Results() {
     const postPoints = async () => {
       try {
         await axios.post('api/points', {
-          userEmail: userEmail || '', // Provide a default value when userEmail is null
+          uid: uid || '', // Provide a default value when userEmail is null
           points
         });
         await axios.post('api/overall', {
-          userEmail: userEmail || '' // Provide a default value when userEmail is null
+          uid: uid || '' // Provide a default value when userEmail is null
         });
       } catch (error) {
         console.error(error);
@@ -61,14 +65,15 @@ export default function Results() {
       // make sure the array has been populated
       postPoints();
     }
-  }, [points, userEmail]);
+  }, [points, uid]);
 
   // get the user's total score for the week
   useEffect(() => {
-    if (userEmail !== null) {
-      getTotal(setTotal, userEmail);
+    if (uid !== null && !hasTotalCalculated) {
+      getTotal(setTotal, uid);
+      setHasTotalCalculated(true); // Mark as calculated
     }
-  }, [points, userEmail]);
+  }, [points, uid, hasTotalCalculated]);
 
   return (
     <>
@@ -78,36 +83,38 @@ export default function Results() {
 
         {results.map((result: Result) => {
           const score = scoreGen(
+             // User's Predication
             result.home_predication,
             result.away_predication,
-            result.home_winner_predication,
-            result.away_winner_predication,
-            result.home_score,
-            result.away_score,
-            result.home_winner,
-            result.away_winner
+            result.home_win,
+            result.away_win,
+             // Actual Score
+            result.home_team_score,
+            result.away_team_score,
+            result.did_home_team_win,
+            result.did_away_team_win
           );
 
           return (
             <div className="container">
-              <div className="results" key={result.id}>
+              <div className="results" key={result.fixture_id}>
                 <div className="actual">
-                  <div className="result-box"> {result.home_team} </div>
+                  <div className="result-box"> {result.home_team_name} </div>
                   <div className="scorebox-container">
-                    <span className="actual-goals">{result.home_score}</span>
-                    <span className="actual-goals"> {result.away_score}</span>
+                    <span className="actual-goals">{result.home_team_score}</span>
+                    <span className="actual-goals"> {result.away_team_score}</span>
                   </div>
-                  <div className="result-box"> {result.away_team} </div>
+                  <div className="result-box"> {result.away_team_name} </div>
                 </div>
 
                 Predication:
                 <div className="predications">
-                  <div className="result-box"> {result.home_team} </div>
+                  <div className="result-box"> {result.home_team_name} </div>
                   <div className="scorebox-container">
                     <span className="predict-goals">{result.home_predication} </span>
                     <span className="predict-goals">{result.away_predication} </span>
                   </div>
-                  <div className="result-box">{result.away_team}</div>
+                  <div className="result-box">{result.away_team_name}</div>
                 </div>
                 Points:
                 <div className="red">{score}</div>

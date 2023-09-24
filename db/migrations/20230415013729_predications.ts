@@ -7,13 +7,13 @@ import { Knex } from "knex";
 exports.up = function(knex : Knex) {
   return knex.schema.createTable('predications', (table) => {
     table.increments("entries").primary();
-    table.string('username');
+    table.string('uid');
     table.string('current_gameweek').nullable();
     table.integer('game_id')
     table.integer('home_predication').notNullable();
     table.integer('away_predication').notNullable();
-    table.boolean('home_winner_predication').nullable();
-    table.boolean('away_winner_predication').nullable();
+    table.boolean('home_win').nullable();
+    table.boolean('away_win').nullable();
   });
   
 };

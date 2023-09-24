@@ -1,21 +1,29 @@
-const scoreGen  = (
-  home: number, away: number, homeWin: Boolean, awayWin: Boolean, 
-  resultHome: number, resultAway: number, resultHomeWin: Boolean, resultAwayWin: Boolean
-  ) => {
+import { scoreGen as ScoreGenInterface } from "../../../globals";
+
+const scoreGen: ScoreGenInterface = (
+  predicatedHomeScore, 
+  predicatedAwayScore, 
+  predicatedHomeWin, 
+  predicatedAwayWin, 
+  actualHomeScore, 
+  actualAwayScore, 
+  actualHomeWin, 
+  actualAwayWin
+  )  => {
 
   let score = 0;
   let string = []
 
-    if (home === resultHome) {
+    if (predicatedHomeScore === actualHomeScore) {
       score+=20
       string.push('Home Score Correct')
-
     }
-    if (away === resultAway) {
+
+    if (predicatedAwayScore === actualAwayScore) {
       score+=20
       string.push('Away Score Correct')
     }
-    if (homeWin === resultHomeWin || awayWin === resultAwayWin) {
+    if (predicatedHomeWin === actualHomeWin || predicatedAwayWin === actualAwayWin) {
       score+=50
       string.push('Outcome Correct!')
     }

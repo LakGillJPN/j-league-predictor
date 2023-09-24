@@ -84,48 +84,124 @@ export default function PlayTest() {
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Make Your Predications!</h1>
 
-    
+
 
     {userPredications.length > 1 ? <Warning/> : <> 
 
     <form onSubmit={handleFormSubmit}> 
-
-    {fixtures.map((fixture: Fixture) => (
-    
-      <div className='fixtures-box' key={fixture.fixture_id}>
+ 
+      <div className='fixtures-box' key='868108'>
    
         <div className='predict-game'>  
           <div className='game-box'>
-            <div> <img className='logo' src={fixture.home_team_logo_url} />  </div>
-            <div> {fixture.home_team_name} </div>
+            <div> <img className='logo' src='https://media-4.api-sports.io/football/teams/55.png' />  </div>
+            <div> Brentford </div>
             </div>
 
         <div className='scorebox-container'>
-          <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
+          <input type="text" className="scorebox" name={`868108`} 
             maxLength={1} pattern="[0-9.]" min="0" max="10" 
             onChange={handleHomeChange} required></input>
             
         <div className="colon"></div>
   
-          <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
+          <input type="text" className="scorebox" name={`868108`} 
             maxLength={1} pattern="[0-9.]" min="0" max="10" 
             onChange={handleAwayChange} required></input> 
         </div>
 
         <div className='game-box'>
-          <div> <img className='logo' src={fixture.away_team_logo_url} /> </div>
-          <div> {fixture.away_team_name} </div>
+          <div> <img className='logo' src= 'https://media-4.api-sports.io/football/teams/47.png' /> </div>
+          <div> Tottenham </div>
         </div>
-        {/* <div className='date-and-time'>
-        <div className='date-and-time'>{`${new Date(fixture.date).toDateString()}`} </div>
-        <div className='date-and-time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
-        </div> */}
       </div>
-      
-
       <div className="space"></div>  
     </div>
-  ))}
+
+    <div className='fixtures-box' key='868110'>
+   
+        <div className='predict-game'>  
+          <div className='game-box'>
+            <div> <img className='logo' src='https://media-4.api-sports.io/football/teams/52.png' />  </div>
+            <div> Crystal Palace </div>
+            </div>
+
+        <div className='scorebox-container'>
+          <input type="text" className="scorebox" name={`868110`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleHomeChange} required></input>
+            
+        <div className="colon"></div>
+  
+          <input type="text" className="scorebox" name={`868110`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleAwayChange} required></input> 
+        </div>
+
+        <div className='game-box'>
+          <div> <img className='logo' src= 'https://media-4.api-sports.io/football/teams/36.png' /> </div>
+          <div> Fulham</div>
+        </div>
+      </div>
+      <div className="space"></div>  
+    </div>
+
+    <div className='fixtures-box' key='868111'>
+   
+        <div className='predict-game'>  
+          <div className='game-box'>
+            <div> <img className='logo' src='https://media-4.api-sports.io/football/teams/45.png' />  </div>
+            <div> Everton </div>
+            </div>
+
+        <div className='scorebox-container'>
+          <input type="text" className="scorebox" name={`868111`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleHomeChange} required></input>
+            
+        <div className="colon"></div>
+  
+          <input type="text" className="scorebox" name={`868111`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleAwayChange} required></input> 
+        </div>
+
+        <div className='game-box'>
+          <div> <img className='logo' src= 'https://media-4.api-sports.io/football/teams/39.png' /> </div>
+          <div> Wolves </div>
+        </div>
+      </div>
+      <div className="space"></div>  
+    </div>
+
+    <div className='fixtures-box' key='868113'>
+   
+        <div className='predict-game'>  
+          <div className='game-box'>
+            <div> <img className='logo' src='https://media-4.api-sports.io/football/teams/46.png' />  </div>
+            <div> Leicester </div>
+            </div>
+
+        <div className='scorebox-container'>
+          <input type="text" className="scorebox" name={`868113`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleHomeChange} required></input>
+            
+        <div className="colon"></div>
+  
+          <input type="text" className="scorebox" name={`868113`} 
+            maxLength={1} pattern="[0-9.]" min="0" max="10" 
+            onChange={handleAwayChange} required></input> 
+        </div>
+
+        <div className='game-box'>
+          <div> <img className='logo' src= 'https://media-4.api-sports.io/football/teams/34.png' /> </div>
+          <div> Newcastle </div>
+        </div>
+      </div>
+      <div className="space"></div>  
+    </div>
+ 
 
     <button type='submit'>SUBMIT</button>
   </form>

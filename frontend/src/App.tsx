@@ -25,7 +25,7 @@ function App() {
           <Route path="/play/" element ={<ProtectedRoute> <Play/> </ProtectedRoute>} />
           <Route path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
           <Route path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
-          <Route path="/play-test/" element ={<ProtectedRoute> <Play/> </ProtectedRoute>} />
+          <Route path="/play-test/" element ={<ProtectedRoute> <PlayTest/> </ProtectedRoute>} />
         </Routes>
         </HashRouter>
         </AuthContextProvider>

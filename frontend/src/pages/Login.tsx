@@ -30,13 +30,13 @@ export default function Login() {
     <Header/> 
     <form onSubmit={handleLogin}>
      
-      <label htmlFor="email">Email:</label>
+      <label data-testid="email">Email:</label>
       <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
 
       <label htmlFor="password">Password:</label>
-      <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+      <input data-testid="password-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
      
-      <button type="submit">Login</button>
+      <button data-testid="login-button" type="submit">Login</button>
     </form>
 
      <p>Don't have an account? <Link to='/signup'>Sign up here!</Link></p>

@@ -7,9 +7,11 @@ import { Knex } from "knex";
 exports.up = function(knex: Knex) {
   return knex.schema.createTable('users', function(table)  {
    table.increments('id').primary();
-   table.string('username').unique().notNullable();
-   table.string('email').unique().notNullable();
-   table.string('password').notNullable();
+   table.string('uid').unique().notNullable();
+   table.string('username', 20).unique().notNullable();
+   table.date('date_of_birth').notNullable();
+   table.string('location', 50).notNullable();
+   table.string('favourite_team', 50).notNullable(); 
   })
 };
 

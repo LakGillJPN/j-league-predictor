@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { UserAuth } from './AuthContext.tsx';
 
 export default function ProtectedRoute({ children }: { children: React.ReactNode }): JSX.Element {
-  const { user } = UserAuth();
+  const { user, uid } = UserAuth();
   
-  if (!user) {
+  if (!uid) {
     return <Navigate to='/login' />;
   }
 

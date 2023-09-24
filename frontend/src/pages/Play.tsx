@@ -46,7 +46,7 @@ export default function Play() {
     }));
   }
 
-  const resultArr = (home: object, away: object) => {
+  const predictArr = (home: object, away: object) => {
     const id : string[] = Object.keys(home);
     const homeScore : number[] = Object.values(home);
     const awayScore : number[] = Object.values(away);
@@ -61,7 +61,7 @@ export default function Play() {
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    const result = resultArr(homePredications, awayPredications);
+    const result = predictArr(homePredications, awayPredications);
     axios.post('/api/predications', {
       uid,
       predications: result,

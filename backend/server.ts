@@ -151,6 +151,7 @@ export function setupServer() {
           .join('fixtures', 'points.game_id', '=', 'fixtures.fixture_id')
           .where('uid', uid)
           .where('fixtures.gameweek', check[2])
+          //.where('fixtures.gameweek', 'Regular Season - 18')
           .delete();
       }));
       await Promise.all(
@@ -188,25 +189,35 @@ export function setupServer() {
     const { uid } = req.body;
     const points = await db('points').where('uid', uid).select('game_points');
     const gameweek = await db('points').where('uid', uid).select('gameweek');
-    const overall = points.reduce((prev: number, curr: { game_points: number}) => prev + curr.game_points, 0);
-
+    const overall = points.reduce((prev: number, curr: { game_points: number }) => prev + curr.game_points, 0);
+  
     try {
-      await db('overall')
-        .where('uid', uid)
-        //.where('gameweek', Object.values(gameweek[0]).toString())
-        .delete();
-      await db('overall').insert({
-        uid: uid,
-        gameweek: Object.values(gameweek[0]).toString(),
-        overall_points: overall
-      });
-      res.send('Overall inserted');
+      const existingOverallRecord = await db('overall').where('uid', uid).first();
+  
+      if (existingOverallRecord) {
+        // If a record exists, update it
+        await db('overall')
+          .where('uid', uid)
+          .update({
+            gameweek: Object.values(gameweek[0]).toString(),
+            overall_points: overall,
+          });
+        res.send('Overall updated');
+      } else {
+        // If no record exists, insert a new one
+        await db('overall').insert({
+          uid: uid,
+          gameweek: Object.values(gameweek[0]).toString(),
+          overall_points: overall,
+        });
+        res.send('Overall inserted');
+      }
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal server error');
     }
   });
-
+  
   return app;
 };
 

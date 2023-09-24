@@ -1,4 +1,4 @@
-import { Game } from "./globals";
+import { API_Data } from "./globals";
 
 const axios = require('axios')
 
@@ -20,7 +20,7 @@ async function getFixturesData() {
     
     const response = await axios.request(options);
     const data = response.data.response;
-    data.map((game: Game) => fixturesData.push([
+    data.map((game: API_Data) => fixturesData.push([
       game.fixture.id,
       game.league.round,
       game.teams.home.name,

@@ -77,25 +77,25 @@ export function setupServer() {
     };
 
     try {
-      if (typeof req.body.userEmail !== 'string') {
-        throw new Error('userEmail must be a string')
+      if (typeof req.body.uid !== 'string') {
+        throw new Error('uid must be a string')
       }
       await Promise.all(req.body.predications.map(async (check: any[]) => {
         await db('predications')
-          .join('fixtures', 'predications.game_id', '=', 'fixtures.id')
-          .where('username', req.body.userEmail)
+          .join('fixtures', 'predications.game_id', '=', 'fixtures.fixture_id')
+          .where('uid', req.body.uid)
           .where('game_id', check[0])
           .delete();
       }));
       await Promise.all(req.body.predications.map(async (predict: Boolean[]) => {
         await db('predications').insert({
-          username: req.body.userEmail,
+          uid: req.body.uid,
           current_gameweek: req.body.current_gameweek,
           game_id: predict[0],
           home_predication: predict[1],
           away_predication: predict[2],
-          home_winner_predication: homeCheck(predict[1], predict[2]),
-          away_winner_predication: awayCheck(predict[1], predict[2]),
+          home_win: homeCheck(predict[1], predict[2]),
+          away_win: awayCheck(predict[1], predict[2]),
         });
       }));
       res.send('Data entered into the predications table!').status(200);
@@ -116,29 +116,31 @@ export function setupServer() {
   // Create a query to compare the actual results and the predicated results
   app.get('/api/results', async (req: Request, res: Response) => {
     const results = await db('fixtures')
-      .join('predications', 'fixtures.id', '=', 'predications.game_id')
+      .join('predications', 'fixtures.fixture_id', '=', 'predications.game_id')
       .select(
-        'username',
+        'predications.uid',
         'fixtures.gameweek',
-        'home_team',
-        'away_team',
-        'fixtures.id',
-        'isFinished',
-        'home_winner',
-        'away_winner',
-        'home_score',
-        'away_score',
-        'home_predication',
-        'away_predication',
-        'home_winner_predication',
-        'away_winner_predication')
-    .where('isFinished', 'FT');
-    res.send(results)
-  })
+        'fixtures.home_team_name',
+        'fixtures.away_team_name',
+        'fixtures.fixture_id',
+        'fixtures.isFinished',
+        'fixtures.did_home_team_win',
+        'fixtures.did_away_team_win',
+        'fixtures.home_team_score',
+        'fixtures.away_team_score',
+        'predications.home_predication',
+        'predications.away_predication',
+        'predications.home_win',
+        'predications.away_win'
+      )
+      .where('fixtures.isFinished', 'FT');
+    res.send(results);
+  });
+  
 
   // Insert the user's points into the database
   app.post('/api/points', async (req: Request, res: Response) => {
-    const { userEmail, points } = req.body;
+    const { uid, points } = req.body;
     if (!points || points.length === 0) {
       return res.status(400).send('Points array is empty');
     }
@@ -146,16 +148,17 @@ export function setupServer() {
     try {
       await Promise.all(points.map(async (check: any[]) => {
         await db('points')
-          .join('fixtures', 'points.game_id', '=', 'fixtures.id')
-          .where('username', userEmail)
+          .join('fixtures', 'points.game_id', '=', 'fixtures.fixture_id')
+          .where('uid', uid)
           .where('fixtures.gameweek', check[2])
+          //.where('fixtures.gameweek', 'Regular Season - 18')
           .delete();
       }));
       await Promise.all(
       
         points.map(([gamePoints, gameId, gameweek]: [number, number, string]) =>
           db('points').insert({
-            username: userEmail,
+            uid: uid,
             game_id: gameId,
             gameweek: gameweek,
             game_points: gamePoints,
@@ -183,28 +186,38 @@ export function setupServer() {
 
   // Send the user's weekly total to the overall table 
   app.post('/api/overall', async (req: Request, res: Response) => {
-    const { userEmail } = req.body;
-    const points = await db('points').where('username', userEmail).select('game_points');
-    const gameweek = await db('points').where('username', userEmail).select('gameweek');
-    const overall = points.reduce((prev: number, curr: { game_points: number}) => prev + curr.game_points, 0);
-
+    const { uid } = req.body;
+    const points = await db('points').where('uid', uid).select('game_points');
+    const gameweek = await db('points').where('uid', uid).select('gameweek');
+    const overall = points.reduce((prev: number, curr: { game_points: number }) => prev + curr.game_points, 0);
+  
     try {
-      await db('overall')
-        .where('username', userEmail)
-        //.where('gameweek', Object.values(gameweek[0]).toString())
-        .delete();
-      await db('overall').insert({
-        username: userEmail,
-        gameweek: Object.values(gameweek[0]).toString(),
-        overall_points: overall
-      });
-      res.send('Overall inserted');
+      const existingOverallRecord = await db('overall').where('uid', uid).first();
+  
+      if (existingOverallRecord) {
+        // If a record exists, update it
+        await db('overall')
+          .where('uid', uid)
+          .update({
+            gameweek: Object.values(gameweek[0]).toString(),
+            overall_points: overall,
+          });
+        res.send('Overall updated');
+      } else {
+        // If no record exists, insert a new one
+        await db('overall').insert({
+          uid: uid,
+          gameweek: Object.values(gameweek[0]).toString(),
+          overall_points: overall,
+        });
+        res.send('Overall inserted');
+      }
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal server error');
     }
   });
-
+  
   return app;
 };
 

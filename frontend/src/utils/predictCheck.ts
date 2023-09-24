@@ -1,4 +1,4 @@
-const homeCheck = (home : Boolean, away : Boolean) => {
+const homeCheck = (home : number, away : number) => {
   if (home > away) {
     return true;
   }
@@ -9,7 +9,7 @@ const homeCheck = (home : Boolean, away : Boolean) => {
   }
 };
 
-const awayCheck = (home: Boolean, away: Boolean) => {
+const awayCheck = (home: number, away: number) => {
   if (home < away) {
     return true;
   }

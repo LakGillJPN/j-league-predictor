@@ -3,7 +3,7 @@ import db from './knex';
 import path from 'path';
 import {  Request, Response } from 'express';
 import { Points } from '../globals';
-
+import { homeCheck, awayCheck } from '../frontend/src/utils/predictCheck';
 
 export function setupServer() {
   const app = express();
@@ -54,28 +54,6 @@ export function setupServer() {
 
   // Send the user's predication into the database
   app.post('/api/predications', async (req: Request, res: Response) => {
-    const homeCheck = (home : Boolean, away : Boolean) => {
-      if (home > away) {
-        return true;
-      }
-      if (home < away) {
-        return false;
-      } else {
-        return null;
-      }
-    };
-
-    const awayCheck = (home: Boolean, away: Boolean) => {
-      if (home < away) {
-        return true;
-      }
-      if (home > away) {
-        return false;
-      } else {
-        return null;
-      }
-    };
-
     try {
       if (typeof req.body.uid !== 'string') {
         throw new Error('uid must be a string')
@@ -87,7 +65,7 @@ export function setupServer() {
           .where('game_id', check[0])
           .delete();
       }));
-      await Promise.all(req.body.predications.map(async (predict: Boolean[]) => {
+      await Promise.all(req.body.predications.map(async (predict: number[]) => {
         await db('predications').insert({
           uid: req.body.uid,
           current_gameweek: req.body.current_gameweek,

@@ -47,13 +47,19 @@ describe('GET /api/gameweek', () => {
 });
 
 const payload = 
-{ userEmail: "joe@nufc.com",
+{ uid: "123456789",
   predications: [ [300001, 0, 1], [400001, 1, 3] ],
   current_gameweek: 'Gameweek 12'
 }
 
 const fakeload = {
-  userEmail: [880],
+  uid: [],
+  predications: [ [300001, 0, 1], [400001, 1, 3] ],
+  current_gameweek: 'Gameweek 12'
+}
+
+const fakeload2 = {
+  uid: '123457',
   predications: [ [300001, 'num', 1], [400001, 1, 3] ],
   current_gameweek: []
 }
@@ -67,9 +73,18 @@ describe('POST /api/predications', () => {
     expect(response.body).toBeDefined(); // Check that the response contains data
   })
 
-  it('should not enter the data into the table with the payload is incorrect ', async () => {
+  
+
+  it('should not enter the data into the table when the uid is not a string ', async () => {
     const response = await request(app).post('/api/predications')
     .send(fakeload);
+    expect(response.text).toBe('Error occurred while entering data!')
+   // expect(response.status).toBe(500);
+  })
+
+  it('should not enter the data into the table when the gameweek is not a string ', async () => {
+    const response = await request(app).post('/api/predications')
+    .send(fakeload2);
     expect(response.text).toBe('Error occurred while entering data!')
    // expect(response.status).toBe(500);
   })
@@ -82,3 +97,4 @@ describe('GET /api/predications', () => {
     expect(response.body).toBeDefined(); // Check that the response contains data
   })
 });
+

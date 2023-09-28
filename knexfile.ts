@@ -33,10 +33,7 @@ module.exports = {
     seeds: {
       directory: "./db/seeds",
     },
-    ssl: {
-      sslmode: require,
-      rejectUnauthorized: false, // You may need this line if using self-signed certificates (for development purposes)
-    },
+     sslmode: require,
   },
 
   test: {

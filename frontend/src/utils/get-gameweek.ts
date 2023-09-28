@@ -38,8 +38,8 @@ export async function getGameweek(){
   const nextWeek = getNextGameweek(gameString)
   const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
   const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS');
-  return `Regular Season - 18`  // for testing purposes
-  //return areAllFinishedNS === true ? gameString : nextWeek;
+  //return `Regular Season - 18`  // FOR TESTING PURPOSES
+  return areAllFinishedNS === true ? gameString : nextWeek;
 }
 
 export async function playGameweek(setter: (arg0: any) => void) {

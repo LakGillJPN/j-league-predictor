@@ -9,8 +9,8 @@ async function getTotal(setter: (arg0: any) => void, uid: string) {
     const lastweek = await getLastGameweek(gameweek)
     setter(fetchedData.data.filter(
       (data: Predication) => 
-      data.gameweek === 'Regular Season - 18' && 
-      //data.gameweek === lastweek && 
+      //data.gameweek === 'Regular Season - 18' &&  - FOR TESTING PURPOSES
+      data.gameweek === lastweek && 
       data.uid === uid 
     )
     .map((data: Predication) => data.game_points)

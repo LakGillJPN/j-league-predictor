@@ -14,6 +14,8 @@ export default function EntryForm() {
   const handleFormSubmit = () => {
 
   }
+
+  // DOB, Location, Favourite Team
   
   return (
     <> 
@@ -25,6 +27,11 @@ export default function EntryForm() {
     <input type="text" id="Username" name="Username" minLength={5}maxLength={15} onChange={handleUsername}/> 
       <p className= 'usernameLength'>Username should be between 5-15 characters</p>
     </div>
+
+    <div><input type="date" /> </div>
+    
+
+    
 
 
     </form>

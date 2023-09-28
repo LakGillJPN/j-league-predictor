@@ -33,7 +33,9 @@ module.exports = {
     seeds: {
       directory: "./db/seeds",
     },
-     sslmode: require,
+    ssl: {
+      rejectUnauthorized: false, // Set this to true if your PostgreSQL server uses a self-signed SSL certificate
+    },
   },
 
   test: {

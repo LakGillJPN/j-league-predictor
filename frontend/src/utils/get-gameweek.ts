@@ -30,7 +30,7 @@ export async function getGameweek(){
     return date;
   }
 
-  const fetchedFixs = await axios.get('/api/fixtures');
+  const fetchedFixs = await axios.get('https://j-league-backend.vercel.app/api/fixtures');
   const date = addHours(new Date(),2)
   const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
   const gameString = weekData[0].gameweek

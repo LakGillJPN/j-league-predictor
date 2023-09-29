@@ -49,11 +49,11 @@ export default function Results() {
   useEffect(() => {
     const postPoints = async () => {
       try {
-        await axios.post('api/points', {
+        await axios.post('https://j-league-backend.vercel.app/api/points', {
           uid: uid || '', // Provide a default value when userEmail is null
           points
         });
-        await axios.post('api/overall', {
+        await axios.post('https://j-league-backend.vercel.app/api/overall', {
           uid: uid || '' // Provide a default value when userEmail is null
         });
       } catch (error) {

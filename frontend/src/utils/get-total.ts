@@ -4,7 +4,7 @@ import { Predication } from "../../../globals";
 
 async function getTotal(setter: (arg0: any) => void, uid: string) {
   try {
-    const fetchedData = await axios.get('api/total');
+    const fetchedData = await axios.get('https://j-league-backend.vercel.app/api/total');
     const gameweek = await getGameweek()
     const lastweek = await getLastGameweek(gameweek)
     setter(fetchedData.data.filter(

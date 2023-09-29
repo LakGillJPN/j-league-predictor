@@ -62,7 +62,7 @@ export default function Play() {
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const result = predictArr(homePredications, awayPredications);
-    axios.post('/api/predications', {
+    axios.post('https://j-league-backend.vercel.app/api/predications', {
       uid,
       predications: result,
       current_gameweek: gameweek

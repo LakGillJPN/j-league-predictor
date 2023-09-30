@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 async function getFixtures(setter: { (value: SetStateAction<never[]>): void; (arg0: any): void; }) {
   const fetchedFixs = await axios.get( fixString);
+  console.log(fixString)
   const gameweek = await getGameweek()
   //const weekData = fetchedFixs.data.filter((data : Fixture) => data.isFinished === 'NS')
   //console.log(weekData.filter((data : Fixture) => data.gameweek === gameweek))

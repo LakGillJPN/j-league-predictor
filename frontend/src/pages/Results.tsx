@@ -49,7 +49,7 @@ export default function Results() {
   useEffect(() => {
     const postPoints = async () => {
       try {
-        await axios.post('https://j-league-backend.vercel.app/api/points', {
+        await axios.post( `${process.env.WEBSITE_URL}/api/points`, {
           uid: uid || '', // Provide a default value when userEmail is null
           points
         });
@@ -60,6 +60,7 @@ export default function Results() {
         console.error(error);
       }
     };
+
 
     if (points.length > 0) {
       // make sure the array has been populated

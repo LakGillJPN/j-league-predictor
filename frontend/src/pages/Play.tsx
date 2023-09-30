@@ -9,7 +9,7 @@ import Warning from '../components/Warning.tsx';
 import { useNavigate } from 'react-router-dom';
 import { playGameweek } from '../utils/get-gameweek.ts';
 //import CountdownTimer from '../components/CountdownTimer.jsx';
-import { Fixture } from "../../../globals";
+import { Fixture } from "../../globals";
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);

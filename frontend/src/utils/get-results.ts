@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Fixture, Predication } from "../../../globals";
+import { Fixture, Predication } from "../../globals";
 
 async function getResults (setter: (arg0: any) => void, uid: string) {
   try {

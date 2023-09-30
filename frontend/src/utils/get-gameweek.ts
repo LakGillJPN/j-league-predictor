@@ -1,4 +1,4 @@
-import { Fixture } from "../../../globals";
+import { Fixture } from "../../globals";
 import axios from "axios";
 
 export const getGameweekNum = (gameweek : string) => {

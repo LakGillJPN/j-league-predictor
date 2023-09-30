@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getGameweek, getLastGameweek } from "./get-gameweek.ts";
-import { Predication } from "../../../globals";
+import { Predication } from "../../globals";
 
 async function getTotal(setter: (arg0: any) => void, uid: string) {
   try {

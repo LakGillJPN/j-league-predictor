@@ -1,4 +1,4 @@
-import { scoreGen as ScoreGenInterface } from "../../../globals";
+import { scoreGen as ScoreGenInterface } from "../../globals";
 
 const scoreGen: ScoreGenInterface = (
   predicatedHomeScore, 

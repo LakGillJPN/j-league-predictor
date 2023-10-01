@@ -45,3 +45,27 @@ export const totalAPICall = () => {
   }
   return totalString;
 }
+
+export const overallAPICall = () => {
+  let overallString : string;
+  const apiUrl = process.env.WEBSITE_URL || 'https://j-league-backend.vercel.app/api/overall';
+
+  if (process.env.NODE_ENV === 'development') {
+    overallString = '/api/total'
+  } else {
+    overallString = apiUrl
+  }
+  return overallString;
+}
+
+export const pointsAPICall = () => {
+  let pointsString : string;
+  const apiUrl = process.env.WEBSITE_URL || 'https://j-league-backend.vercel.app/api/points';
+
+  if (process.env.NODE_ENV === 'development') {
+    pointsString = '/api/points' 
+  } else {
+    pointsString = apiUrl
+  }
+  return pointsString;
+}

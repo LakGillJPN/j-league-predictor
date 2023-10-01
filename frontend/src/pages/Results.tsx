@@ -7,6 +7,7 @@ import scoreGen from '../utils/scoreGen.ts';
 import './Results.css';
 import axios from 'axios';
 import { Result } from '../../globals';
+import { pointsAPICall, overallAPICall } from '../utils/api-calls.ts';
 
 export default function Results() {
   let { uid } = UserAuth();
@@ -49,11 +50,11 @@ export default function Results() {
   useEffect(() => {
     const postPoints = async () => {
       try {
-        await axios.post( `${process.env.WEBSITE_URL}/api/points`, {
+        await axios.post( pointsAPICall(), {
           uid: uid || '', // Provide a default value when userEmail is null
           points
         });
-        await axios.post('https://j-league-backend.vercel.app/api/overall', {
+        await axios.post( overallAPICall(), {
           uid: uid || '' // Provide a default value when userEmail is null
         });
       } catch (error) {

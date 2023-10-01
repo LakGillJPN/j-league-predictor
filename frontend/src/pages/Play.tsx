@@ -16,7 +16,7 @@ export default function Play() {
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
   const [gameweek, setGameweek] = useState<string[]>([]);
-  const {userEmail, userPredications, uid} = UserAuth();
+  const { userPredications, uid} = UserAuth();
 
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ export default function Play() {
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const result = predictArr(homePredications, awayPredications);
-    axios.post('/api/predications', {
+    axios.post('https://j-league-backend.vercel.app/api/predications', {
       uid,
       predications: result,
       current_gameweek: gameweek
@@ -94,7 +94,7 @@ export default function Play() {
    
         <div className='predict-game'>  
           <div className='game-box'>
-            <div> <img className='logo' src={fixture.home_team_logo_url} />  </div>
+            <div> <img className='logo' src={fixture.home_team_logo_url} alt="Home Team Logo"/>  </div>
             <div> {fixture.home_team_name} </div>
             </div>
 
@@ -111,7 +111,7 @@ export default function Play() {
         </div>
 
         <div className='game-box'>
-          <div> <img className='logo' src={fixture.away_team_logo_url} /> </div>
+          <div> <img className='logo' src={fixture.away_team_logo_url} alt="Away Team Logo"/> </div>
           <div> {fixture.away_team_name} </div>
         </div>
         {/* <div className='date-and-time'>

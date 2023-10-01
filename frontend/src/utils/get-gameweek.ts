@@ -30,7 +30,7 @@ export async function getGameweek(){
     return date;
   }
 
-  const fetchedFixs = await axios.get('/api/fixtures');
+  const fetchedFixs = await axios.get('https://j-league-backend.vercel.app/api/fixtures');
   const date = addHours(new Date(),2)
   const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
   const gameString = weekData[0].gameweek
@@ -38,8 +38,8 @@ export async function getGameweek(){
   const nextWeek = getNextGameweek(gameString)
   const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
   const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS');
-  return `Regular Season - 18`  // for testing purposes
-  //return areAllFinishedNS === true ? gameString : nextWeek;
+  //return `Regular Season - 18`  // FOR TESTING PURPOSES
+  return areAllFinishedNS === true ? gameString : nextWeek;
 }
 
 export async function playGameweek(setter: (arg0: any) => void) {

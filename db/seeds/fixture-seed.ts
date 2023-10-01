@@ -4,7 +4,7 @@
  */
 
 import {Knex} from "knex"
-import { Fixture } from "../../globals";
+import { Fixture } from "../../frontend/globals";
 
 const { getFixturesData } = require('../../fixtures');
 

@@ -1,5 +1,6 @@
-import { Fixture } from "../../../globals";
+import { Fixture } from "../../globals";
 import axios from "axios";
+import { fixtureAPICall } from "./api-calls.ts"
 
 export const getGameweekNum = (gameweek : string) => {
   if (isNaN(parseInt(gameweek[gameweek.length-2]))) {
@@ -30,11 +31,10 @@ export async function getGameweek(){
     return date;
   }
 
-  const fetchedFixs = await axios.get('https://j-league-backend.vercel.app/api/fixtures');
+  const fetchedFixs = await axios.get(fixtureAPICall());
   const date = addHours(new Date(),2)
   const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
   const gameString = weekData[0].gameweek
-  //console.log(weekData[0].date)
   const nextWeek = getNextGameweek(gameString)
   const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
   const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS');

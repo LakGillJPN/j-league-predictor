@@ -5,7 +5,7 @@ import { getGameweekNum } from '../utils/get-gameweek.ts';
 import getFixtures from '../utils/get-fixtures.ts'; // import the fixture list
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './FixturesCarousel.css';
-import { Fixture } from '../../../globals'
+import { Fixture } from '../../globals'
 
 export default function FixturesCarousel() {
   const [fixtures, setFixtures] = useState([]);

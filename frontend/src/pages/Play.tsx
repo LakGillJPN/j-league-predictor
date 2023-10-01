@@ -9,7 +9,8 @@ import Warning from '../components/Warning.tsx';
 import { useNavigate } from 'react-router-dom';
 import { playGameweek } from '../utils/get-gameweek.ts';
 //import CountdownTimer from '../components/CountdownTimer.jsx';
-import { Fixture } from "../../../globals";
+import { Fixture } from "../../globals";
+import { predicationsAPICall } from '../utils/api-calls.ts';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
@@ -27,7 +28,7 @@ export default function Play() {
 
   useEffect( () => {
     playGameweek(setGameweek)
-  },[])
+  },[gameweek])
 
 
   const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {
@@ -62,7 +63,7 @@ export default function Play() {
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const result = predictArr(homePredications, awayPredications);
-    axios.post('https://j-league-backend.vercel.app/api/predications', {
+    axios.post(predicationsAPICall(), {
       uid,
       predications: result,
       current_gameweek: gameweek

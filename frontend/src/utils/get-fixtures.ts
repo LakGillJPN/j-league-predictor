@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getGameweek } from './get-gameweek.ts';
 import { Fixture } from '../../globals';
 import { SetStateAction } from 'react';
-import { fixtureAPICall } from './api-calls.tsx';
+import { fixtureAPICall } from './api-calls.ts';
 
 async function getFixtures(setter: { (value: SetStateAction<never[]>): void; (arg0: any): void; }) {
   const fetchedFixs = await axios.get(fixtureAPICall());

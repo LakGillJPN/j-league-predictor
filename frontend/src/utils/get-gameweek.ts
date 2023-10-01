@@ -1,6 +1,16 @@
 import { Fixture } from "../../globals";
 import axios from "axios";
 
+let fixString : string;
+const apiUrl = process.env.WEBSITE_URL || 'https://j-league-backend.vercel.app/api/fixtures';
+
+if (process.env.NODE_ENV === 'development') {
+  fixString = '/api/fixtures' 
+} else {
+  fixString = apiUrl
+}
+
+
 export const getGameweekNum = (gameweek : string) => {
   if (isNaN(parseInt(gameweek[gameweek.length-2]))) {
     return gameweek[gameweek.length-1]

@@ -6,7 +6,7 @@ import { fixtureAPICall } from './api-calls.ts';
 
 async function getFixtures(setter: { (value: SetStateAction<never[]>): void; (arg0: any): void; }) {
   const fetchedFixs = await axios.get(fixtureAPICall());
-  console.log(fixtureAPICall(), 'the function')
+  //console.log(fixtureAPICall(), 'the function')
   const gameweek = await getGameweek()
   //const weekData = fetchedFixs.data.filter((data : Fixture) => data.isFinished === 'NS')
   //console.log(weekData.filter((data : Fixture) => data.gameweek === gameweek))

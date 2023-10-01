@@ -28,7 +28,7 @@ export default function Play() {
 
   useEffect( () => {
     playGameweek(setGameweek)
-  },[])
+  },[gameweek])
 
 
   const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {

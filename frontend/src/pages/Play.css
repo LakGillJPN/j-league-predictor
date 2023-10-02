@@ -3,6 +3,14 @@ form {
   padding: 50px;
 }
 
+.fixtures-container {
+  display: grid;
+  border: 3px solid black;
+  width: 1000px;
+  justify-content: space-around;
+}
+
+
 .play-header {
   font-size: 60px;
   margin: 30px, auto;
@@ -15,34 +23,44 @@ form {
 }
 
 .predict-game {
- font-size: 50px;
  text-align: center;
  background-color: white;
  display: flex;
+ flex-direction: row;
+ justify-content: space-around;
  align-items: center;
- width: 900px;
+ width: 90%;
+ max-width: 600px;
  border-radius: 25px;
  margin: auto;
  padding-top: 20px;
  padding-bottom: 20px;
+ border: 3px solid blue;
 }
+
+
 
 .logo {
   height: 80px;
 }
 
 .game-box {
- width: 750px;
+ width: 300px;
+ height: 250px;
  font-size: 50px;
+ border: 3px solid lightgreen;
 }
 
 .scorebox-container {
   display: flex;
+  border: 3px solid yellow;
 }
 
 .scorebox {
- width: 50px;
+ width: 70px;
+ height: 70px;
  text-align: center;
+ border: 3px solid purple;
 }
 
 .space {

@@ -80,15 +80,16 @@ export default function Play() {
 
   return (
     <>
+
     <Header/>
     {/* <h1>You've got until:</h1>
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Make Your Predications!</h1>
 
-    {userPredications.length > 1 ? <Warning/> : <> 
+    {userPredications.length > 1 ? <Warning/> : <div className='wrapper'> 
 
     <form onSubmit={handleFormSubmit}> 
-
+    <div className=" fixtures-container">
     {fixtures.map((fixture: Fixture) => (
     
       <div className='fixtures-box' key={fixture.fixture_id}>
@@ -125,10 +126,12 @@ export default function Play() {
       <div className="space"></div>  
     </div>
   ))}
+  </div>
 
     <button type='submit'>SUBMIT</button>
   </form>
-  </>}
+  
+  </div>}
 </>
  )
 }

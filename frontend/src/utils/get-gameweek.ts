@@ -2,7 +2,7 @@ import { Fixture } from "../../globals";
 import axios from "axios";
 import { fixtureAPICall } from "./api-calls.ts"
 
-export const getGameweekNum = (gameweek : string) => {
+export const getGameweekNum = (gameweek : string | string[]) => {
   if (isNaN(parseInt(gameweek[gameweek.length-2]))) {
     return gameweek[gameweek.length-1]
   }

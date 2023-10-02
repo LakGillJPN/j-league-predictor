@@ -7,7 +7,7 @@ import { UserAuth,} from '../context/AuthContext.tsx';
 import axios from 'axios';
 import Warning from '../components/Warning.tsx';
 import { useNavigate } from 'react-router-dom';
-import { playGameweek } from '../utils/get-gameweek.ts';
+import { playGameweek, getGameweekNum } from '../utils/get-gameweek.ts';
 //import CountdownTimer from '../components/CountdownTimer.jsx';
 import { Fixture } from "../../globals";
 import { predicationsAPICall } from '../utils/api-calls.ts';
@@ -16,7 +16,7 @@ export default function Play() {
   const [fixtures, setFixtures] = useState([]);
   const [homePredications, setHomePredications] = useState([]);
   const [awayPredications, setAwayPredications] = useState([]);
-  const [gameweek, setGameweek] = useState<string[]>([]);
+  const [gameweek, setGameweek] = useState<string[] >([]);
   const { userPredications, uid} = UserAuth();
 
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ export default function Play() {
     <Header/>
     {/* <h1>You've got until:</h1>
       <CountdownTimer deadline={Date(deadline)} /> */}
-    <h1 className='play-header'>Make Your Predications!</h1>
+    <h1 className='play-header'>Gameweek {getGameweekNum(gameweek)}</h1>
 
     {userPredications.length > 1 ? <Warning/> : <div className='wrapper'> 
 

@@ -2,11 +2,13 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/LakGillJPN/j-league-predictor) ![GitHub issues](https://img.shields.io/github/issues/LakGillJPN/j-league-predictor) 
 
+<h1 align=center> Frontend </h1>
 
+For the Backend Repository, [click here](https://github.com/LakGillJPN/j-league-backend)
 
 The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games and earn points for accuracy.
 
-Deployment: https://j-league-predictor.onrender.com/
+Deployment: https://j-league-predictor.vercel.app/
 
 ## Contents
 - [Tech-Stack](#tech-stack)
@@ -23,14 +25,11 @@ Deployment: https://j-league-predictor.onrender.com/
 | Task       | Tech        |
 | ---------- | ----------- |
 | Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
-| Frontend Framework  | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  |
-|  Frontend Testing  | ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)  |
-| Backend Framework  | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)   |
-|  Backend Testing  | ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)  |
+| Framework  | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  |
+|  Testing  | ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)  |
 |  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
-|  Database | ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) |
 
-
+Click [here](https://github.com/LakGillJPN/j-league-backend#tech-stack) for the Backend Tech Stack 
 
 
 
@@ -114,7 +113,6 @@ The results of the previous gameweek are compared to the user's predication and 
 
 # Goals
 - To have the application fully functional for the start of the next J-League season
-- To have the app deployed on either AWS or Heroku
 
 
 <!---

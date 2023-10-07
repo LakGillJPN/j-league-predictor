@@ -116,11 +116,13 @@ export default function Play() {
           <div> <img className='logo' src={fixture.away_team_logo_url} alt="Away Team Logo"/> </div>
           <div> {fixture.away_team_name} </div>
         </div>
-        {/* <div className='date-and-time'>
-        <div className='date-and-time'>{`${new Date(fixture.date).toDateString()}`} </div>
-        <div className='date-and-time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
-        </div> */}
+        
+       
       </div>
+       <div className='date-and-time-wrapper'> 
+          <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
+          <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
+        </div> 
       
 
       <div className="space"></div>  

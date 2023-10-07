@@ -9,14 +9,16 @@ form {
   margin: 0 auto; /* Center the element */
   display: flex;
   flex-direction: column;
+  /* border: 3px solid green; */
+  margin-bottom: 10px;
 }
 
 .fixtures-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Use wrap instead of inherit */
+  flex-wrap: wrap; 
   /* border: 6px solid pink; */
-  max-width: 100%; /* Limit the width of the container */
+  max-width: 100%; 
 }
 
 
@@ -39,12 +41,11 @@ form {
  justify-content: space-around;
  align-items: center;
  width: 100%;
- border-radius: 25px;
+ border-radius: 25px 25px;
  margin: auto;
  padding-top: 20px;
  padding-bottom: 20px;
-
- /* border: 3px solid blue; */
+ /* border: 3px solid yellow; */
 }
 
 
@@ -83,11 +84,29 @@ form {
 
 
 /* Need to fix this */
-.date-and-time {
-  display: grid;
-  grid-template-rows: 2fr;
+.date {
+  display: flex;
+  flex-direction: column; /* Display date and time in separate rows */
   align-items: center;
   margin: auto;
   justify-content: center;
-  border: 3px solid red;
+  font-size: 30px;
+  width: 100%; /*
+  margin-bottom: 5px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column; /* Display date and time in separate rows */
+  align-items: center;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 5px;
+
+}
+
+.date-and-time-wrapper {
+  border-radius:  25px 25px;
+  background-color: white;
+  margin-top: -35px;
 }

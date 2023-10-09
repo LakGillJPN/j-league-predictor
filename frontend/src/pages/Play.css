@@ -68,9 +68,22 @@ form {
 
 .scorebox {
  width: 40px;
- /* height: 70px; */
  text-align: center;
- /* border: 3px solid purple; */
+ border: 3px solid purple;
+ /* New Scorebox*/
+ 
+}
+
+.score {
+  font-size: 30px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.plus-and-minus{
+  border: 3px solid limegreen;
+  color: red;
+  font-size: 25px;
 }
 
 .colon {
@@ -90,8 +103,9 @@ form {
   align-items: center;
   margin: auto;
   justify-content: center;
-  font-size: 30px;
-  width: 100%; /*
+  font-size: 28px;
+  width: 100%; 
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 

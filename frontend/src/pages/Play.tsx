@@ -11,11 +11,13 @@ import { playGameweek, getGameweekNum } from '../utils/get-gameweek.ts';
 //import CountdownTimer from '../components/CountdownTimer.jsx';
 import { Fixture } from "../../globals";
 import { predicationsAPICall } from '../utils/api-calls.ts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState([]);
-  const [homePredications, setHomePredications] = useState([]);
-  const [awayPredications, setAwayPredications] = useState([]);
+  const [homePredications, setHomePredications] = useState<number[]>([]);
+  const [awayPredications, setAwayPredications] = useState<number[]>([]);
   const [gameweek, setGameweek] = useState<string[] >([]);
   const { userPredications, uid} = UserAuth();
 
@@ -23,22 +25,43 @@ export default function Play() {
 
 
   useEffect(() => {
-    getFixtures(setFixtures) 
-  },[])
+    getFixtures(setFixtures)
+      .then(fixturesData => {
+        setHomePredications(Array(10).fill(0));
+        setAwayPredications(Array(10).fill(0));
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
-  useEffect( () => {
-    playGameweek(setGameweek)
-  },[gameweek])
+    playGameweek(setGameweek);
+  }, []);
+
+  useEffect(() => {
+    console.log(homePredications)
+  })
+
+  // useEffect( () => {
+  //   playGameweek(setGameweek)
+  // },[gameweek])
 
 
-  const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {
-    const { name, value } = event.target;
-    setHomePredications(prevState => ({
-      ...prevState,
-      [name]: parseInt(value)
-    }));
-  }
+  // const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {
+  //   const { name, value } = event.target;
+  //   setHomePredications(prevState => ({
+  //     ...prevState,
+  //     [name]: parseInt(value)
+  //   }));
+  // }
 
+  const handleHomeChange = (index: any ) => {
+    setHomePredications(prevState => {
+      const updatedPredictions = [...prevState];
+      updatedPredictions[index] += 1;
+      return updatedPredictions;
+    });
+  };
+  
   const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
     const { name, value } = event.target;
     setAwayPredications(prevState => ({
@@ -62,7 +85,7 @@ export default function Play() {
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    const result = predictArr(homePredications, awayPredications);
+    const result = predictArr([homePredications], awayPredications);
     axios.post(predicationsAPICall(), {
       uid,
       predications: result,
@@ -90,7 +113,7 @@ export default function Play() {
 
     <form onSubmit={handleFormSubmit}> 
     <div className=" fixtures-container">
-    {fixtures.map((fixture: Fixture) => (
+    {fixtures.map((fixture: Fixture, index) => (
     
       <div className='fixtures-box' key={fixture.fixture_id}>
    
@@ -101,9 +124,14 @@ export default function Play() {
             </div>
 
         <div className='scorebox-container'>
-          <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
+          <div className="score-box">
+           <p onClick={() => handleHomeChange(index)} className="plus-and-minus"><FontAwesomeIcon icon={faCirclePlus} /></p>
+           <p className="score">{homePredications[index]}</p>
+           <p className="plus-and-minus"><FontAwesomeIcon icon={faMinusCircle} /></p>
+          </div> 
+          {/* <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
             maxLength={1} pattern="[0-9.]" min="0" max="10" 
-            onChange={handleHomeChange} required></input>
+            onChange={handleHomeChange} required></input> */}
             
         <div className="colon"></div>
   

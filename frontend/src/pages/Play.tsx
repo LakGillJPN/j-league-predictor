@@ -16,7 +16,8 @@ import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Play() {
   const [fixtures, setFixtures] = useState<Fixture[]>([]);
-  const [homePredications, setHomePredications] = useState<number[]>([]);
+  const [homePredications, setHomePredications] = useState<{ [key: string]: number }>({});
+  const [fixtureOrder, setFixtureOrder] = useState<string[]>([]);
   const [awayPredications, setAwayPredications] = useState<number[]>([]);
   const [fixtureID, setFixtureID] = useState<string>([])
   const [gameweek, setGameweek] = useState<string[] >([]);
@@ -42,9 +43,7 @@ export default function Play() {
     console.log(homePredications)
   },[homePredications])
 
-  useEffect(() => {
-    console.log(fixtureID)
-  },[fixtureID])
+
 
   // useEffect( () => {
   //   playGameweek(setGameweek)
@@ -60,17 +59,22 @@ export default function Play() {
   // }
 
   const handleHomeChange = (index: number) => {
-    setHomePredications(prevState => {
-      const updatedPredictions = [...prevState]; // Create a copy of the state array
-      const fixtureId = fixtures[index].fixture_id; // Get the fixtureId
-      if (!fixtureID.includes(fixtureId)) {
-        // If not, add it to the fixtureID array
-        setFixtureID(prevFixtureIDs => [...prevFixtureIDs, fixtureId].sort((a,b) => a -b));
-      }
-      updatedPredictions[index] = (updatedPredictions[index] || 0) + 1; // Update the specific index in the array
-      return updatedPredictions; // Return the updated array
-    });
+    const fixtureId = fixtures[index].fixture_id;
+
+    // Create a new object with existing homePredications
+    const updatedHomePredications = { ...homePredications };
+
+    // If the fixtureId exists, increment the value, otherwise set it to 1
+    updatedHomePredications[fixtureId] = (updatedHomePredications[fixtureId] || 0) + 1;
+
+    // Update the fixture order if the fixtureId is not in the array
+    if (!fixtureOrder.includes(fixtureId)) {
+      setFixtureOrder(prevFixtureOrder => [...prevFixtureOrder, fixtureId]);
+    }
+    // Update both states
+    setHomePredications(updatedHomePredications);
   };
+
   
   const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
     const { name, value } = event.target;
@@ -145,7 +149,7 @@ export default function Play() {
             <FontAwesomeIcon icon={faCirclePlus} />
             </button>
           </div>
-           <p className="score">{homePredications[index]}</p>
+           <p className="score">{homePredications[fixture.fixture_id]}</p>
            <p className="plus-and-minus"><FontAwesomeIcon icon={faMinusCircle} /></p>
           </div> 
           {/* <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 

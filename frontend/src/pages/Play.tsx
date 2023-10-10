@@ -15,9 +15,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Play() {
-  const [fixtures, setFixtures] = useState([]);
+  const [fixtures, setFixtures] = useState<Fixture[]>([]);
   const [homePredications, setHomePredications] = useState<number[]>([]);
   const [awayPredications, setAwayPredications] = useState<number[]>([]);
+  const [fixtureID, setFixtureID] = useState<string>([])
   const [gameweek, setGameweek] = useState<string[] >([]);
   const { userPredications, uid} = UserAuth();
 
@@ -27,8 +28,8 @@ export default function Play() {
   useEffect(() => {
     getFixtures(setFixtures)
       .then(fixturesData => {
-        setHomePredications(Array(10).fill(0));
-        setAwayPredications(Array(10).fill(0));
+        //setHomePredications(Array(6).fill(0));
+        //setAwayPredications(Array(10).fill(0));
       })
       .catch(error => {
         console.error(error);
@@ -39,7 +40,11 @@ export default function Play() {
 
   useEffect(() => {
     console.log(homePredications)
-  })
+  },[homePredications])
+
+  useEffect(() => {
+    console.log(fixtureID)
+  },[fixtureID])
 
   // useEffect( () => {
   //   playGameweek(setGameweek)
@@ -54,11 +59,16 @@ export default function Play() {
   //   }));
   // }
 
-  const handleHomeChange = (index: any ) => {
+  const handleHomeChange = (index: number) => {
     setHomePredications(prevState => {
-      const updatedPredictions = [...prevState];
-      updatedPredictions[index] += 1;
-      return updatedPredictions;
+      const updatedPredictions = [...prevState]; // Create a copy of the state array
+      const fixtureId = fixtures[index].fixture_id; // Get the fixtureId
+      if (!fixtureID.includes(fixtureId)) {
+        // If not, add it to the fixtureID array
+        setFixtureID(prevFixtureIDs => [...prevFixtureIDs, fixtureId].sort((a,b) => a -b));
+      }
+      updatedPredictions[index] = (updatedPredictions[index] || 0) + 1; // Update the specific index in the array
+      return updatedPredictions; // Return the updated array
     });
   };
   
@@ -125,7 +135,16 @@ export default function Play() {
 
         <div className='scorebox-container'>
           <div className="score-box">
-           <p onClick={() => handleHomeChange(index)} className="plus-and-minus"><FontAwesomeIcon icon={faCirclePlus} /></p>
+          <div className="plus-and-minus">
+            <button
+              type="button"
+              onClick={() => handleHomeChange(index)}
+              className="icon-button"
+              name={`${fixture.fixture_id}`} 
+            >
+            <FontAwesomeIcon icon={faCirclePlus} />
+            </button>
+          </div>
            <p className="score">{homePredications[index]}</p>
            <p className="plus-and-minus"><FontAwesomeIcon icon={faMinusCircle} /></p>
           </div> 

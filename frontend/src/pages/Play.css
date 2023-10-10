@@ -82,7 +82,12 @@ form {
 
 .plus-and-minus{
   border: 3px solid limegreen;
+  font-size: 25px;
+}
+
+.icon-button {
   color: red;
+  width: 30px;
   font-size: 25px;
 }
 

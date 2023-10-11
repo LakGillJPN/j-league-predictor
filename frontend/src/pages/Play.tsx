@@ -15,21 +15,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Play() {
-  const [fixtures, setFixtures] = useState<Fixture[]>([]);
-  const [homePredications, setHomePredications] = useState<{ [key: string]: number }>({});
-  const [fixtureOrder, setFixtureOrder] = useState<string[]>([]);
-  const [awayPredications, setAwayPredications] = useState<number[]>([]);
-  const [fixtureID, setFixtureID] = useState<string>([])
-  const [gameweek, setGameweek] = useState<string[] >([]);
-  const { userPredications, uid} = UserAuth();
+const [fixtures, setFixtures] = useState<Fixture[]>([]);
+const [homePredications, setHomePredications] = useState<{ [key: string]: number }>({});
+const [fixtureOrder, setFixtureOrder] = useState<string[]>([]);
+const [awayPredications, setAwayPredications] = useState<{ [key: string]: number }>({});
+const [gameweek, setGameweek] = useState<string[]>([]);
+const { userPredications, uid } = UserAuth();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+     // Initialize homePredications with default values when fixtures change
+     const initialHomePredications = {};
+     fixtures.forEach(fixture => {
+       initialHomePredications[fixture.fixture_id] = 0;
+     });
+     setHomePredications(initialHomePredications);
+   }, [fixtures]);
 
 
   useEffect(() => {
     getFixtures(setFixtures)
       .then(fixturesData => {
-        //setHomePredications(Array(6).fill(0));
+        //setHomePredications(Array(10).fill(0));
         //setAwayPredications(Array(10).fill(0));
       })
       .catch(error => {
@@ -50,39 +58,67 @@ export default function Play() {
   // },[gameweek])
 
 
-  // const handleHomeChange = (event: { target: { name: string; value: string; }; }) => {
-  //   const { name, value } = event.target;
-  //   setHomePredications(prevState => ({
-  //     ...prevState,
-  //     [name]: parseInt(value)
-  //   }));
-  // }
+  const handleHomePlusChange = (index: number) => {
+    const fixtureId: number = fixtures[index].fixture_id;
+  
+    // Create a new object with existing homePredications
+    const updatedHomePredications = { ...homePredications };
+  
+    // If the fixtureId exists, increment the value, otherwise set it to 0
+    updatedHomePredications[fixtureId] = (updatedHomePredications[fixtureId] || 0) + 1;
+  
+    // Update the fixture order if the fixtureId is not in the array
+    if (!fixtureOrder.includes(String(fixtureId))) {
+      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
+    }
+  
+    // Update both states
+    setHomePredications(updatedHomePredications);
+  };
+  
 
-  const handleHomeChange = (index: number) => {
+  const handleHomeMinusChange = (index: number) => {
     const fixtureId = fixtures[index].fixture_id;
 
     // Create a new object with existing homePredications
     const updatedHomePredications = { ...homePredications };
 
     // If the fixtureId exists, increment the value, otherwise set it to 1
-    updatedHomePredications[fixtureId] = (updatedHomePredications[fixtureId] || 0) + 1;
+    updatedHomePredications[fixtureId] = Math.max(0, (updatedHomePredications[fixtureId] || 0) - 1);
 
     // Update the fixture order if the fixtureId is not in the array
-    if (!fixtureOrder.includes(fixtureId)) {
-      setFixtureOrder(prevFixtureOrder => [...prevFixtureOrder, fixtureId]);
+    if (!fixtureOrder.includes(String(fixtureId))) {
+      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
     }
     // Update both states
     setHomePredications(updatedHomePredications);
   };
 
+  const handleAwayChange = (index: number) => {
+    const fixtureId = fixtures[index].fixture_id;
+
+    // Create a new object with existing homePredications
+    const updatedAwayPredications = { ...awayPredications };
+
+    // If the fixtureId exists, increment the value, otherwise set it to 1
+    updatedAwayPredications[fixtureId] = (updatedAwayPredications[fixtureId] || 0) + 1;
+
+    // Update the fixture order if the fixtureId is not in the array
+    if (!fixtureOrder.includes(String(fixtureId))) {
+      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
+    }
+    // Update both states
+    setAwayPredications(updatedAwayPredications);
+  };
+
   
-  const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
-    const { name, value } = event.target;
-    setAwayPredications(prevState => ({
-      ...prevState,
-      [name]: parseInt(value)
-    }));
-  }
+  // const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
+  //   const { name, value } = event.target;
+  //   setAwayPredications(prevState => ({
+  //     ...prevState,
+  //     [name]: parseInt(value)
+  //   }));
+  // }
 
   const predictArr = (home: object, away: object) => {
     const id : string[] = Object.keys(home);
@@ -142,7 +178,7 @@ export default function Play() {
           <div className="plus-and-minus">
             <button
               type="button"
-              onClick={() => handleHomeChange(index)}
+              onClick={() => handleHomePlusChange(index)}
               className="icon-button"
               name={`${fixture.fixture_id}`} 
             >
@@ -150,7 +186,17 @@ export default function Play() {
             </button>
           </div>
            <p className="score">{homePredications[fixture.fixture_id]}</p>
-           <p className="plus-and-minus"><FontAwesomeIcon icon={faMinusCircle} /></p>
+           <div className="plus-and-minus">
+           <button
+              type="button"
+              onClick={() => handleHomeMinusChange(index)}
+              className="icon-button"
+              name={`${fixture.fixture_id}`} 
+            >
+            <FontAwesomeIcon icon={faMinusCircle} />
+            </button>
+            </div>
+            
           </div> 
           {/* <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
             maxLength={1} pattern="[0-9.]" min="0" max="10" 

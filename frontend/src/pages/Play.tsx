@@ -14,6 +14,7 @@ import { predicationsAPICall } from '../utils/api-calls.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { handleHomeMinusChange, handleHomePlusChange } from '../utils/handleHomeChange.ts';
+import { handleAwayMinusChange, handleAwayPlusChange } from '../utils/handleAwayChange.ts';
 
 export default function Play() {
 const [fixtures, setFixtures] = useState<Fixture[]>([]);
@@ -32,6 +33,14 @@ const { userPredications, uid } = UserAuth();
        initialHomePredications[fixture.fixture_id.toString()] = 0;
      });
      setHomePredications(initialHomePredications);
+
+      // Initialize homePredications with default values when fixtures change
+      const initialAwayPredications :  { [key: string]: number }  = {};
+      fixtures.forEach((fixture) => {
+        initialAwayPredications[fixture.fixture_id.toString()] = 0;
+      });
+      setAwayPredications(initialAwayPredications);
+
    }, [fixtures]);
 
 
@@ -49,8 +58,12 @@ const { userPredications, uid } = UserAuth();
   }, []);
 
   useEffect(() => {
-    console.log(homePredications)
+    console.log('HOME', homePredications)
   },[homePredications])
+
+  useEffect(() => {
+    console.log('AWAY', awayPredications)
+  },[awayPredications])
 
 
 
@@ -67,24 +80,15 @@ const { userPredications, uid } = UserAuth();
     handleHomeMinusChange(index, fixtures, homePredications, fixtureOrder, setFixtureOrder, setHomePredications);
   };
 
-  const handleAwayChange = (index: number) => {
-    const fixtureId = fixtures[index].fixture_id;
-
-    // Create a new object with existing homePredications
-    const updatedAwayPredications = { ...awayPredications };
-
-    // If the fixtureId exists, increment the value, otherwise set it to 1
-    updatedAwayPredications[fixtureId] = (updatedAwayPredications[fixtureId] || 0) + 1;
-
-    // Update the fixture order if the fixtureId is not in the array
-    if (!fixtureOrder.includes(String(fixtureId))) {
-      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
-    }
-    // Update both states
-    setAwayPredications(updatedAwayPredications);
+  const handleAwayPlus = (index: number) => {
+    handleAwayPlusChange(index, fixtures, awayPredications, fixtureOrder, setFixtureOrder, setAwayPredications);
   };
 
-  
+  const handleAwayMinus = (index: number) => {
+    handleAwayMinusChange(index, fixtures, awayPredications, fixtureOrder, setFixtureOrder, setAwayPredications);
+  };
+
+
   // const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
   //   const { name, value } = event.target;
   //   setAwayPredications(prevState => ({
@@ -176,10 +180,33 @@ const { userPredications, uid } = UserAuth();
             onChange={handleHomeChange} required></input> */}
             
         <div className="colon"></div>
+        <div className='score-box'>
+        <div className="plus-and-minus">
+            <button
+              type="button"
+              onClick={() => handleAwayPlus(index)}
+              className="icon-button"
+              name={`${fixture.fixture_id}`} 
+            >
+            <FontAwesomeIcon icon={faCirclePlus} />
+            </button>
+          </div>
+        <p className="score">{awayPredications[fixture.fixture_id]}</p>
+           <div className="plus-and-minus">
+           <button
+              type="button"
+              onClick={() => handleAwayMinus(index)}
+              className="icon-button"
+              name={`${fixture.fixture_id}`} 
+            >
+            <FontAwesomeIcon icon={faMinusCircle} />
+            </button>
+          </div>
+          </div>
+
+
   
-          <input type="text" className="scorebox" name={`${fixture.fixture_id}`} 
-            maxLength={1} pattern="[0-9.]" min="0" max="10" 
-            onChange={handleAwayChange} required></input> 
+          
         </div>
 
         <div className='game-box'>

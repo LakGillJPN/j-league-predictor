@@ -13,6 +13,7 @@ import { Fixture } from "../../globals";
 import { predicationsAPICall } from '../utils/api-calls.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { handleHomeMinusChange, handleHomePlusChange } from '../utils/handleHomeChange.ts';
 
 export default function Play() {
 const [fixtures, setFixtures] = useState<Fixture[]>([]);
@@ -26,17 +27,17 @@ const { userPredications, uid } = UserAuth();
 
   useEffect(() => {
      // Initialize homePredications with default values when fixtures change
-     const initialHomePredications = {};
-     fixtures.forEach(fixture => {
-       initialHomePredications[fixture.fixture_id] = 0;
+     const initialHomePredications :  { [key: string]: number }  = {};
+     fixtures.forEach((fixture) => {
+       initialHomePredications[fixture.fixture_id.toString()] = 0;
      });
      setHomePredications(initialHomePredications);
    }, [fixtures]);
 
 
   useEffect(() => {
-    getFixtures(setFixtures)
-      .then(fixturesData => {
+    getFixtures((data: Fixture[]) => setFixtures(data))
+      .then(() => {
         //setHomePredications(Array(10).fill(0));
         //setAwayPredications(Array(10).fill(0));
       })
@@ -58,40 +59,12 @@ const { userPredications, uid } = UserAuth();
   // },[gameweek])
 
 
-  const handleHomePlusChange = (index: number) => {
-    const fixtureId: number = fixtures[index].fixture_id;
-  
-    // Create a new object with existing homePredications
-    const updatedHomePredications = { ...homePredications };
-  
-    // If the fixtureId exists, increment the value, otherwise set it to 0
-    updatedHomePredications[fixtureId] = (updatedHomePredications[fixtureId] || 0) + 1;
-  
-    // Update the fixture order if the fixtureId is not in the array
-    if (!fixtureOrder.includes(String(fixtureId))) {
-      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
-    }
-  
-    // Update both states
-    setHomePredications(updatedHomePredications);
+  const handleHomePlus = (index: number) => {
+    handleHomePlusChange(index, fixtures, homePredications, fixtureOrder, setFixtureOrder, setHomePredications);
   };
-  
 
-  const handleHomeMinusChange = (index: number) => {
-    const fixtureId = fixtures[index].fixture_id;
-
-    // Create a new object with existing homePredications
-    const updatedHomePredications = { ...homePredications };
-
-    // If the fixtureId exists, increment the value, otherwise set it to 1
-    updatedHomePredications[fixtureId] = Math.max(0, (updatedHomePredications[fixtureId] || 0) - 1);
-
-    // Update the fixture order if the fixtureId is not in the array
-    if (!fixtureOrder.includes(String(fixtureId))) {
-      setFixtureOrder((prevFixtureOrder: string[]) => [...prevFixtureOrder, String(fixtureId)]);
-    }
-    // Update both states
-    setHomePredications(updatedHomePredications);
+  const handleHomeMinus = (index: number) => {
+    handleHomeMinusChange(index, fixtures, homePredications, fixtureOrder, setFixtureOrder, setHomePredications);
   };
 
   const handleAwayChange = (index: number) => {
@@ -178,7 +151,7 @@ const { userPredications, uid } = UserAuth();
           <div className="plus-and-minus">
             <button
               type="button"
-              onClick={() => handleHomePlusChange(index)}
+              onClick={() => handleHomePlus(index)}
               className="icon-button"
               name={`${fixture.fixture_id}`} 
             >
@@ -189,7 +162,7 @@ const { userPredications, uid } = UserAuth();
            <div className="plus-and-minus">
            <button
               type="button"
-              onClick={() => handleHomeMinusChange(index)}
+              onClick={() => handleHomeMinus(index)}
               className="icon-button"
               name={`${fixture.fixture_id}`} 
             >

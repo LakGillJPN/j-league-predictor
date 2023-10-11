@@ -1,5 +1,6 @@
 export interface Fixture {
   fixture_id: number;
+  [key: string]: any;
   gameweek: string;
   home_team_name: string; 
   away_team_name: string;

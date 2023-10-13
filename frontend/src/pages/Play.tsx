@@ -136,7 +136,7 @@ const { userPredications, uid } = UserAuth();
             </div>
 
         <div className='scorebox-container'>
-          <div className="score-box">
+          <div className="scorebox">
           <div className="plus-and-minus">
             <button
               type="button"

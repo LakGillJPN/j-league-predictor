@@ -1,22 +1,23 @@
 form {
   width: 50%;
-  
 }
 
 .fixtures-box {
-  width: 100%; /* Use percentage for responsiveness */
-  max-width: 400px; /* Set a maximum width if needed */
-  margin: 0 auto; /* Center the element */
+  width: 100%; 
+  max-width: 400px; 
+  margin: 0 auto; 
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+  /* border: 3px solid green; */
 }
 
 .fixtures-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Use wrap instead of inherit */
-  /* border: 6px solid pink; */
-  max-width: 100%; /* Limit the width of the container */
+  flex-wrap: wrap;
+  max-width: 100%; 
+    /* border: 6px solid pink; */
 }
 
 
@@ -32,44 +33,57 @@ form {
 }
 
 .predict-game {
- text-align: center;
- background-color: white;
- display: flex;
- flex-direction: row;
- justify-content: space-around;
- align-items: center;
- width: 100%;
- border-radius: 25px;
- margin: auto;
- padding-top: 20px;
- padding-bottom: 20px;
-
- /* border: 3px solid blue; */
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px 25px;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+ /* border: 3px solid yellow; */
 }
 
 
 .logo {
-  /* height: 80px; */
   width: 50px; 
 }
 
 .game-box {
- width: 100%;
- height: 100%;
- font-size: 35px;
- padding: 7px;
+  width: 100%;
+  height: 100%;
+  font-size: 35px;
+  padding: 7px;
 }
 
 .scorebox-container {
- display: flex;
+  display: flex;
  /* border: 3px solid yellow; */
 }
 
-.scorebox {
- width: 40px;
- /* height: 70px; */
- text-align: center;
- /* border: 3px solid purple; */
+/* .scorebox {
+  border: 3px solid purple;
+} */
+
+.score {
+  font-size: 30px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.plus-and-minus{
+  font-size: 25px;
+}
+
+.icon-button {
+  color: red;
+  font-size: 25px;
+  padding-bottom: 20px;
+  background-color: white;
+  border: 0px;
 }
 
 .colon {
@@ -77,17 +91,40 @@ form {
 }
 
 .space {
- padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
+.submit {
+  height: 50px;
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 30px;
+}
 
-
-/* Need to fix this */
-.date-and-time {
-  display: grid;
-  grid-template-rows: 2fr;
+.date {
+  display: flex;
+  flex-direction: column; 
   align-items: center;
   margin: auto;
   justify-content: center;
-  border: 3px solid red;
+  font-size: 28px;
+  width: 100%; 
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  margin: auto;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.date-and-time-wrapper {
+  border-radius:  25px 25px;
+  background-color: white;
+  margin-top: -35px;
 }

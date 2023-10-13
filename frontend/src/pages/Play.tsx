@@ -81,14 +81,7 @@ const { userPredications, uid } = UserAuth();
   };
 
 
-  // const handleAwayChange = (event: { target: { name: string; value: string; }; }) => {
-  //   const { name, value } = event.target;
-  //   setAwayPredications(prevState => ({
-  //     ...prevState,
-  //     [name]: parseInt(value)
-  //   }));
-  // }
-
+ 
   const predictArr = (home: object, away: object) => {
     const id : string[] = Object.keys(home);
     const homeScore : number[] = Object.values(home);
@@ -104,7 +97,7 @@ const { userPredications, uid } = UserAuth();
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    const result = predictArr([homePredications], awayPredications);
+    const result = predictArr(homePredications, awayPredications);
     axios.post(predicationsAPICall(), {
       uid,
       predications: result,
@@ -219,7 +212,7 @@ const { userPredications, uid } = UserAuth();
   ))}
   </div>
 
-    <button type='submit'>SUBMIT</button>
+    <button className='submit'>SUBMIT</button>
   </form>
   
   </div>}

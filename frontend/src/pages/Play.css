@@ -1,12 +1,11 @@
 form {
   width: 50%;
-  
 }
 
 .fixtures-box {
-  width: 100%; /* Use percentage for responsiveness */
-  max-width: 400px; /* Set a maximum width if needed */
-  margin: 0 auto; /* Center the element */
+  width: 100%; 
+  max-width: 400px; 
+  margin: 0 auto; 
   display: flex;
   flex-direction: column;
   /* border: 3px solid green; */
@@ -70,7 +69,6 @@ form {
  width: 40px;
  text-align: center;
  border: 3px solid purple;
- /* New Scorebox*/
  
 }
 
@@ -81,7 +79,6 @@ form {
 }
 
 .plus-and-minus{
-
   font-size: 25px;
 }
 
@@ -101,12 +98,19 @@ form {
  padding-bottom: 20px;
 }
 
+.submit {
+ height: 50px;
+ width: 200px;
+ margin: auto;
+ margin-top: 10px;
+ font-size: 30px;
+}
 
 
 /* Need to fix this */
 .date {
   display: flex;
-  flex-direction: column; /* Display date and time in separate rows */
+  flex-direction: column; 
   align-items: center;
   margin: auto;
   justify-content: center;
@@ -118,7 +122,7 @@ form {
 
 .time {
   display: flex;
-  flex-direction: column; /* Display date and time in separate rows */
+  flex-direction: column; 
   align-items: center;
   margin: auto;
   font-size: 20px;

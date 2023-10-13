@@ -4,14 +4,14 @@ import { Fixture } from '../../globals';
 import { SetStateAction } from 'react';
 import { fixtureAPICall } from './api-calls.ts';
 
-async function getFixtures(setter: { (value: SetStateAction<never[]>): void; (arg0: any): void; }) {
+async function getFixtures(setter: React.Dispatch<SetStateAction<Fixture[]>>)  {
   const fetchedFixs = await axios.get(fixtureAPICall());
   const gameweek = await getGameweek()
 
   const sortedWeekData = fetchedFixs.data
     .filter((data: Fixture) => data.gameweek === gameweek)
     .sort((a: Fixture, b: Fixture) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    
+
   setter(sortedWeekData)
 }
 

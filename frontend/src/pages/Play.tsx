@@ -44,32 +44,24 @@ const { userPredications, uid } = UserAuth();
    }, [fixtures]);
 
 
-  useEffect(() => {
-    getFixtures((data: Fixture[]) => setFixtures(data))
+   useEffect(() => {
+    getFixtures(setFixtures)
       .then(() => {
-        //setHomePredications(Array(10).fill(0));
-        //setAwayPredications(Array(10).fill(0));
+        // Other logic after fetching and setting fixtures
       })
       .catch(error => {
         console.error(error);
       });
-
+  
     playGameweek(setGameweek);
   }, []);
 
   useEffect(() => {
-    console.log('HOME', homePredications)
+    console.log('ID', Object.keys(homePredications))
+    console.log('HOME', Object.values(homePredications))
+    console.log('AWAY', Object.values(awayPredications))
   },[homePredications])
 
-  useEffect(() => {
-    console.log('AWAY', awayPredications)
-  },[awayPredications])
-
-
-
-  // useEffect( () => {
-  //   playGameweek(setGameweek)
-  // },[gameweek])
 
 
   const handleHomePlus = (index: number) => {

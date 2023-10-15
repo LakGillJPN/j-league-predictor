@@ -47,7 +47,6 @@ const { userPredications, uid } = UserAuth();
    useEffect(() => {
     getFixtures(setFixtures)
       .then(() => {
-        // Other logic after fetching and setting fixtures
       })
       .catch(error => {
         console.error(error);
@@ -56,11 +55,15 @@ const { userPredications, uid } = UserAuth();
     playGameweek(setGameweek);
   }, []);
 
+  // useEffect(() => {
+  //   console.log('ID', Object.keys(homePredications))
+  //   console.log('HOME', Object.values(homePredications))
+  //   console.log('AWAY', Object.values(awayPredications))
+  // },[homePredications])
+
   useEffect(() => {
-    console.log('ID', Object.keys(homePredications))
-    console.log('HOME', Object.values(homePredications))
-    console.log('AWAY', Object.values(awayPredications))
-  },[homePredications])
+    console.log(userPredications)
+  })
 
 
 
@@ -79,7 +82,6 @@ const { userPredications, uid } = UserAuth();
   const handleAwayMinus = (index: number) => {
     handleAwayMinusChange(index, fixtures, awayPredications, fixtureOrder, setFixtureOrder, setAwayPredications);
   };
-
 
  
   const predictArr = (home: object, away: object) => {
@@ -107,11 +109,10 @@ const { userPredications, uid } = UserAuth();
       navigate('/submitted')
     })
     .catch(error => {
+      alert("Please login to make your predications!")
       console.log(error);
     });
   }
-
- 
 
   return (
     <>

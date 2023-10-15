@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.ts";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import getPredications from '../utils/get-predications.ts';
+import {getPredicationsNow } from '../utils/get-predications.ts';
 
 interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<UserCredential>;
@@ -51,8 +51,10 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     });
 
     if (uid !== null) {
-      getPredications(setUserPredications, uid);
+      getPredicationsNow(setUserPredications, uid);
     }
+
+   
 
     return authenticatedUser;
   }, [uid]);

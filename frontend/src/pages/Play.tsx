@@ -62,7 +62,7 @@ const { userPredications, uid } = UserAuth();
   // },[homePredications])
 
   useEffect(() => {
-    console.log(userPredications)
+    console.log('USERPREDICT', userPredications)
   })
 
 
@@ -122,7 +122,7 @@ const { userPredications, uid } = UserAuth();
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Gameweek {getGameweekNum(gameweek)}</h1>
 
-    {userPredications.length > 1 ? <Warning/> : <div className='wrapper'> 
+    {userPredications.length > 11 ? <Warning/> : <div className='wrapper'> 
 
     <form onSubmit={handleFormSubmit}> 
     <div className=" fixtures-container">

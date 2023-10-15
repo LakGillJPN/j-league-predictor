@@ -61,10 +61,6 @@ const { userPredications, uid } = UserAuth();
   //   console.log('AWAY', Object.values(awayPredications))
   // },[homePredications])
 
-  useEffect(() => {
-    console.log('USERPREDICT', userPredications)
-  })
-
 
 
   const handleHomePlus = (index: number) => {

@@ -47,7 +47,6 @@ const { userPredications, uid } = UserAuth();
    useEffect(() => {
     getFixtures(setFixtures)
       .then(() => {
-        // Other logic after fetching and setting fixtures
       })
       .catch(error => {
         console.error(error);
@@ -56,11 +55,11 @@ const { userPredications, uid } = UserAuth();
     playGameweek(setGameweek);
   }, []);
 
-  useEffect(() => {
-    console.log('ID', Object.keys(homePredications))
-    console.log('HOME', Object.values(homePredications))
-    console.log('AWAY', Object.values(awayPredications))
-  },[homePredications])
+  // useEffect(() => {
+  //   console.log('ID', Object.keys(homePredications))
+  //   console.log('HOME', Object.values(homePredications))
+  //   console.log('AWAY', Object.values(awayPredications))
+  // },[homePredications])
 
 
 
@@ -79,7 +78,6 @@ const { userPredications, uid } = UserAuth();
   const handleAwayMinus = (index: number) => {
     handleAwayMinusChange(index, fixtures, awayPredications, fixtureOrder, setFixtureOrder, setAwayPredications);
   };
-
 
  
   const predictArr = (home: object, away: object) => {
@@ -107,11 +105,10 @@ const { userPredications, uid } = UserAuth();
       navigate('/submitted')
     })
     .catch(error => {
+      alert("Please login to make your predications!")
       console.log(error);
     });
   }
-
- 
 
   return (
     <>
@@ -120,8 +117,9 @@ const { userPredications, uid } = UserAuth();
     {/* <h1>You've got until:</h1>
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Gameweek {getGameweekNum(gameweek)}</h1>
-
-    {userPredications.length > 1 ? <Warning/> : <div className='wrapper'> 
+   
+    {userPredications.length > 11 ? <Warning/> : <div className='wrapper'>  
+    {/* This needs to be changed back to "1" later once the edit button has added to the Warning page */}
 
     <form onSubmit={handleFormSubmit}> 
     <div className=" fixtures-container">

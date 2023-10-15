@@ -121,8 +121,9 @@ const { userPredications, uid } = UserAuth();
     {/* <h1>You've got until:</h1>
       <CountdownTimer deadline={Date(deadline)} /> */}
     <h1 className='play-header'>Gameweek {getGameweekNum(gameweek)}</h1>
-
-    {userPredications.length > 11 ? <Warning/> : <div className='wrapper'> 
+   
+    {userPredications.length > 11 ? <Warning/> : <div className='wrapper'>  
+    {/* This needs to be changed back to "1" later once the edit button has added to the Warning page */}
 
     <form onSubmit={handleFormSubmit}> 
     <div className=" fixtures-container">

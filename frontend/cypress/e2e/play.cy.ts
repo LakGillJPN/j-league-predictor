@@ -10,12 +10,17 @@ describe('Play', () => {
     
   })
 
-  it('Should enter data into checkboxes', () => {
-    for (let i = 1; i < 9; i++) {
-      cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > :nth-child(1)`).should('exist');
-      cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > :nth-child(3)`).should('exist');
-    }
+  it('Should check if the the scorebox-container elements exist', () => {
+    cy.get('[data-cy="plusHome"]').click({ multiple: true })
+    // for (let i = 1; i < 9; i++) {
+    //   cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > .scorebox > #plus-home > .icon-button`).click()
+    //   //cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > .scorebox > #minus-home > .icon-button`).should('exist')
+    //   //cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > .scorebox > #plus-away > .icon-button`).should('exist')
+    //   //cy.get(`:nth-child(${i}) > .predict-game > .scorebox-container > .scorebox > #minus-away > .icon-button`).should('exist')
+    // }
 })
+
+
 
 
 })

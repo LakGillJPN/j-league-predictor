@@ -137,7 +137,7 @@ const { userPredications, uid } = UserAuth();
 
         <div className='scorebox-container'>
           <div className="scorebox">
-          <div className="plus-and-minus">
+          <div id="plus-home" className="plus-and-minus">
             <button
               type="button"
               onClick={() => handleHomePlus(index)}
@@ -148,7 +148,7 @@ const { userPredications, uid } = UserAuth();
             </button>
           </div>
            <p className="score">{homePredications[fixture.fixture_id]}</p>
-           <div className="plus-and-minus">
+           <div id="minus-home" className="plus-and-minus">
            <button
               type="button"
               onClick={() => handleHomeMinus(index)}
@@ -165,8 +165,8 @@ const { userPredications, uid } = UserAuth();
             onChange={handleHomeChange} required></input> */}
             
         <div className="colon"></div>
-        <div className='score-box'>
-        <div className="plus-and-minus">
+        <div className='scorebox'>
+        <div id="plus-away" className="plus-and-minus">
             <button
               type="button"
               onClick={() => handleAwayPlus(index)}
@@ -177,7 +177,7 @@ const { userPredications, uid } = UserAuth();
             </button>
           </div>
         <p className="score">{awayPredications[fixture.fixture_id]}</p>
-           <div className="plus-and-minus">
+           <div id="minus-away" className="plus-and-minus">
            <button
               type="button"
               onClick={() => handleAwayMinus(index)}

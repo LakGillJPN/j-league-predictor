@@ -1,12 +1,12 @@
-<img src="/images\header.jpg" alt="Header" title="Header">
+<img src="/images\frontend-header.jpg" alt="Header" title="Header">
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/LakGillJPN/j-league-predictor) ![GitHub issues](https://img.shields.io/github/issues/LakGillJPN/j-league-predictor) 
 
+For the Backend Repository, [click here](https://github.com/LakGillJPN/j-league-backend)
 
+The J-League Predictor is an application that allows soccer fans to predict the outcome of J-League games and earn points for accuracy.
 
-The J-League Predictor is an application that allows soccer fans to predicate the outcome of J-League games and earn points for accuracy.
-
-Deployment: https://j-league-predictor.onrender.com/
+Deployment: https://j-league-predictor.vercel.app/
 
 ## Contents
 - [Tech-Stack](#tech-stack)
@@ -23,14 +23,11 @@ Deployment: https://j-league-predictor.onrender.com/
 | Task       | Tech        |
 | ---------- | ----------- |
 | Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
-| Frontend Framework  | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  |
-|  Frontend Testing  | ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)  |
-| Backend Framework  | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)   |
-|  Backend Testing  | ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)  |
+| Framework  | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  |
+|  Testing  | ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)  |
 |  User Auth | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
-|  Database | ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) |
 
-
+Click [here](https://github.com/LakGillJPN/j-league-backend#tech-stack) for the Backend Tech Stack 
 
 
 
@@ -55,51 +52,33 @@ Deployment: https://j-league-predictor.onrender.com/
 
 # Usage
 
-The J-League Predictor app utilizes Express for its backend and React for its frontend. To run the app, it is necessary to start the backend server before launching the frontend:
+The J-League Predictor app utilizes Express for its backend and React for its frontend. For the backend instructions, click [here](https://github.com/LakGillJPN/j-league-backend#usage).
 
-1. Start the Express server:
+To start the frontend server:
 
-    ```bash
-    
+   ```bash
     npm run start
-    
-    ```
-    
-2. The Express server will run on  **`http://localhost:4000/`**
 
-3. Move to the Frontend folder:
-
-    ```bash
-    
-    cd frontend/
-    
-    ```
-4. Start the Frontend server:
-
-    ```bash
-    
-    npm run start
-    
-    ```
-    
-5. The Frontend server will run on  **`http://localhost:3000/`**
+   ```
+   
+The Frontend server will run on  **`http://localhost:3000/`**
 
 
 
 # Home
 <img src="/images\homepage.jpg" alt="Homepage" title="Homepage">
 
-On the home page we have a carousel wheel displaying all the of the games upcoming in this gameweek.
+On the homepage, we have a carousel wheel displaying all the games upcoming in this gameweek.
 
 # Play
 <img src="/images\play_page.jpg" alt="Play" title="Play">
 
-In this page, users can make their predication of what they think the score of this week's games will be. After making their predication, a user can alter their predication right up to the deadline.
+On this page, users can make their prediction of what they think the score of this week's games will be. After making their prediction, a user can alter their prediction right up to the deadline.
 
 # Results
 <img src="/images\results.jpg" alt="Results" title="Results">
 
-The results of the previous gameweek are compared to the user's predication and awarded points. 
+The results of the previous gameweek are compared to the user's prediction and awarded points. 
 
 - [ ] Correct Home or Away Score - 30pts
 - [ ] Correct Outcome - 50pts
@@ -108,13 +87,11 @@ The results of the previous gameweek are compared to the user's predication and 
 
 # Future Features
 - [ ] Leaderboard
-- [ ] Mobile View
 - [ ] Display Names
 - [ ] Results of Previous Gameweeks
 
 # Goals
 - To have the application fully functional for the start of the next J-League season
-- To have the app deployed on either AWS or Heroku
 
 
 <!---

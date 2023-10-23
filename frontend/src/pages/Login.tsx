@@ -36,7 +36,7 @@ export default function Login() {
       <label htmlFor="password">Password:</label>
       <input data-testid="password-input" type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
      
-      <button data-testid="login-button" type="submit">Login</button>
+      <button className="login-button" data-testid="login-button" type="submit">Login</button>
     </form>
 
      <p>Don't have an account? <Link to='/signup'>Sign up here!</Link></p>

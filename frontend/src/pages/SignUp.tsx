@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import Header from '../components/Header.tsx';
 import './SignUp.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext.tsx'
 
 export default function SignUp() {

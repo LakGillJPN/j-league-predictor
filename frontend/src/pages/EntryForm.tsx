@@ -28,8 +28,20 @@ export default function EntryForm() {
       <p className= 'usernameLength'>Username should be between 5-15 characters</p>
     </div>
 
-    <div><input type="date" /> </div>
-    
+
+    <div>
+      <p>Date of Birth</p>
+      <input type="date" /> 
+    </div>
+    <div>
+      <p>Location</p>
+      <input type="form" />
+    </div>
+
+    <div>
+      <p>Favourite Team</p>
+      <input type="form" />
+    </div>
 
     
 

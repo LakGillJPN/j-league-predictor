@@ -3,8 +3,7 @@ import React from 'react';
 export default function Warning() {
   return (
     <>
-      <h1>WARNING! if you re-submit, you'll overwrite your last predications!</h1>
-      <button>Edit</button>
+      <h1>You've already made your predications for this week. Come back next week to see how you did!</h1>
     </>
   );
 }

@@ -1,6 +1,27 @@
+.title {
+  margin: 0, auto;
+  font-size: 40px;
+}
+
+.subheading{
+  font-size: 30px;
+  margin-bottom: 10px; 
+}
+
 .usernameLength {
   margin-top: 5px;
   color: black;
-  font-size: 15x;
+  font-size: 15px;
 }
 
+
+
+.welcome-main {
+  margin: 0, auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.dob {
+  text-align: center;
+}

@@ -18,11 +18,12 @@ export default function EntryForm() {
   // DOB, Location, Favourite Team
   
   return (
-    <> 
+
+    <div className="welcome-main"> 
     <Header/>
-    <h1>Entry Form</h1>
+    <h1 className="title">Welcome!</h1>
     <form method="post" onSubmit={handleFormSubmit}>
-    <h2>Username</h2>
+    <p className="subheading">Username</p>
     <div>
     <input type="text" id="Username" name="Username" minLength={5}maxLength={15} onChange={handleUsername}/> 
       <p className= 'usernameLength'>Username should be between 5-15 characters</p>
@@ -30,18 +31,20 @@ export default function EntryForm() {
 
 
     <div>
-      <p>Date of Birth</p>
-      <input type="date" /> 
+      <p className="subheading">Date of Birth</p>
+      <input className="dob" type="date" /> 
     </div>
     <div>
-      <p>Location</p>
+      <p className="subheading">Location 🌐</p>
       <input type="form" />
     </div>
 
     <div>
-      <p>Favourite Team</p>
+      <p className="subheading">Favourite Team 👕</p>
       <input type="form" />
     </div>
+
+    <button type="submit">Submit </button>
 
     
 
@@ -50,6 +53,6 @@ export default function EntryForm() {
 
 
 
-    </>
+    </div>
   )
 }

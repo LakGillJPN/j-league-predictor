@@ -127,7 +127,7 @@ const { userPredications, uid } = UserAuth();
     
       <div className='fixtures-box' key={fixture.fixture_id}>
         <div className='date-and-time-wrapper'> 
-          <div className='date-and-time'>{`${new Date(fixture.date).toDateString()}` + ' '} {`${new Date(fixture.date).toTimeString().slice(0,5)}`}  </div>
+        <div className='date-and-time'>{`${new Date(fixture.date).toDateString()} - ${new Date(fixture.date).toTimeString().slice(0, 5)}`}</div>
           {/* <div className='time'>{`${new Date(fixture.date).toTimeString().slice(0,5)}`} </div>  */}
         </div> 
    

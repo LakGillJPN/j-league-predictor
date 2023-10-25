@@ -4,12 +4,27 @@ import './EntryForm.css'
 
 export default function EntryForm() {
   const [username, setUsername] = useState<string>("");
+  const [birthday, setBirthday] = useState("");
+  const [location, setLocation] = useState<string>("");
+  const [favTeam, setFavTeam] = useState<string>("");
 
   
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setUsername(value);
+  }
+
+  const handleLocation = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setLocation(value);
   };
+
+  const handleFavTeam = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setFavTeam(value);
+  };
+
+  
 
   const handleFormSubmit = () => {
 
@@ -44,7 +59,7 @@ export default function EntryForm() {
       <input type="form" />
     </div>
 
-    <button type="submit">Submit </button>
+    <button className="entry-button" type="submit">Submit </button>
 
     
 

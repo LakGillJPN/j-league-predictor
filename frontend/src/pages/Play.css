@@ -102,24 +102,19 @@ form {
   font-size: 30px;
 }
 
-.date {
+.date-and-time {
   text-align: right;
   padding-right: 10px;
-  font-size: 28px;
-
+  border-radius: 25px 25px 0px 0px;
+  font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: lightgrey;
 }
 
-.time {
-  text-align: right;
-  padding-right: 10px;
-  font-size: 20px;
-  margin-bottom: 5px;
-}
 
 .date-and-time-wrapper {
   border-radius: 25px 25px 0px 0px;
-  background-color: white;
+  background-color:  lightgrey;
  
 }

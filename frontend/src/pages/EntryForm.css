@@ -1,6 +1,7 @@
 .title {
   margin: 0, auto;
   font-size: 40px;
+  
 }
 
 .subheading{
@@ -20,11 +21,17 @@
   text-align: center;
 }
 
-.dob {
+.input-forms {
   text-align: center;
 }
 
+.button-wrapper {
+  margin: 0, auto;
+  justify-content: center;
+}
+
 .entry-button {
+  font-size: 20px;
   margin-top: 30px;
   width: 200px;
   height: 40px;

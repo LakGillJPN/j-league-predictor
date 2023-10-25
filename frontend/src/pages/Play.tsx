@@ -126,6 +126,10 @@ const { userPredications, uid } = UserAuth();
     {fixtures.map((fixture: Fixture, index) => (
     
       <div className='fixtures-box' key={fixture.fixture_id}>
+        <div className='date-and-time-wrapper'> 
+          <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
+          <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
+        </div> 
    
         <div className='predict-game'>  
           <div className='game-box'>
@@ -185,11 +189,7 @@ const { userPredications, uid } = UserAuth();
             <FontAwesomeIcon icon={faMinusCircle} />
             </button>
           </div>
-          </div>
-
-
-  
-          
+          </div>   
         </div>
 
         <div className='game-box'>
@@ -199,10 +199,7 @@ const { userPredications, uid } = UserAuth();
         
        
       </div>
-       <div className='date-and-time-wrapper'> 
-          <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
-          <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
-        </div> 
+       
       
 
       <div className="space"></div>  

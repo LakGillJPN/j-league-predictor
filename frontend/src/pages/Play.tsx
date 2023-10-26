@@ -127,7 +127,10 @@ const { userPredications, uid } = UserAuth();
     
       <div className='fixtures-box' key={fixture.fixture_id}>
         <div className='date-and-time-wrapper'> 
-        <div className='date-and-time'>{`${new Date(fixture.date).toDateString()} - ${new Date(fixture.date).toTimeString().slice(0, 5)}`}</div>
+        <div className='date-and-time'>
+          <span className="date"> {new Date(fixture.date).toDateString()} </span>
+          <span className="time"> {new Date(fixture.date).toTimeString().slice(0, 5)} </span>
+        </div> 
           {/* <div className='time'>{`${new Date(fixture.date).toTimeString().slice(0,5)}`} </div>  */}
         </div> 
    
@@ -196,9 +199,11 @@ const { userPredications, uid } = UserAuth();
           <div> <img className='logo' src={fixture.away_team_logo_url} alt="Away Team Logo"/> </div>
           <div> {fixture.away_team_name} </div>
         </div>
-        
-       
       </div>
+
+      <div className="venue-and-stadium">
+          <div className="venue"> {fixture.venue_name} </div>
+        </div>
        
       
 

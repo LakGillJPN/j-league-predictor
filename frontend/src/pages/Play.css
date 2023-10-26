@@ -17,7 +17,6 @@ form {
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 100%; 
-    /* border: 6px solid pink; */
 }
 
 
@@ -40,11 +39,10 @@ form {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  border-radius: 0px 0px 25px 25px;
   margin: auto;
   padding-top: 20px;
-  padding-bottom: 20px;
- /* border: 3px solid yellow; */
+  padding-bottom: 15px;
+  /* border: 3px solid rgb(67, 67, 67); */
 }
 
 
@@ -103,18 +101,38 @@ form {
 }
 
 .date-and-time {
-  text-align: right;
-  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
   border-radius: 25px 25px 0px 0px;
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: lightgrey;
+  background-color: rgb(67, 67, 67);
+  color: white;
 }
 
 
 .date-and-time-wrapper {
   border-radius: 25px 25px 0px 0px;
-  background-color:  lightgrey;
- 
+  background-color: rgb(67, 67, 67);
+}
+
+.date {
+  text-align: left;
+}
+
+.time {
+  text-align: right;
+}
+
+.venue {
+  background-color: rgb(67, 67, 67);
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 0px 0px 25px 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

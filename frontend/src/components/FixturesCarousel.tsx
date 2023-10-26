@@ -45,8 +45,8 @@ export default function FixturesCarousel() {
 
       {/* Need to fix this */}
 
-      <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
-      <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
+      <div >{`${new Date(fixture.date).toDateString()}`}  </div>
+     
       <div>{fixture.venue_name}</div>
   </div>
   ))}

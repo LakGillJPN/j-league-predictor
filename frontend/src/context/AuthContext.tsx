@@ -4,11 +4,14 @@ import {
   onAuthStateChanged,
   signOut,
   UserCredential,
-  User as firebaseAuthUser
+  User as firebaseAuthUser,
+  User
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.ts";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import {getPredicationsNow } from '../utils/get-predications.ts';
+import getUser from "../utils/get-users.ts";
+import { Users } from "../../globals";
 
 interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<UserCredential>;
@@ -26,7 +29,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [user, setUser] = useState<firebaseAuthUser | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [uid, setUid] = useState<null | string>(null);
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState([]);
 
   // To check if the user has predicted a score
   const [userPredications, setUserPredications] = useState<any[]>([]);
@@ -44,10 +47,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     return signOut(auth);
   }
 
-  const updateUserInfo = (userData: userInfo) => {
-    setUserInfo(userData);
-  };
-
+  
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(auth, (currentUser: firebaseAuthUser | null) => {
       setUser(currentUser);
@@ -57,12 +57,14 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
 
     if (uid !== null) {
       getPredicationsNow(setUserPredications, uid);
+      getUser(setUserInfo, uid) 
+      console.log('USER INFO', userInfo)
     }
-
-   
 
     return authenticatedUser;
   }, [uid]);
+
+
 
   return (
     <UserContext.Provider

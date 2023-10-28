@@ -26,6 +26,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [user, setUser] = useState<firebaseAuthUser | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [uid, setUid] = useState<null | string>(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   // To check if the user has predicted a score
   const [userPredications, setUserPredications] = useState<any[]>([]);
@@ -42,6 +43,10 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const logOut = () => {
     return signOut(auth);
   }
+
+  const updateUserInfo = (userData: userInfo) => {
+    setUserInfo(userData);
+  };
 
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(auth, (currentUser: firebaseAuthUser | null) => {

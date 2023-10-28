@@ -16,6 +16,10 @@ export default function EntryForm() {
 
   const {uid} = UserAuth()
 
+  useEffect(() => {
+    console.log(typeof birthday)
+  },[birthday])
+
   
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -44,6 +48,13 @@ export default function EntryForm() {
 
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+
+    if (getAge(birthday) < 18) {
+      alert("You must be 18 or older to submit this form.");
+      return;
+    }
+
     axios.post(usersAPICall(), {
         uid,
         username,
@@ -53,7 +64,7 @@ export default function EntryForm() {
       }
     )
     .then(response => {
-      navigate('/home')
+      navigate('/')
     })
     .catch(error => {
       alert("Please enter all the required fields!")
@@ -61,12 +72,12 @@ export default function EntryForm() {
     });
   }
 
-  useEffect(() => {
-    console.log('USERNAME', username)
-    console.log('DATE OF BIRTH', birthday)
-    console.log('LOCATION', location)
-    console.log('FAV TEAM', favTeam)
-  },)
+  // useEffect(() => {
+  //   console.log('USERNAME', username)
+  //   console.log('DATE OF BIRTH', birthday)
+  //   console.log('LOCATION', location)
+  //   console.log('FAV TEAM', favTeam)
+  // },)
   
   return (
     <div className="welcome-main"> 
@@ -86,12 +97,12 @@ export default function EntryForm() {
 
         <div>
           <p className="subheading" >Location 🌐</p>
-          <input className="input-forms" type="form" onChange={handleLocation}/>
+          <input className="input-forms" type="text" onChange={handleLocation}/>
         </div>
 
         <div>
           <p className="subheading">Favourite Team 👕</p>
-          <input className="input-forms" type="form" onChange={handleFavTeam} />
+          <input className="input-forms" type="text" onChange={handleFavTeam} />
         </div>
 
         <div className="button-wrapper"> 

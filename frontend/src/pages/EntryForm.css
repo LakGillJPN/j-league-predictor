@@ -1,7 +1,7 @@
 .title {
   margin: 0, auto;
-  font-size: 40px;
-  
+  font-size: 60px;
+  margin-bottom: -15px;  
 }
 
 .subheading{
@@ -35,4 +35,5 @@
   margin-top: 30px;
   width: 200px;
   height: 40px;
+  margin-bottom: 60px;
 }

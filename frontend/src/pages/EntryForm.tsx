@@ -81,7 +81,7 @@ export default function EntryForm() {
   
   return (
     <div className="welcome-main"> 
-     
+      <Header/>
       <h1 className="title">Welcome!</h1>
       <form method="post" onSubmit={handleFormSubmit}>
         <p className="subheading">Username</p>

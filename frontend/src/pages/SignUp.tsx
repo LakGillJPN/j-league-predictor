@@ -16,7 +16,7 @@ export default function SignUp() {
     event.preventDefault();
     try {
       await createUser(email,password);
-      navigate('/')
+      navigate('/entryform')
     } catch (err) {
       console.error(err);
     }

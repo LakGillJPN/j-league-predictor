@@ -88,7 +88,7 @@ export interface Points {
 
  export interface Users {
   uid: string;
-  username: string;
+  username: string 
   date_of_birth: Date;
   location: string;
   favourite_team: string;

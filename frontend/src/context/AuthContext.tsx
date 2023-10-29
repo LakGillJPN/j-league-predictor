@@ -21,6 +21,7 @@ interface AuthContextProps {
   userEmail: string | null;
   userPredications: any;
   uid: string | null;
+  userInfo: any;
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -29,9 +30,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [user, setUser] = useState<firebaseAuthUser | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [uid, setUid] = useState<null | string>(null);
-  const [userInfo, setUserInfo] = useState([]);
-
-  // To check if the user has predicted a score
+  const [userInfo, setUserInfo] = useState<any[]>([]);
   const [userPredications, setUserPredications] = useState<any[]>([]);
 
   const createUser = (email: string, password: string) => {
@@ -58,7 +57,6 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     if (uid !== null) {
       getPredicationsNow(setUserPredications, uid);
       getUser(setUserInfo, uid) 
-      console.log('USER INFO', userInfo)
     }
 
     return authenticatedUser;
@@ -75,6 +73,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
         user,
         userEmail,
         uid,
+        userInfo,
         logOut
       }}
     >

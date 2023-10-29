@@ -35,3 +35,34 @@
 }
 
 
+.sign-up-wrapper {
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: -30px;
+  width: 90%;
+  height: 120px;
+}
+
+.sign-up-text {
+  color: white;
+  font-size: 28px;
+  text-align: center;
+}
+
+.sign-up-button {
+  color: white;
+  border: 3px solid black;
+  margin-top: -10px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 25px;
+  text-align: center;
+  width: 150px;
+  background: linear-gradient(red, lightcoral);
+  
+}

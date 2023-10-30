@@ -19,7 +19,7 @@ export default function FixturesCarousel() {
   return (
     <div className="main-page">
     <div className="sign-up-wrapper" onClick={() => navigate("/signup")}> 
-      <p className="sign-up-text">Register To Play J-League Predictor</p>
+      <p className="sign-up-text">Register To Play J-League Predictor!</p>
       <p className="sign-up-button">Sign Up Now</p> 
     </div>
     <Carousel  

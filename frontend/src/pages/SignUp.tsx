@@ -28,15 +28,15 @@ export default function SignUp() {
     <>
     <Header/> 
     <form className="sign-up-form" onSubmit={handleSignUp}>
-      <h1 className="header">Sign Up!</h1>
+      <h1 className="sign-up-header">Create an account</h1>
      
       <label>Email:</label>
       <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
    
       <label>Password:</label>
-      <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+      <input className="password-sign-up" type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
      
-      <button type="submit">Sign Up</button>
+      <button className="sign-up-submit" type="submit">Submit</button>
     </form>
     </>
   )

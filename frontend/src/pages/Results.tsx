@@ -100,13 +100,22 @@ export default function Results() {
           return (
             <div className="container">
               <div className="results" key={result.fixture_id}>
+              
+              
                 <div className="actual">
-                  <div className="result-box"> {result.home_team_name} </div>
+                  <div className="result-box">  
+                    <img className='logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
+                    {result.home_team_name}
+                  </div>
                   <div className="scorebox-container">
+                  
                     <span className="actual-goals">{result.home_team_score}</span>
                     <span className="actual-goals"> {result.away_team_score}</span>
                   </div>
-                  <div className="result-box"> {result.away_team_name} </div>
+                  <div className="result-box"> 
+                    <img className='logo' src={result.away_team_logo_url} alt="Away Team Logo"/> 
+                    {result.away_team_name} 
+                  </div>
                 </div>
 
                 Predication:

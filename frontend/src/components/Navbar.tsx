@@ -2,6 +2,7 @@ import React from 'react';
 import { UserAuth,} from '../context/AuthContext.tsx';
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import { userInfo } from 'os';
 
 export default function Navbar(props: {
   onClickHome: React.MouseEventHandler<HTMLAnchorElement>,
@@ -11,7 +12,7 @@ export default function Navbar(props: {
   onClickPlay: React.MouseEventHandler<HTMLAnchorElement> 
 }) {
   const {onClickHome, onClickLogin, onClickLogout, onClickResults, onClickPlay} = props;
-  const {user, userEmail} = UserAuth();
+  const {user, userInfo} = UserAuth();
 
  
   return (
@@ -30,7 +31,7 @@ export default function Navbar(props: {
     
     <div className="username">
       { user ? (
-        <p>{userEmail}</p>
+        <p>{userInfo.username}</p>
       ) :  ""}
     </div>
   </div>

@@ -10,6 +10,18 @@ export const fixtureAPICall = () => {
   return fixString;
 }
 
+export const usersAPICall = () => {
+  let userString : string;
+  const apiUrl = process.env.WEBSITE_URL || 'https://j-league-backend.vercel.app/api/users';
+
+  if (process.env.NODE_ENV === 'development') {
+    userString = '/api/users' 
+  } else {
+    userString = apiUrl
+  }
+  return userString;
+}
+
 export const predicationsAPICall = () => {
   let predictString : string;
   const apiUrl = process.env.WEBSITE_URL || 'https://j-league-backend.vercel.app/api/predications';

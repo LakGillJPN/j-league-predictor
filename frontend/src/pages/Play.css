@@ -109,14 +109,14 @@ form {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: rgb(138, 137, 137);
-  color: white;
+  background-color: #F7F6F7;
+  color: black;
 }
 
 
 .date-and-time-wrapper {
   border-radius: 25px 25px 0px 0px;
-  background-color:rgb(138, 137, 137);
+  background-color:#F7F6F7;
 }
 
 .date {
@@ -128,20 +128,21 @@ form {
 }
 
 .league-logo {
-  background-color: rgb(138, 137, 137);
+  background-color:#F7F6F7;
   height: 40px;
+  padding-left: 5px;
 }
 
 .venue-and-stadium {
-  background-color: rgb(138, 137, 137);
+  background-color: #F7F6F7;
   display: flex;
   padding: 10px;
   border-radius: 0px 0px 25px 25px;
 }
 
 .venue {
-  background-color: rgb(138, 137, 137);
-  color: white;
+  background-color: #F7F6F7;
+  color: black;
   text-align: center;
   font-size: 20px;
   border-radius: 0px 0px 25px 25px;

@@ -14,6 +14,9 @@ export default function Results() {
   let [results, setResults] = useState<any>([]);
   let [points, setPoints] = useState<any>([]);
   let [total, setTotal] = useState<any>([]);
+  const [color, setColor] = useState<string>('red')
+  const [score, setScore] = useState<number>(0)
+  
   let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
 
   // use the getResults function to get the previous week's actual results
@@ -41,8 +44,7 @@ export default function Results() {
       ),
       result.fixture_id,
       result.gameweek
-    ]);
-
+    ]);    
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -97,6 +99,7 @@ export default function Results() {
             result.did_away_team_win
           );
 
+
           return (
             <div className="container">
               <div className="results" key={result.fixture_id}>
@@ -128,7 +131,7 @@ export default function Results() {
                   <div className="result-box">{result.away_team_name}</div>
                 </div>
                 Points:
-                <div className="red">{score}</div>
+                <div className={color}>{score}</div>
               </div>
               <div className="space"></div>
             </div>

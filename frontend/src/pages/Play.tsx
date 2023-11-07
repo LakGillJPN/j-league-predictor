@@ -202,7 +202,7 @@ const { userPredications, uid } = UserAuth();
       </div>
 
       <div className="venue-and-stadium">
-          <img className="league-logo" src={fixture.league_logo_url}/>
+          <img className="league-logo" src='\images\jleague-logo.png'/>
           <div className="venue"> {fixture.venue_name} </div>
         </div>
        

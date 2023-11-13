@@ -137,7 +137,7 @@ const { userPredications, uid } = UserAuth();
         <div className='predict-game'>  
           <div className='game-box'>
             <div> <img className='logo' src={fixture.home_team_logo_url} alt="Home Team Logo"/>  </div>
-            <div> {fixture.home_team_name} </div>
+            <div className="team-name"> {fixture.home_team_name} </div>
             </div>
 
         <div className='scorebox-container'>
@@ -197,11 +197,12 @@ const { userPredications, uid } = UserAuth();
 
         <div className='game-box'>
           <div> <img className='logo' src={fixture.away_team_logo_url} alt="Away Team Logo"/> </div>
-          <div> {fixture.away_team_name} </div>
+          <div className='team-name'> {fixture.away_team_name} </div>
         </div>
       </div>
 
       <div className="venue-and-stadium">
+          <img className="league-logo" src='\images\jleague-logo.png'/>
           <div className="venue"> {fixture.venue_name} </div>
         </div>
        

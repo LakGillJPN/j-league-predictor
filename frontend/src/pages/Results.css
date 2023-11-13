@@ -4,7 +4,6 @@
   text-align: center;
   justify-items: center;
   align-items: center;
-  border: 3px solid green;
 }
 
 #heading {
@@ -22,7 +21,7 @@
   font-size: 30px;
   background-color: white;
   align-items: center;
-  width: 100%; 
+  width: 350px; 
   max-width: 400px; 
   border-radius: 25px;
   margin: auto;
@@ -30,13 +29,14 @@
 
 .result-box {
   font-size: 30px;
-  border: 3px solid red;
+  height: 170px;
   width: 100px;
 }
 
 .actual {
   display: flex;
   align-items: center;
+  gap: 30px;
   font-size: 40px;
   justify-content: center;
   /* border: 3px solid green; */
@@ -44,12 +44,26 @@
 
 .scorebox-container {
   display: flex;
-  flex-wrap: nowrap;
-  border: 3px solid blue;
+  flex-direction: column; /* Change from nowrap to column */
+  align-items: center; /* Center the content horizontally */
+}
+
+.results-logo{
+  width: 80px;
+  height: 80px;
+}
+
+.results-label {
+  width: 120px; /* Adjust as needed */
+  padding: 5px;
+  margin: 5px;
 }
 
 .actual-goals {
-  border: 3px solid black;
+  display: flex;
+}
+
+.actual-goals span {
   width: 40px;
   padding: 5px;
   margin: 5px;
@@ -57,13 +71,9 @@
 
 .predications {
   display: flex;
-  align-items: center;
   font-size: 30px;
-  justify-content: center;
-  /* background-color: rgb(169, 165, 165); */
-  background: linear-gradient(red, lightcoral);
+  background: gray;
   color: white;
-  /* border: 6px solid red; */
 }
 
 .predict-goals {
@@ -73,6 +83,12 @@
   width: 40px;
   padding: 5px;
   margin: 5px;
+}
+
+.actual-and-results {
+  display: flex;
+  gap: 5px;
+  border: 3px solid black;
 }
 
 .red {
@@ -98,7 +114,7 @@
   color: white;
   font-size: 45px;
   margin: 10px auto;
-  width: 60px;
+  width: 70px;
   border-radius: 10px;
 }
 

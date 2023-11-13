@@ -140,7 +140,7 @@ const { userPredications, uid } = UserAuth();
             <div className="team-name"> {fixture.home_team_name} </div>
             </div>
 
-        <div className='scorebox-container'>
+        <div className='playbox-container'>
           <div className="scorebox">
           <div className="plus-and-minus">
             <button

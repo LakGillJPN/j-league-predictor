@@ -14,9 +14,6 @@ export default function Results() {
   let [results, setResults] = useState<any>([]);
   let [points, setPoints] = useState<any>([]);
   let [total, setTotal] = useState<any>([]);
-  const [color, setColor] = useState<string>('red')
-  const [score, setScore] = useState<number>(0)
-  
   let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
 
   // use the getResults function to get the previous week's actual results
@@ -79,6 +76,18 @@ export default function Results() {
     }
   }, [points, uid, hasTotalCalculated]);
 
+  const calculateColor = (score: number): string => {
+    if (score === 100) {
+      return 'green';
+    } else if (score === 0) {
+      return 'red';
+    } else {
+      return 'yellow'; // Default color if none of the conditions match
+    }
+  };
+
+
+
   return (
     <>
       <Header />
@@ -100,12 +109,12 @@ export default function Results() {
             result.did_away_team_win
           );
 
+          const scoreColor = calculateColor(score); 
+
 
           return (
             <div className="container">
               <div className="results" key={result.fixture_id}>
-              
-              
                 <div className="actual">
                   <div className="result-box">  
                     <img className='logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
@@ -132,7 +141,7 @@ export default function Results() {
                   <div className="result-box">{result.away_team_name}</div>
                 </div>
                 Points:
-                <div className={color}>{score}</div>
+                <div className={scoreColor}>{score}</div>
               </div>
               <div className="space"></div>
             </div>

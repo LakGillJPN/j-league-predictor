@@ -76,7 +76,7 @@
 }
 
 .red {
-  background: linear-gradient(red, lightcoral);
+  background: red;
   color: white;
   font-size: 45px;
   margin: 10px auto;
@@ -85,7 +85,7 @@
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: rgb(221, 221, 1);
   color: white;
   font-size: 45px;
   margin: 10px auto;

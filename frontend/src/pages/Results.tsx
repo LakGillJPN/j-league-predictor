@@ -41,8 +41,7 @@ export default function Results() {
       ),
       result.fixture_id,
       result.gameweek
-    ]);
-
+    ]);    
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -77,49 +76,83 @@ export default function Results() {
     }
   }, [points, uid, hasTotalCalculated]);
 
+  const calculateColor = (score: number): string => {
+    if (score === 100) {
+      return 'green';
+    } else if (score === 0) {
+      return 'red';
+    } else {
+      return 'yellow'; // Default color if none of the conditions match
+    }
+  };
+
+
+
   return (
     <>
       <Header />
-      <div className="overall">
-        <h1 id="heading">Results </h1>
+      {!uid ? 'Please login to see the results!' : 
+        <div className="overall">
+          <h1 id="heading">Results </h1>
 
-        {results.map((result: Result) => {
-          const score = scoreGen(
+          {results.map((result: Result) => {
+            const score = scoreGen(
              // User's Predication
-            result.home_predication,
-            result.away_predication,
-            result.home_win,
-            result.away_win,
-             // Actual Score
-            result.home_team_score,
-            result.away_team_score,
-            result.did_home_team_win,
-            result.did_away_team_win
-          );
+              result.home_predication,
+              result.away_predication,
+              result.home_win,
+              result.away_win,
+              // Actual Score
+              result.home_team_score,
+              result.away_team_score,
+              result.did_home_team_win,
+              result.did_away_team_win
+            );
 
-          return (
-            <div className="container">
-              <div className="results" key={result.fixture_id}>
-                <div className="actual">
-                  <div className="result-box"> {result.home_team_name} </div>
-                  <div className="scorebox-container">
-                    <span className="actual-goals">{result.home_team_score}</span>
-                    <span className="actual-goals"> {result.away_team_score}</span>
+            const scoreColor = calculateColor(score); 
+
+
+            return (
+              <div className="container">
+                <div className="results" key={result.fixture_id}>
+                  <div className="actual">
+                    <div className="result-box">  
+                      <img className='results-logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
+                      {result.home_team_name}
+                    </div>
+               
+                    <div className="result-box"> 
+                      <img className='results-logo' src={result.away_team_logo_url} alt="Away Team Logo"/> 
+                      {result.away_team_name} 
+                    </div>
                   </div>
-                  <div className="result-box"> {result.away_team_name} </div>
+
+                  <div className="actual-and-results">
+
+              
+                  <div className="scorebox-container">
+                    <span className="results-label">Result</span>
+                    <div className="actual-goals">
+                      <span className="predict-goals">{result.home_team_score}</span>
+                      <span className="predict-goals">{result.away_team_score}</span>
+                    </div>
+                  </div>
+
+                
+                  <div className="predications">
+                    <div className="scorebox-container">
+                      <span className="results-label">Prediction</span>
+                      <div className="actual-goals">
+                        <span className="predict-goals">{result.home_predication} </span>
+                        <span className="predict-goals">{result.away_predication} </span>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
-                Predication:
-                <div className="predications">
-                  <div className="result-box"> {result.home_team_name} </div>
-                  <div className="scorebox-container">
-                    <span className="predict-goals">{result.home_predication} </span>
-                    <span className="predict-goals">{result.away_predication} </span>
-                  </div>
-                  <div className="result-box">{result.away_team_name}</div>
-                </div>
-                Points:
-                <div className="red">{score}</div>
+                Points
+                <div className={scoreColor}>{score}</div>
               </div>
               <div className="space"></div>
             </div>
@@ -130,6 +163,7 @@ export default function Results() {
           <div className="total-points"> {total} </div>
         </div>
       </div>
-    </>
-  );
+    }
+  </>
+ );
 }

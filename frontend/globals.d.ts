@@ -75,7 +75,9 @@ export interface Points {
   fixture_id: number;
   gameweek: string;
   home_team_name: string;
-  away_team_name: string
+  away_team_name: string;
+  home_team_logo_url: string;
+  away_team_logo_url: string;
   home_predication: number;
   away_predication: number;
   home_win: boolean;
@@ -93,8 +95,6 @@ export interface Points {
   location: string;
   favourite_team: string;
  }
-
-
 
  export type scoreGen  = (
   predicatedHomeScore: number,

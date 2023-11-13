@@ -82,12 +82,13 @@ export default function Results() {
   return (
     <>
       <Header />
+      {!uid ? 'Please login to see the results!' : 
       <div className="overall">
         <h1 id="heading">Results </h1>
 
         {results.map((result: Result) => {
           const score = scoreGen(
-             // User's Predication
+            // User's Predication
             result.home_predication,
             result.away_predication,
             result.home_win,
@@ -121,7 +122,7 @@ export default function Results() {
                   </div>
                 </div>
 
-                Predication:
+                Your Predication:
                 <div className="predications">
                   <div className="result-box"> {result.home_team_name} </div>
                   <div className="scorebox-container">
@@ -142,6 +143,7 @@ export default function Results() {
           <div className="total-points"> {total} </div>
         </div>
       </div>
+  }
     </>
   );
 }

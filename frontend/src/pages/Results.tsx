@@ -8,13 +8,16 @@ import './Results.css';
 import axios from 'axios';
 import { Result } from '../../globals';
 import { pointsAPICall, overallAPICall } from '../utils/api-calls.ts';
+import { getCurrentGameweek } from '../utils/get-gameweek.ts';
 
 export default function Results() {
-  let { uid } = UserAuth();
-  let [results, setResults] = useState<any>([]);
-  let [points, setPoints] = useState<any>([]);
-  let [total, setTotal] = useState<any>([]);
-  let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const { uid } = UserAuth();
+  const [results, setResults] = useState<any>([]);
+  const [points, setPoints] = useState<any>([]);
+  const [total, setTotal] = useState<any>([]);
+  const [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const [gameweek, setGameweek] = useState('')
+ 
 
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
@@ -93,9 +96,11 @@ export default function Results() {
       <Header />
       {!uid ? 'Please login to see the results!' : 
         <div className="overall">
-          <h1 id="heading">Results </h1>
-
+          <h1 id="heading">Results</h1>
+          {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}
+          
           {results.map((result: Result) => {
+            
             const score = scoreGen(
              // User's Predication
               result.home_predication,
@@ -110,9 +115,10 @@ export default function Results() {
             );
 
             const scoreColor = calculateColor(score); 
-
+            
 
             return (
+              <> 
               <div className="container">
                 <div className="results" key={result.fixture_id}>
                   <div className="actual">
@@ -120,6 +126,7 @@ export default function Results() {
                       <img className='results-logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
                       {result.home_team_name}
                     </div>
+                    v
                
                     <div className="result-box"> 
                       <img className='results-logo' src={result.away_team_logo_url} alt="Away Team Logo"/> 
@@ -156,6 +163,7 @@ export default function Results() {
               </div>
               <div className="space"></div>
             </div>
+              </>
           );
         })}
         <div className="total">

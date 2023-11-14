@@ -17,6 +17,11 @@ export const getNextGameweek = (gameweek: string) => {
   return `Regular Season - ${nextNumber}`
 };
 
+export const getCurrentGameweek = (gameweek: string) => {
+  const currentNumber = parseInt(gameweek.split('-')[1].trim());
+  return `Regular Season - ${currentNumber}`
+};
+
 export const getLastGameweek = (gameweek: string) => {
   const currentNumber = parseInt(gameweek.split('-')[1].trim());
   const nextNumber = currentNumber - 1;

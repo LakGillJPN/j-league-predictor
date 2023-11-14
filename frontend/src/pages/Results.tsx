@@ -44,7 +44,9 @@ export default function Results() {
       ),
       result.fixture_id,
       result.gameweek
-    ]);    
+    ], 
+    );    
+    
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -96,7 +98,7 @@ export default function Results() {
       <Header />
       {!uid ? 'Please login to see the results!' : 
         <div className="overall">
-          <h1 id="heading">Results</h1>
+          <h1 id="heading">Results </h1>
           {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}
           
           {results.map((result: Result) => {

@@ -119,7 +119,6 @@ export default function Results() {
 
             const scoreColor = calculateColor(score); 
             
-
             return (
               <> 
               <div className="container">
@@ -138,8 +137,7 @@ export default function Results() {
                   </div>
 
                   <div className="actual-and-results">
-
-              
+  
                   <div className="scorebox-container">
                     <span className="results-label">Result</span>
                     <div className="actual-goals">
@@ -147,7 +145,6 @@ export default function Results() {
                       <span className="predict-goals">{result.away_team_score}</span>
                     </div>
                   </div>
-
                 
                   <div className="predications">
                     <div className="scorebox-container">
@@ -158,7 +155,6 @@ export default function Results() {
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 Points

@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Result } from '../../globals';
 import { pointsAPICall, overallAPICall } from '../utils/api-calls.ts';
 import { getCurrentGameweek } from '../utils/get-gameweek.ts';
+import LoginForm from '../components/LoginForm.tsx';
 
 export default function Results() {
   const { uid } = UserAuth();
@@ -96,7 +97,7 @@ export default function Results() {
   return (
     <>
       <Header />
-      {!uid ? <p className="warning">'Please login to see the results!'</p>: 
+      {!uid ? <p className="warning">Please login to see the results!<LoginForm/> </p>: 
         <div className="overall">
           <h1 id="heading">Results </h1>
           {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}

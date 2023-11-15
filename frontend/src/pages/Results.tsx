@@ -8,13 +8,17 @@ import './Results.css';
 import axios from 'axios';
 import { Result } from '../../globals';
 import { pointsAPICall, overallAPICall } from '../utils/api-calls.ts';
+import { getCurrentGameweek } from '../utils/get-gameweek.ts';
+import LoginForm from '../components/LoginForm.tsx';
 
 export default function Results() {
-  let { uid } = UserAuth();
-  let [results, setResults] = useState<any>([]);
-  let [points, setPoints] = useState<any>([]);
-  let [total, setTotal] = useState<any>([]);
-  let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const { uid } = UserAuth();
+  const [results, setResults] = useState<any>([]);
+  const [points, setPoints] = useState<any>([]);
+  const [total, setTotal] = useState<any>([]);
+  const [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const [gameweek, setGameweek] = useState('')
+ 
 
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
@@ -41,7 +45,9 @@ export default function Results() {
       ),
       result.fixture_id,
       result.gameweek
-    ]);    
+    ], 
+    );    
+    
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -91,11 +97,13 @@ export default function Results() {
   return (
     <>
       <Header />
-      {!uid ? 'Please login to see the results!' : 
+      {!uid ? <p className="warning">Please login to see the results!<LoginForm/> </p>: 
         <div className="overall">
           <h1 id="heading">Results </h1>
-
+          {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}
+          
           {results.map((result: Result) => {
+            
             const score = scoreGen(
              // User's Predication
               result.home_predication,
@@ -110,9 +118,9 @@ export default function Results() {
             );
 
             const scoreColor = calculateColor(score); 
-
-
+            
             return (
+              <> 
               <div className="container">
                 <div className="results" key={result.fixture_id}>
                   <div className="actual">
@@ -120,6 +128,7 @@ export default function Results() {
                       <img className='results-logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
                       {result.home_team_name}
                     </div>
+                    v
                
                     <div className="result-box"> 
                       <img className='results-logo' src={result.away_team_logo_url} alt="Away Team Logo"/> 
@@ -128,8 +137,7 @@ export default function Results() {
                   </div>
 
                   <div className="actual-and-results">
-
-              
+  
                   <div className="scorebox-container">
                     <span className="results-label">Result</span>
                     <div className="actual-goals">
@@ -137,7 +145,6 @@ export default function Results() {
                       <span className="predict-goals">{result.away_team_score}</span>
                     </div>
                   </div>
-
                 
                   <div className="predications">
                     <div className="scorebox-container">
@@ -148,7 +155,6 @@ export default function Results() {
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 Points
@@ -156,6 +162,7 @@ export default function Results() {
               </div>
               <div className="space"></div>
             </div>
+              </>
           );
         })}
         <div className="total">

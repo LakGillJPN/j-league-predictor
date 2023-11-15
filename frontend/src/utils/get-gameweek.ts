@@ -17,6 +17,11 @@ export const getNextGameweek = (gameweek: string) => {
   return `Regular Season - ${nextNumber}`
 };
 
+export const getCurrentGameweek = (gameweek: string) => {
+  const currentNumber = parseInt(gameweek.split('-')[1].trim());
+  return `Regular Season - ${currentNumber}`
+};
+
 export const getLastGameweek = (gameweek: string) => {
   const currentNumber = parseInt(gameweek.split('-')[1].trim());
   const nextNumber = currentNumber - 1;
@@ -37,7 +42,7 @@ export async function getGameweek(){
   const gameString = weekData[0].gameweek
   const nextWeek = getNextGameweek(gameString)
   const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
-  const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS');
+  const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS' || game.isFinished === 'TBD');
   //return `Regular Season - 18`  // FOR TESTING PURPOSES
   return areAllFinishedNS === true ? gameString : nextWeek;
 }

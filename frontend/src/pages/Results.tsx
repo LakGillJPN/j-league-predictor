@@ -96,7 +96,7 @@ export default function Results() {
   return (
     <>
       <Header />
-      {!uid ? 'Please login to see the results!' : 
+      {!uid ? <p className="warning">'Please login to see the results!'</p>: 
         <div className="overall">
           <h1 id="heading">Results </h1>
           {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}

@@ -39,14 +39,10 @@ export async function getGameweek(){
   const fetchedFixs = await axios.get(fixtureAPICall());
   const date = addHours(new Date(),2)
   const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
-  console.log(weekData)
   const gameString = weekData[0].gameweek
-  console.log(gameString)
   const nextWeek = getNextGameweek(gameString)
   const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
-  console.log(weeksGames)
   const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS' || game.isFinished === 'TBD');
-  console.log(areAllFinishedNS)
   //return `Regular Season - 18`  // FOR TESTING PURPOSES
   return areAllFinishedNS === true ? gameString : nextWeek;
 }

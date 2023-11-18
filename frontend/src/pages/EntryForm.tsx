@@ -63,7 +63,7 @@ export default function EntryForm() {
         favTeam
       }
     )
-    .then(response => {
+    .then(() => {
       navigate('/')
     })
     .catch(error => {

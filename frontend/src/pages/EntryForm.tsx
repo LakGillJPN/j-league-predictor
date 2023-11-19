@@ -30,11 +30,13 @@ export default function EntryForm() {
     const dateValue = event.target.value;
     
     if (getAge(dateValue) < 18) {
-      
+      // Handle the case when the user is under 18, if needed
+      alert("You must be 18 or older to submit this form.");
     } else {
-      setBirthday(dateValue)
+      // Set the birthday value for users 18 or older
+      setBirthday(dateValue);
     }
-  };
+  }; 
 
   const handleLocation = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -49,11 +51,6 @@ export default function EntryForm() {
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-
-    if (getAge(birthday) < 18) {
-      alert("You must be 18 or older to submit this form.");
-      return;
-    }
 
     axios.post(usersAPICall(), {
         uid,

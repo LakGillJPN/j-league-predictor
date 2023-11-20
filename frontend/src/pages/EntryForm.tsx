@@ -17,7 +17,8 @@ export default function EntryForm() {
   const {uid} = UserAuth()
 
   useEffect(() => {
-    console.log(typeof birthday)
+    console.log('BIRTHDAY', birthday)
+    console.log('AGE', getAge(birthday))
   },[birthday])
 
   
@@ -28,13 +29,8 @@ export default function EntryForm() {
 
   const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
     const dateValue = event.target.value;
-    
-    if (getAge(dateValue) < 18) {
-      
-    } else {
-      setBirthday(dateValue)
-    }
-  };
+    setBirthday(dateValue);
+  }; 
 
   const handleLocation = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -49,28 +45,25 @@ export default function EntryForm() {
 
   const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-
-    if (getAge(birthday) < 18) {
-      alert("You must be 18 or older to submit this form.");
-      return;
-    }
-
-    axios.post(usersAPICall(), {
-        uid,
-        username,
-        birthday,
-        location,
-        favTeam
-      }
-    )
-    .then(response => {
+    if (getAge(birthday) > 18) {
+      axios.post(usersAPICall(), {
+          uid,
+          username,
+          birthday,
+          location,
+          favTeam
+        }
+    ).then(() => {
       navigate('/')
     })
     .catch(error => {
       alert("Please enter all the required fields!")
       console.log(error);
     });
+  } else {
+    alert("You must over 18 to register")
   }
+}
 
   // useEffect(() => {
   //   console.log('USERNAME', username)

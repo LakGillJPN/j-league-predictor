@@ -58,10 +58,8 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ childre
       getPredicationsNow(setUserPredications, uid);
       getUser(setUserInfo, uid) 
     }
-
     return authenticatedUser;
   }, [uid]);
-
 
 
   return (

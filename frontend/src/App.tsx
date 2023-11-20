@@ -13,6 +13,7 @@ import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext.tsx';
 import ProtectedRoute from './context/ProtectedRoute.tsx';
 import './App.css'
+import Profile from './pages/Profile.tsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login/" element={<Login/>} />
           <Route path="/signup/" element={<SignUp/>} />
           <Route path ="/entryform/" element = {<EntryForm/>} />
+          <Route path="/profile/" element={<Profile/>} />
           <Route path="/play/" element ={ <Play/>}/>
           <Route path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
           <Route path="/results/" element={<Results/>} />

@@ -8,13 +8,17 @@ import './Results.css';
 import axios from 'axios';
 import { Result } from '../../globals';
 import { pointsAPICall, overallAPICall } from '../utils/api-calls.ts';
+import { getCurrentGameweek } from '../utils/get-gameweek.ts';
+import LoginForm from '../components/LoginForm.tsx';
 
 export default function Results() {
-  let { uid } = UserAuth();
-  let [results, setResults] = useState<any>([]);
-  let [points, setPoints] = useState<any>([]);
-  let [total, setTotal] = useState<any>([]);
-  let [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const { uid } = UserAuth();
+  const [results, setResults] = useState<any>([]);
+  const [points, setPoints] = useState<any>([]);
+  const [total, setTotal] = useState<any>([]);
+  const [hasTotalCalculated, setHasTotalCalculated] = useState(false);
+  const [gameweek, setGameweek] = useState('')
+ 
 
   // use the getResults function to get the previous week's actual results
   useEffect(() => {
@@ -41,8 +45,9 @@ export default function Results() {
       ),
       result.fixture_id,
       result.gameweek
-    ]);
-
+    ], 
+    );    
+    
     setPoints(scores); // set the user's scores to the points array
   }, [results]);
 
@@ -77,52 +82,87 @@ export default function Results() {
     }
   }, [points, uid, hasTotalCalculated]);
 
+  const calculateColor = (score: number): string => {
+    if (score === 100) {
+      return 'green';
+    } else if (score === 0) {
+      return 'red';
+    } else {
+      return 'yellow'; // Default color if none of the conditions match
+    }
+  };
+
+
+
   return (
     <>
       <Header />
-      <div className="overall">
-        <h1 id="heading">Results </h1>
-
-        {results.map((result: Result) => {
-          const score = scoreGen(
+      {!uid ? <p className="warning">Please login to see the results!<LoginForm/> </p>: 
+        <div className="overall">
+          <h1 id="heading">Results </h1>
+          {/* <h2>{getCurrentGameweek(results.gameweek)}</h2> */}
+          
+          {results.map((result: Result) => {
+            
+            const score = scoreGen(
              // User's Predication
-            result.home_predication,
-            result.away_predication,
-            result.home_win,
-            result.away_win,
-             // Actual Score
-            result.home_team_score,
-            result.away_team_score,
-            result.did_home_team_win,
-            result.did_away_team_win
-          );
+              result.home_predication,
+              result.away_predication,
+              result.home_win,
+              result.away_win,
+              // Actual Score
+              result.home_team_score,
+              result.away_team_score,
+              result.did_home_team_win,
+              result.did_away_team_win
+            );
 
-          return (
-            <div className="container">
-              <div className="results" key={result.fixture_id}>
-                <div className="actual">
-                  <div className="result-box"> {result.home_team_name} </div>
-                  <div className="scorebox-container">
-                    <span className="actual-goals">{result.home_team_score}</span>
-                    <span className="actual-goals"> {result.away_team_score}</span>
+            const scoreColor = calculateColor(score); 
+            
+            return (
+              <> 
+              <div className="container">
+                <div className="results" key={result.fixture_id}>
+                  <div className="actual">
+                    <div className="result-box">  
+                      <img className='results-logo' src={result.home_team_logo_url} alt="Home Team Logo"/>
+                      {result.home_team_name}
+                    </div>
+                    v
+               
+                    <div className="result-box"> 
+                      <img className='results-logo' src={result.away_team_logo_url} alt="Away Team Logo"/> 
+                      {result.away_team_name} 
+                    </div>
                   </div>
-                  <div className="result-box"> {result.away_team_name} </div>
+
+                  <div className="actual-and-results">
+  
+                  <div className="scorebox-container">
+                    <span className="results-label">Result</span>
+                    <div className="actual-goals">
+                      <span className="predict-goals">{result.home_team_score}</span>
+                      <span className="predict-goals">{result.away_team_score}</span>
+                    </div>
+                  </div>
+                
+                  <div className="predications">
+                    <div className="scorebox-container">
+                      <span className="results-label">Prediction</span>
+                      <div className="actual-goals">
+                        <span className="predict-goals">{result.home_predication} </span>
+                        <span className="predict-goals">{result.away_predication} </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                Predication:
-                <div className="predications">
-                  <div className="result-box"> {result.home_team_name} </div>
-                  <div className="scorebox-container">
-                    <span className="predict-goals">{result.home_predication} </span>
-                    <span className="predict-goals">{result.away_predication} </span>
-                  </div>
-                  <div className="result-box">{result.away_team_name}</div>
-                </div>
-                Points:
-                <div className="red">{score}</div>
+                Points
+                <div className={scoreColor}>{score}</div>
               </div>
               <div className="space"></div>
             </div>
+              </>
           );
         })}
         <div className="total">
@@ -130,6 +170,7 @@ export default function Results() {
           <div className="total-points"> {total} </div>
         </div>
       </div>
-    </>
-  );
+    }
+  </>
+ );
 }

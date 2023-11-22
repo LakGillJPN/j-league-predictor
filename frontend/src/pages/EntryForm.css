@@ -1,0 +1,39 @@
+.title {
+  margin: 0, auto;
+  font-size: 60px;
+  margin-bottom: -15px;  
+}
+
+.subheading{
+  font-size: 30px;
+  margin-bottom: 10px; 
+}
+
+.usernameLength {
+  margin-top: 5px;
+  color: black;
+  font-size: 15px;
+}
+
+.welcome-main {
+  margin: 0, auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.input-forms {
+  text-align: center;
+}
+
+.button-wrapper {
+  margin: 0, auto;
+  justify-content: center;
+}
+
+.entry-button {
+  font-size: 20px;
+  margin-top: 30px;
+  width: 200px;
+  height: 40px;
+  margin-bottom: 60px;
+}

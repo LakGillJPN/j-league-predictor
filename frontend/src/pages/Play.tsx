@@ -126,14 +126,21 @@ const { userPredications, uid } = UserAuth();
     {fixtures.map((fixture: Fixture, index) => (
     
       <div className='fixtures-box' key={fixture.fixture_id}>
+        <div className='date-and-time-wrapper'> 
+        <div className='date-and-time'>
+          <span className="date"> {new Date(fixture.date).toDateString()} </span>
+          <span className="time"> {new Date(fixture.date).toTimeString().slice(0, 5)} </span>
+        </div> 
+          {/* <div className='time'>{`${new Date(fixture.date).toTimeString().slice(0,5)}`} </div>  */}
+        </div> 
    
         <div className='predict-game'>  
           <div className='game-box'>
             <div> <img className='logo' src={fixture.home_team_logo_url} alt="Home Team Logo"/>  </div>
-            <div> {fixture.home_team_name} </div>
+            <div className="team-name"> {fixture.home_team_name} </div>
             </div>
 
-        <div className='scorebox-container'>
+        <div className='playbox-container'>
           <div className="scorebox">
           <div id="plus-home" className="plus-and-minus">
             <button
@@ -185,24 +192,20 @@ const { userPredications, uid } = UserAuth();
             <FontAwesomeIcon icon={faMinusCircle} />
             </button>
           </div>
-          </div>
-
-
-  
-          
+          </div>   
         </div>
 
         <div className='game-box'>
           <div> <img className='logo' src={fixture.away_team_logo_url} alt="Away Team Logo"/> </div>
-          <div> {fixture.away_team_name} </div>
+          <div className='team-name'> {fixture.away_team_name} </div>
         </div>
-        
-       
       </div>
-       <div className='date-and-time-wrapper'> 
-          <div className='date'>{`${new Date(fixture.date).toDateString()}`} </div>
-          <div className='time'>{`${new Date(fixture.date).toTimeString()}`} </div> 
-        </div> 
+
+      <div className="venue-and-stadium">
+          <img className="league-logo" src='\images\jleague-logo.png'/>
+          <div className="venue"> {fixture.venue_name} </div>
+        </div>
+       
       
 
       <div className="space"></div>  

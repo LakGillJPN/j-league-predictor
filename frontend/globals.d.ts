@@ -72,18 +72,28 @@ export interface Points {
  }
 
  export interface Result {
-    fixture_id: number;
-    gameweek: string;
-    home_team_name: string;
-    away_team_name: string
-    home_predication: number;
-    away_predication: number;
-    home_win: boolean;
-    away_win: boolean;
-    home_team_score: number;
-    away_team_score: number;
-    did_home_team_win: boolean;
-    did_away_team_win: boolean;
+  fixture_id: number;
+  gameweek: string;
+  home_team_name: string;
+  away_team_name: string;
+  home_team_logo_url: string;
+  away_team_logo_url: string;
+  home_predication: number;
+  away_predication: number;
+  home_win: boolean;
+  away_win: boolean;
+  home_team_score: number;
+  away_team_score: number;
+  did_home_team_win: boolean;
+  did_away_team_win: boolean;
+ }
+
+ export interface Users {
+  uid: string;
+  username: string 
+  date_of_birth: Date;
+  location: string;
+  favourite_team: string;
  }
 
  export type scoreGen  = (

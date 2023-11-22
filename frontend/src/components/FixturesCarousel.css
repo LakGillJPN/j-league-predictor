@@ -14,7 +14,7 @@
   display: relative;
   background: whitesmoke; 
   border: 5px solid rgba(7, 7, 7, 0.236);
-  height: 500px;
+  height: 430px;
   border-radius: 25px;
 } 
 
@@ -35,3 +35,37 @@
 }
 
 
+.sign-up-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: -30px;
+  width: 90%;
+  height: 120px;
+}
+
+.sign-up-text {
+  color: black;
+  font-size: 28px;
+  text-align: center;
+}
+
+.sign-up-button {
+  color: white;
+  border: 3px solid white;
+  margin-top: -10px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 25px;
+  text-align: center;
+  width: 150px;
+  background: linear-gradient(red, lightcoral);
+}
+
+.sign-up-button:hover {
+  cursor: pointer;
+  background: linear-gradient(rgb(221, 2, 2), lightcoral);
+}

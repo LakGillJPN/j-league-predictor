@@ -8,11 +8,14 @@ async function getTotal(setter: (arg0: any) => void, uid: string) {
     const fetchedData = await axios.get(totalAPICall());
     const gameweek = await getGameweek()
     const lastweek = await getLastGameweek(gameweek)
+    console.log('GAMEWEEK', gameweek)
+    console.log('LASTWEEK', lastweek)
+    console.log('NOW', fetchedData)
+
     setter(fetchedData.data.filter(
-      (data: Predication) => 
+      (data: Predication) =>
       //data.gameweek === 'Regular Season - 18' &&  - FOR TESTING PURPOSES
-      data.gameweek === lastweek && 
-      data.uid === uid 
+      data.gameweek === lastweek && data.uid === uid 
     )
     .map((data: Predication) => data.game_points)
     .reduce((prev: number, curr: number) => prev + curr, 0));

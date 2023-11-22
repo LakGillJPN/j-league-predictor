@@ -17,6 +17,7 @@ import './App.css'
 function App() {
   return (
     <div className="App">
+      
       <AuthContextProvider>
         <HashRouter> 
         <Routes>
@@ -26,7 +27,7 @@ function App() {
           <Route path ="/entryform/" element = {<EntryForm/>} />
           <Route path="/play/" element ={ <Play/>}/>
           <Route path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
-          <Route path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
+          <Route path="/results/" element={<Results/>} />
         </Routes>
         </HashRouter>
         </AuthContextProvider>

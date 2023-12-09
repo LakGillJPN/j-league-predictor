@@ -6,11 +6,8 @@ import { totalAPICall } from "./api-calls.ts";
 async function getTotal(setter: (arg0: any) => void, uid: string) {
   try {
     const fetchedData = await axios.get(totalAPICall());
-    const gameweek = await getGameweek()
-    const lastweek = await getLastGameweek(gameweek)
-    console.log('GAMEWEEK', gameweek)
-    console.log('LASTWEEK', lastweek)
-    console.log('NOW', fetchedData)
+    const gameweek = await getGameweek();
+    const lastweek = await getLastGameweek(gameweek);
 
     setter(fetchedData.data.filter(
       (data: Predication) =>

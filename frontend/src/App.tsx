@@ -9,6 +9,7 @@ import Submitted from './pages/Submitted.tsx';
 import EntryForm from './pages/EntryForm.tsx';
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx'
+import PlayTest from './pages/Play-Test.tsx';
 import {Routes, Route, HashRouter} from "react-router-dom";
 import { AuthContextProvider } from './context/AuthContext.tsx';
 import ProtectedRoute from './context/ProtectedRoute.tsx';
@@ -27,7 +28,8 @@ function App() {
           <Route path ="/entryform/" element = {<EntryForm/>} />
           <Route path="/play/" element ={ <Play/>}/>
           <Route path="/submitted/" element={<ProtectedRoute> <Submitted/> </ProtectedRoute>} />
-          <Route path="/results/" element={<Results/>} />
+          <Route path="/results/" element={<ProtectedRoute> <Results/> </ProtectedRoute>} />
+          <Route path="/play-test/" element ={<ProtectedRoute> <PlayTest/> </ProtectedRoute>} />
         </Routes>
         </HashRouter>
         </AuthContextProvider>

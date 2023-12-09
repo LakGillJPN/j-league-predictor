@@ -11,8 +11,8 @@ async function getTotal(setter: (arg0: any) => void, uid: string) {
 
     setter(fetchedData.data.filter(
       (data: Predication) =>
-      //data.gameweek === 'Regular Season - 18' &&  - FOR TESTING PURPOSES
-      data.gameweek === lastweek && data.uid === uid 
+      data.gameweek === 'Regular Season - 1' 
+      //data.gameweek === lastweek && data.uid === uid 
     )
     .map((data: Predication) => data.game_points)
     .reduce((prev: number, curr: number) => prev + curr, 0));

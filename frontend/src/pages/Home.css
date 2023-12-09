@@ -8,7 +8,26 @@ footer {
   width: 100%;
   height: 60px;   /* Height of the footer */
 }
-
 .carousel-container {
-  padding-bottom: 700px;
+  padding-bottom: 450px;
+  /* padding-bottom: 700px; */
 }
+
+.notice-container{
+  padding-bottom: 20px;
+}
+
+.notice{
+  text-align: center;
+}
+
+.season-notice {
+  font-size: 20px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.season-notice-end {
+  font-size: 20px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+

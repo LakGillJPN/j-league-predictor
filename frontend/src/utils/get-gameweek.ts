@@ -36,15 +36,18 @@ export async function getGameweek(){
     return date;
   }
 
-  const fetchedFixs = await axios.get(fixtureAPICall());
-  const date = addHours(new Date(),2)
-  const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
-  const gameString = weekData[0].gameweek
-  const nextWeek = getNextGameweek(gameString)
-  const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
-  const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS' || game.isFinished === 'TBD');
-  //return `Regular Season - 18`  // FOR TESTING PURPOSES
-  return areAllFinishedNS === true ? gameString : nextWeek;
+  // const fetchedFixs = await axios.get(fixtureAPICall());
+  // const date = addHours(new Date(),2)
+  // const weekData = fetchedFixs.data.filter((data: Fixture)  => new Date(data.date) > date)
+  // const gameString = weekData[0].gameweek
+  // const nextWeek = getNextGameweek(gameString)
+  // const weeksGames = fetchedFixs.data.filter((data: Fixture) => data.gameweek === gameString)
+  // console.log(gameString)
+  // const areAllFinishedNS = weeksGames.every((game : Fixture) => game.isFinished === 'NS' || game.isFinished === 'TBD');
+  
+  // return areAllFinishedNS === true ? gameString : nextWeek;
+
+  return `Regular Season - 1`  // FOR TESTING PURPOSES
 }
 
 export async function playGameweek(setter: (arg0: any) => void) {

@@ -71,12 +71,12 @@ The Frontend server will run on  **`http://localhost:3000/`**
 On the homepage, we have a carousel wheel displaying all the games upcoming in this gameweek.
 
 # Play
-<img src="/images\play_page.jpg" alt="Play" title="Play">
+<div align="center"> <img src="/images\play-page-screen.png" alt="Play" title="Play"> </div>
 
 On this page, users can make their prediction of what they think the score of this week's games will be. After making their prediction, a user can alter their prediction right up to the deadline.
 
 # Results
-<img src="/images\results.jpg" alt="Results" title="Results">
+<div align="center"> <img src="/images\results-page-screenshot.png" alt="Results" title="Results" > </div>
 
 The results of the previous gameweek are compared to the user's prediction and awarded points. 
 
